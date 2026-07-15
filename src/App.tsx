@@ -3,7 +3,11 @@
 function App() {
 
   return (
-    <> Malabar Coast Restaurant </>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <h1 className="text-5xl font-bold text-blue-600">
+        Malabar Coast Restaurant
+      </h1>
+    </div>
   )
 }
 
