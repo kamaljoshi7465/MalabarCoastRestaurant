@@ -30,7 +30,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
 
           <button
             onClick={() => setMobileOpen(false)}
-            className="flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-[#4c0e25]/10"
+            className="flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-primary-600/10"
           >
             <span className="text-2xl">✕</span>
           </button>
@@ -54,14 +54,14 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
                   <div
                     className={`relative overflow-hidden rounded-xl px-5 py-3 text-lg transition-all duration-300 ${
                       isActive
-                        ? "bg-[#4c0e25]/10 pl-7 font-semibold text-[#4c0e25]"
-                        : "text-black/80 hover:bg-[#4c0e25]/10 hover:pl-7 hover:text-[#4c0e25]"
+                        ? "bg-primary-600/10 pl-7 font-semibold text-[#4c0e25]"
+                        : "text-black/80 hover:bg-primary-600/10 hover:pl-7 hover:text-[#4c0e25]"
                     }`}
                   >
                     <span className="relative z-10">{label}</span>
 
                     <div
-                      className={`absolute inset-0 rounded-xl bg-[#4c0e25]/5 origin-left transition-transform duration-300 ${
+                      className={`absolute inset-0 rounded-xl bg-primary-600/5 origin-left transition-transform duration-300 ${
                         isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`}
                     />
@@ -83,9 +83,9 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
         <div className="flex-shrink-0 border-t border-black/10 px-6 py-4">
           <a
             href={phoneContact?.href ?? "tel:"}
-            className="group mb-3 flex items-center gap-3 rounded-xl p-3 transition hover:bg-[#4c0e25]/5"
+            className="group mb-3 flex items-center gap-3 rounded-xl p-3 transition hover:bg-primary-600/5"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4c0e25] text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-600 text-white">
               📞
             </div>
 
@@ -99,9 +99,9 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
 
           <a
             href={emailContact?.href ?? "mailto:"}
-            className="group flex items-center gap-3 rounded-xl p-3 transition hover:bg-[#4c0e25]/5"
+            className="group flex items-center gap-3 rounded-xl p-3 transition hover:bg-primary-600/5"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4c0e25] text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-600 text-white">
               ✉️
             </div>
 
@@ -119,7 +119,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
             href="https://www.google.com/maps/search/?api=1&query=Anardana+Restaurant"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-xl py-3 transition hover:bg-[#4c0e25]/5"
+            className="flex items-center justify-center gap-2 rounded-xl py-3 transition hover:bg-primary-600/5"
           >
             <span className="text-xl">📍</span>
             <span>Find Nearest Outlet</span>
@@ -128,7 +128,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
           <Link
             to="/reservations"
             onClick={() => setMobileOpen(false)}
-            className="block rounded-2xl bg-[#4c0e25] px-6 py-4 text-center text-white transition hover:scale-[1.02] hover:bg-[#5f1230]"
+            className="block rounded-2xl bg-primary-600 px-6 py-4 text-center text-white transition hover:scale-[1.02] hover:bg-primary-700"
           >
             Book a Table
           </Link>

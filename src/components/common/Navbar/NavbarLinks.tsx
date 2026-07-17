@@ -15,15 +15,13 @@ const NavbarLinks = ({ pathname }: NavbarLinksProps) => (
           <Link
             key={href}
             to={href}
-            className={`group relative text-md font-normal transition-all duration-300 ${
-              isActive ? "text-white" : "text-white/90 hover:text-white"
-            }`}
+            className={`group relative text-md font-normal transition-all duration-300 ${isActive ? "text-white" : "text-white/90 hover:text-white"
+              }`}
           >
             {label}
             <span
-              className={`absolute -bottom-1 left-0 h-0.5 bg-red-500 transition-all duration-300 ${
-                isActive ? "w-full" : "w-0 group-hover:w-full"
-              }`}
+              className={`absolute -bottom-1 left-0 h-0.5 bg-red-500 transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                }`}
             />
           </Link>
         );
@@ -43,7 +41,7 @@ const NavbarLinks = ({ pathname }: NavbarLinksProps) => (
 
       <Link
         to="/reservations"
-        className="rounded-full bg-[#4c0e25] px-5 py-2 text-md text-white shadow-lg transition-all duration-300 hover:bg-[#5f1230] hover:shadow-xl"
+        className="rounded-full bg-primary-600 px-5 py-2 text-md text-white shadow-lg transition-all duration-300 hover:bg-primary-700 hover:shadow-xl"
       >
         Book Table
       </Link>
