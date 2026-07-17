@@ -1,7 +1,7 @@
-import { ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { CITY_FILTERS, OUTLETS, type CityFilter } from "../../../../data/home/restaurant/RestaurantsSection.data";
 import OutletCard from "./OutletCard";
+import ViewMoreButton from "../../../buttons/ViewMoreButton";
 
 const RestaurantsSection = () => {
   const [activeFilter, setActiveFilter] = useState<CityFilter>("All");
@@ -49,15 +49,7 @@ const RestaurantsSection = () => {
           <p className="mt-8 text-center text-gray-500">No restaurants found in this location yet.</p>
         )}
 
-        <div className="mt-12 text-center">
-          <a
-            className="btn-primary inline-flex items-center space-x-2 rounded-full bg-primary-600 px-6 py-3 font-medium text-white transition-colors hover:bg-primary-700"
-            href="/restaurants"
-          >
-            <span>View All Restaurants</span>
-            <ArrowRight size="1em" />
-          </a>
-        </div>
+        <ViewMoreButton text="View All Restaurants" href="/restaurants" />
       </div>
     </section>
   );
