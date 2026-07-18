@@ -1,5 +1,6 @@
 import { Clock, MapPin } from "lucide-react";
 import type { FC } from "react";
+import TagButton from "../../../buttons/TagButton";
 import StatusBadge from "./StatusBadge";
 import type { Outlet } from "../../../../data/home/restaurant/RestaurantsSection.data";
 
@@ -21,12 +22,11 @@ const OutletCard: FC<OutletCardProps> = ({ outlet }) => (
       <StatusBadge isOpen={outlet.isOpen} />
       <div className="absolute right-4 top-4 flex flex-wrap gap-2">
         {outlet.topTags.map((tag) => (
-          <span
+          <TagButton
             key={tag}
-            className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-gray-900 backdrop-blur-sm"
-          >
-            {tag}
-          </span>
+            text={tag}
+            className="bg-white/90 px-3 py-1 text-xs text-gray-900 backdrop-blur-sm"
+          />
         ))}
       </div>
     </div>
@@ -52,9 +52,7 @@ const OutletCard: FC<OutletCardProps> = ({ outlet }) => (
 
       <div className="mt-4 flex flex-wrap gap-2">
         {outlet.bottomTags.map((tag) => (
-          <span key={tag} className="rounded bg-primary-50 px-2 py-1 text-xs text-primary-700">
-            {tag}
-          </span>
+          <TagButton key={tag} text={tag} className="bg-primary-50 px-2 py-1 text-xs text-primary-700" style={{ borderRadius: "5px" }} />
         ))}
       </div>
     </div>

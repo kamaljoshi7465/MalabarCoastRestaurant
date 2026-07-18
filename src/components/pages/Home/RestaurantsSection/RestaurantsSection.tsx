@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { CITY_FILTERS, OUTLETS, type CityFilter } from "../../../../data/home/restaurant/RestaurantsSection.data";
+import FilterButton from "../../../buttons/FilterButton";
 import OutletCard from "./OutletCard";
 import ViewMoreButton from "../../../buttons/ViewMoreButton";
 
@@ -25,17 +26,12 @@ const RestaurantsSection = () => {
 
         <div className="mb-12 flex flex-wrap justify-center gap-3">
           {CITY_FILTERS.map((filter) => (
-            <button
+            <FilterButton
               key={filter}
+              label={filter}
+              active={activeFilter === filter}
               onClick={() => setActiveFilter(filter)}
-              className={`rounded-full px-6 py-2 font-medium transition-all duration-300 ${
-                activeFilter === filter
-                  ? "bg-primary-600 text-white shadow-md"
-                  : "bg-white text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              {filter}
-            </button>
+            />
           ))}
         </div>
 
@@ -49,7 +45,9 @@ const RestaurantsSection = () => {
           <p className="mt-8 text-center text-gray-500">No restaurants found in this location yet.</p>
         )}
 
-        <ViewMoreButton text="View All Restaurants" href="/restaurants" />
+        <div className="mt-12">
+          <ViewMoreButton text="View All Restaurants" href="/restaurants" />
+        </div>
       </div>
     </section>
   );

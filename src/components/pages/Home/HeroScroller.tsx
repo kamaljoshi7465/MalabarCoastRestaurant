@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, MapPin, Volume2, VolumeX } from "lucide-react";
+import { MapPin, Volume2, VolumeX } from "lucide-react";
+import ViewMoreButton from "../../buttons/ViewMoreButton";
 import { HERO_ASSETS, HERO_CONTENT, HERO_MAPS_HREF } from "../../../data/home/hero/hero.data";
 
 const slides = [
@@ -91,22 +92,18 @@ export default function HeroScroller() {
               {displayContent.subtitle}
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
+              <ViewMoreButton
+                text={displayContent.primaryLabel}
                 href={displayContent.primaryHref}
-                className="btn-primary flex items-center space-x-2 rounded-full bg-white px-6 py-3 font-medium text-gray-900 transition-colors hover:bg-gray-100"
-              >
-                <span>{displayContent.primaryLabel}</span>
-                <ArrowRight size={16} />
-              </a>
-              <a
+              />
+
+              <ViewMoreButton
+                text="Find Restaurants"
                 href={HERO_MAPS_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary flex items-center space-x-2 rounded-full border border-white bg-white/10 px-6 py-3 font-medium text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-gray-900"
-              >
-                <MapPin size={16} />
-                <span>Find Restaurants</span>
-              </a>
+                light
+                icon={<MapPin size={16} />}
+                arrow={false}
+              />
             </div>
           </div>
         </div>
