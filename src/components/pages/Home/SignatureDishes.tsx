@@ -1,6 +1,6 @@
 import { dishes } from "../../../data/home/signatureDishes/signatureDishes.data";
 import ViewMoreButton from "../../buttons/ViewMoreButton";
-import DishCard from "../../cards/SignatureDishes/SignatureDishesCard";
+import DishCard from "../../cards/SignatureDishesCard";
 
 const SignatureDishes = () => (
   <section className="bg-white px-4 py-12 md:px-8 lg:px-16 lg:py-16">

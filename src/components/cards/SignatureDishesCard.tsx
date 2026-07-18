@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { DIET_LABELS, DIET_STYLES, TAG_STYLES, type Dish } from "../../../data/home/signatureDishes/signatureDishes.data";
-import TagButton from "../../buttons/TagButton";
+import { DIET_LABELS, DIET_STYLES, TAG_STYLES, type Dish } from "../../data/home/signatureDishes/signatureDishes.data";
+import TagButton from "../buttons/TagButton";
 
 interface DishCardProps {
   dish: Dish;
