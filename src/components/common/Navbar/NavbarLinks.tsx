@@ -30,7 +30,7 @@ const NavbarLinks = ({ pathname }: NavbarLinksProps) => (
 
     <div className="hidden items-center space-x-3 lg:flex">
       <a
-        href="https://www.google.com/maps/search/?api=1&query=Anardana+Restaurant"
+        href="https://www.google.com/maps/search/?api=1&query=Malabar+Coast+Restaurant"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center space-x-1.5 text-md text-white/90 transition-colors duration-300 hover:text-white"

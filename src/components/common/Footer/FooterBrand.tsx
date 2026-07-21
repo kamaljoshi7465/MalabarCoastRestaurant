@@ -5,11 +5,11 @@ const FooterBrand = () => (
     <a className="flex items-center space-x-3 mb-3" href="/">
       <div className="relative w-14 h-14 flex-shrink-0 rounded-full bg-white p-1.5 shadow-md" />
       <div>
-        <h3 className="text-xl font-display font-bold text-white">Anardana</h3>
+        <h3 className="text-xl font-display font-bold text-white">Malabar Coast</h3>
       </div>
     </a>
     <p className="text-sm text-gray-400 mb-4 max-w-[360px] leading-7">
-      Anardana is a modern Indian restaurant that offers a unique dining experience, blending
+      Malabar Coast is a modern Indian restaurant that offers a unique dining experience, blending
       authentic Indian flavors with contemporary cuisine. The restaurant uses fresh, seasonal
       ingredients and traditional cooking techniques to create dishes that are both delicious
       and visually stunning.

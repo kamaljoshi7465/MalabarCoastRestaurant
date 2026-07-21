@@ -7,7 +7,7 @@ const FoodStories: React.FC = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-3">
-            Anardana Presents
+            Malabar Coast Presents
           </p>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
             Food <span className="italic text-gold-400">Stories</span>

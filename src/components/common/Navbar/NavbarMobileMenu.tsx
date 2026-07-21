@@ -2,7 +2,7 @@ import type { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import { CONTACT_ITEMS } from "../../../data/footer/footer.data";
 import { MOB_NAV_ITEMS } from "../../../data/navbar/navbar.data";
-import logo2 from "../../../assets/icons/anardana-text-logo.avif";
+import logo2 from "../../../assets/icons/malabar-text-logo.avif";
 import NavbarBrand from "./NavbarBrand";
 
 interface NavbarMobileMenuProps {
@@ -23,7 +23,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
         <div className="flex flex-shrink-0 items-center justify-between border-b border-black/10 p-6">
           <NavbarBrand
             imageSrc={logo2}
-            alt="Anardana Restaurant"
+            alt="Malabar Coast Restaurant"
             className="h-8 w-auto"
             linkClassName="flex items-center"
           />
@@ -116,7 +116,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
 
         <div className="flex-shrink-0 space-y-3 border-t border-black/10 px-6 py-5">
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Anardana+Restaurant"
+            href="https://www.google.com/maps/search/?api=1&query=Malabar+Coast+Restaurant"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded-xl py-3 transition hover:bg-primary-600/5"

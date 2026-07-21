@@ -9,7 +9,7 @@ interface NavbarBrandProps {
 
 const NavbarBrand = ({
   imageSrc,
-  alt = "Anardana Restaurant",
+  alt = "Malabar Coast Restaurant",
   className = "h-45 w-auto transition-transform duration-300 group-hover:scale-105",
   linkClassName = "group flex items-center",
 }: NavbarBrandProps) => (

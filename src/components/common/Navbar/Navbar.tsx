@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import NavbarBrand from "./NavbarBrand";
 import NavbarLinks from "./NavbarLinks";
 import NavbarMobileMenu from "./NavbarMobileMenu";
-import logo from "../../../assets/icons/anardana-logo.png";
+import logo from "../../../assets/icons/malabar-coast-logo.png";
 
 const Navbar = () => {
   const { pathname } = useLocation();

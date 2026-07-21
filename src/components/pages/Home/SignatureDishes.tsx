@@ -7,7 +7,7 @@ const SignatureDishes = () => (
     <div className="container-custom">
       <div className="mb-10 text-center">
         <h2 className="mb-4 font-serif text-4xl font-bold text-gray-900 md:text-5xl">
-          Anardana Original&apos;s
+          Malabar Coast Original&apos;s
         </h2>
         <p className="mx-auto max-w-2xl text-lg text-gray-600">
           Discover our most celebrated creations, crafted with passion and inspired by traditional Indian flavors
