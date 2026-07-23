@@ -2,7 +2,7 @@ import { CTA_CONTENT, CTA_ICONS, CTA_STATS } from "../../../data/about/cta/cta.d
 
 const CtaSection = () => {
   return (
-    <section className="section-padding bg-gradient-to-r from-primary-600 to-gold-600 text-white relative overflow-hidden  px-4 py-16 md:px-8 lg:px-16 lg:py-24">
+    <section className="section-padding bg-gradient-to-r from-primary-600 to-gold-600 text-white relative overflow-hidden px-4 py-16 md:px-8 lg:px-16 lg:py-24">
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute top-0 left-0 w-full h-full"

@@ -8,6 +8,7 @@ import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Reservations from '../pages/Reservations'
 import NotFound from '../pages/NotFound'
+import Team from '../pages/Team';
 
 const AppRoutes = () => (
   <Routes>
@@ -15,6 +16,7 @@ const AppRoutes = () => (
     <Route path="/" element={<Home />} />
     <Route path="/menu" element={<Menu />} />
     <Route path="/about" element={<About />} />
+    <Route path="/teams" element={<Team />} />
     <Route path="/contact" element={<Contact />} />
     <Route path="/reservations" element={<Reservations />} />
     <Route path="*" element={<NotFound />} />
