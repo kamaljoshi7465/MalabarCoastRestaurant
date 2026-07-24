@@ -21,22 +21,22 @@ import Events from '../pages/Events';
 const AppRoutes = () => (
   <Routes>
     <Route element={<MainLayout />}>
-    <Route path="/" element={<Home />} />
-    <Route path="/menu" element={<Menu />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/teams" element={<Team />} />
-    <Route path="/contact" element={<Contact />} />
-    <Route path="/gallery" element={<Gallery />} />
-    <Route path="/reservations" element={<Reservations />} />
-    <Route path="/restaurants" element={<Restaurants />} />
-    <Route path="/restaurants/:slug" element={<RestaurantDetail />} />
-    <Route path="/events" element={<Events />} />
-    <Route path="/stories" element={<Stories />} />
-    <Route path="/careers" element={<Careers />} />
-    <Route path="/terms" element={<Terms />} />
-    <Route path="/privacy" element={<Privacy />} />
-    <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/menu" element={<Menu />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/teams" element={<Team />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/gallery" element={<Gallery />} />
+      <Route path="/reservations" element={<Reservations />} />
+      <Route path="/restaurants" element={<Restaurants />} />
+      <Route path="/restaurants/:slug" element={<RestaurantDetail />} />
+      <Route path="/events" element={<Events />} />
+      <Route path="/stories" element={<Stories />} />
+      <Route path="/careers" element={<Careers />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
     </Route>
+    <Route path="*" element={<NotFound />} />
   </Routes>
 )
 
