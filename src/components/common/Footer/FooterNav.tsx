@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NAV_SECTIONS } from "../../../data/footer/footer.data";
 
 const FooterNav = () => (
@@ -8,8 +9,8 @@ const FooterNav = () => (
         <ul className="space-y-3">
           {links.map(({ label, href, highlight }) => (
             <li key={href}>
-              <a
-                href={href}
+              <Link
+                to={href}
                 className={`text-sm transition-colors ${
                   highlight
                     ? "text-primary-400 hover:text-primary-300 font-medium"
@@ -17,7 +18,7 @@ const FooterNav = () => (
                 }`}
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

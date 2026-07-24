@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CONTACT_ITEMS } from "../../../data/footer/footer.data";
 
 const FooterContact = () => (
@@ -9,9 +10,11 @@ const FooterContact = () => (
           <div>
             <p className="text-sm font-semibold text-white">{label}</p>
             {href ? (
-              <a href={href} className="text-sm hover:text-primary-400 transition-colors">
-                {value}
-              </a>
+              href.startsWith("/") ? (
+                <Link to={href} className="text-sm hover:text-primary-400 transition-colors">{value}</Link>
+              ) : (
+                <a href={href} className="text-sm hover:text-primary-400 transition-colors">{value}</a>
+              )
             ) : (
               <p className="text-sm whitespace-pre-line">{value}</p>
             )}

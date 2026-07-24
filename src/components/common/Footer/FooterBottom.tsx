@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { LEGAL_LINKS } from "../../../data/footer/footer.data";
 
 const FooterBottom = () => (
@@ -9,9 +10,11 @@ const FooterBottom = () => (
         </p>
         <div className="flex space-x-6">
           {LEGAL_LINKS.map(({ label, href }) => (
-            <a key={href} href={href} className="text-sm text-gray-400 hover:text-primary-400 transition-colors">
-              {label}
-            </a>
+            href.startsWith("/") ? (
+              <Link key={href} to={href} className="text-sm text-gray-400 hover:text-primary-400 transition-colors">{label}</Link>
+            ) : (
+              <a key={href} href={href} className="text-sm text-gray-400 hover:text-primary-400 transition-colors">{label}</a>
+            )
           ))}
         </div>
       </div>

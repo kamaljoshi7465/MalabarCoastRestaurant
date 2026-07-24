@@ -232,14 +232,14 @@ export const OUTLETS_DATA: Outlet[] = [
     name: "Malabar Coast Aditya Ancora",
     locality: "Sector 50",
     region: "Noida",
-    image: "/download.jpg",
+    image: "https://cdn.anardana.in/images/outlets/m3m/e19c52fa-161a-4a0f-90cd-1e72dc97a769.webp",
     tags: ["Shopping Center", "Family Dining"],
     signature: "Elevated Food · Craft Cocktails · Tandoor Specials",
     outletUrl: "/restaurants/anardana-aditya-ancora",
     menus: {
-      food: null,
-      drink: null,
-      botanical: null,
+      food: "https://cdn.anardana.in/menus/chd-food.pdf",
+      drink: "https://cdn.anardana.in/menus/chd-drink.pdf",
+      botanical: "https://cdn.anardana.in/menus/seasonal/botanical-menu/chandigarh.pdf",
     },
   },
 ];
