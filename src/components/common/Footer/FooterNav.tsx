@@ -4,7 +4,7 @@ const FooterNav = () => (
   <>
     {NAV_SECTIONS.map(({ title, links }) => (
       <div key={title}>
-        <h4 className="text-white font-semibold mb-4">{title}</h4>
+        <h4 className="text-white font-display text-md mb-4">{title}</h4>
         <ul className="space-y-3">
           {links.map(({ label, href, highlight }) => (
             <li key={href}>

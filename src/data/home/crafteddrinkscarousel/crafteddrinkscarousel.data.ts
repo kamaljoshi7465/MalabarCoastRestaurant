@@ -26,8 +26,8 @@ export const DRINKS: Drink[] = [
     category: "Cocktail",
   },
   {
-    name: "Anardana Shrub Highball",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Anardana%20Shrub%20Highball.webp",
+    name: "Malabar Coast Shrub Highball",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Malabar Coast%20Shrub%20Highball.webp",
     category: "Cocktail",
   },
   {

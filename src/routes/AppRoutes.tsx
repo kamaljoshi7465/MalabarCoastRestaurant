@@ -6,9 +6,14 @@ import Home from '../pages/Home'
 import Menu from '../pages/Menu'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
+import Gallery from '../pages/Gallery'
 import Reservations from '../pages/Reservations'
+import Restaurants from '../pages/Restaurants'
 import NotFound from '../pages/NotFound'
 import Team from '../pages/Team';
+import Privacy from '../pages/Privacy';
+import Terms from '../pages/Terms';
+import RestaurantDetail from '../pages/RestaurantDetail';
 
 const AppRoutes = () => (
   <Routes>
@@ -18,7 +23,12 @@ const AppRoutes = () => (
     <Route path="/about" element={<About />} />
     <Route path="/teams" element={<Team />} />
     <Route path="/contact" element={<Contact />} />
+    <Route path="/gallery" element={<Gallery />} />
     <Route path="/reservations" element={<Reservations />} />
+    <Route path="/restaurants" element={<Restaurants />} />
+    <Route path="/restaurants/:slug" element={<RestaurantDetail />} />
+    <Route path="/terms" element={<Terms />} />
+    <Route path="/privacy" element={<Privacy />} />
     <Route path="*" element={<NotFound />} />
     </Route>
   </Routes>

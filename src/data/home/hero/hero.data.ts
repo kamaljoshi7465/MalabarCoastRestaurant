@@ -13,7 +13,7 @@ export interface HeroAssets {
 
 export const HERO_CONTENT: HeroContentItem[] = [
   {
-    title: "Anardana Vegas Mall, Dwarka",
+    title: "Malabar Coast Vegas Mall, Dwarka",
     subtitle: "Authentic flavours, modern setting — visit us at Sector 14 Dwarka",
     primaryLabel: "Get Directions",
     primaryHref: "/restaurants/anardana-vegas-mall",
@@ -56,4 +56,4 @@ export const HERO_ASSETS: HeroAssets = {
 };
 
 export const HERO_MAPS_HREF =
-  "https://www.google.com/maps/search/?api=1&query=Anardana+Restaurant";
+  "https://www.google.com/maps/search/?api=1&query=Malabar Coast+Restaurant";

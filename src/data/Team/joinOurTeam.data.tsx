@@ -41,7 +41,7 @@ const ArrowRightIcon = (): ReactNode => (
 export const JOIN_OUR_TEAM_CONTENT: JoinOurTeamData = {
   title: "Join Our Team",
   description:
-    "We're always looking for passionate individuals to join the Anardana family",
+    "We're always looking for passionate individuals to join the Malabar Coast family",
   buttonText: "View Open Positions",
   buttonLink: "/careers",
 };

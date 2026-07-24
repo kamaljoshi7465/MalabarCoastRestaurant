@@ -34,7 +34,7 @@ export const features: Feature[] = [
     ),
   },
   {
-    title: "Hero Chefs of Anardana",
+    title: "Hero Chefs of Malabar Coast",
     description:
       "Award-winning culinary team with decades of combined experience in Indian cuisine",
     iconGradient: "from-amber-500 to-orange-600",

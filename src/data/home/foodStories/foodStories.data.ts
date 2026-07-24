@@ -13,7 +13,7 @@ export const foodStories: FoodStory[] = [
     videoSrc: "https://cdn.anardana.in/videos/anardana-shahi-paneer/video.mp4",
     poster: "https://cdn.anardana.in/videos/anardana-shahi-paneer/cover.jpg",
     category: "main course",
-    title: "Anardana Shahi Paneer",
+    title: "Malabar Coast Shahi Paneer",
     description:
       "Soft cottage cheese cubes slow-simmered in a royal cashew-cream gravy kissed with dried pomegranate — the richest paneer on our menu.",
   },

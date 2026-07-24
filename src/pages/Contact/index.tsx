@@ -1,2 +1,1 @@
-const Contact = () => <div>Contact</div>
-export default Contact
+export { default } from "./Contact";

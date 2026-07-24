@@ -15,12 +15,12 @@ const NavbarLinks = ({ pathname }: NavbarLinksProps) => (
           <Link
             key={href}
             to={href}
-            className={`group relative text-md font-normal transition-all duration-300 ${isActive ? "text-white" : "text-white/90 hover:text-white"
+            className={`group relative text-md font-display font-normal transition-all duration-300 ${isActive ? "text-white" : "text-white/90 hover:text-white"
               }`}
           >
             {label}
             <span
-              className={`absolute -bottom-1 left-0 h-0.5 bg-red-500 transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+              className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
                 }`}
             />
           </Link>
@@ -33,7 +33,7 @@ const NavbarLinks = ({ pathname }: NavbarLinksProps) => (
         href="https://www.google.com/maps/search/?api=1&query=Malabar+Coast+Restaurant"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-1.5 text-md text-white/90 transition-colors duration-300 hover:text-white"
+        className="flex items-center space-x-1.5 text-md font-display text-white/90 transition-colors duration-300 hover:text-white"
       >
         <span>📍</span>
         <span>Find Outlet</span>
@@ -41,7 +41,7 @@ const NavbarLinks = ({ pathname }: NavbarLinksProps) => (
 
       <Link
         to="/reservations"
-        className="rounded-full bg-primary-600 px-5 py-2 text-md text-white shadow-lg transition-all duration-300 hover:bg-primary-700 hover:shadow-xl"
+        className="rounded-full bg-primary-600 px-5 py-2 text-md font-display text-white shadow-lg transition-all duration-300 hover:bg-primary-700 hover:shadow-xl"
       >
         Book Table
       </Link>

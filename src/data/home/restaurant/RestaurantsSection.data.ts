@@ -16,7 +16,7 @@ export type CityFilter = "All" | Outlet["city"];
 export const OUTLETS: Outlet[] = [
   {
     id: "vegas-mall",
-    name: "Anardana Vegas Mall",
+    name: "Malabar Coast Vegas Mall",
     slug: "anardana-vegas-mall",
     image:
       "https://cdn.anardana.in/images/outlets/vegas/ce14fcf4-7c2a-4287-b7c2-9a271607f181.webp",
@@ -25,12 +25,12 @@ export const OUTLETS: Outlet[] = [
     isOpen: true,
     topTags: ["Shopping Mall", "Family Dining"],
     description:
-      "Our newest outlet at Vegas Mall in Dwarka brings the authentic Anardana experience to West Delhi. A vibrant space for families, shoppers, and food lovers — expect the same bold North Indian flavours in a modern mall setting.",
+      "Our newest outlet at Vegas Mall in Dwarka brings the authentic Malabar Coast experience to West Delhi. A vibrant space for families, shoppers, and food lovers — expect the same bold North Indian flavours in a modern mall setting.",
     bottomTags: ["Elevated Food", "Craft Cocktails", "Tandoor Specials"],
   },
   {
     id: "midtown",
-    name: "Anardana DLF MidTown Plaza",
+    name: "Malabar Coast DLF MidTown Plaza",
     slug: "anardana-midtown",
     image:
       "https://cdn.anardana.in/images/outlets/mid-town/32a8a357-1c6f-4654-b102-eb72b1a0ef5e.webp",
@@ -44,7 +44,7 @@ export const OUTLETS: Outlet[] = [
   },
   {
     id: "nsp",
-    name: "Anardana UnityOne Elegante Mall",
+    name: "Malabar Coast UnityOne Elegante Mall",
     slug: "anardana-nsp",
     image:
       "https://cdn.anardana.in/images/outlets/nsp/266a2321-9d77-42f1-b5da-1c1e72279419.webp",
@@ -58,7 +58,7 @@ export const OUTLETS: Outlet[] = [
   },
   {
     id: "vasant-kunj",
-    name: "Anardana Ambience Mall",
+    name: "Malabar Coast Ambience Mall",
     slug: "anardana-vk",
     image:
       "https://cdn.anardana.in/images/outlets/vasant-kunj/dd3f79c2-c0cf-4f6e-9191-12ddce279663.webp",
@@ -72,7 +72,7 @@ export const OUTLETS: Outlet[] = [
   },
   {
     id: "faridabad",
-    name: "Anardana Pacific Mall",
+    name: "Malabar Coast Pacific Mall",
     slug: "anardana-faridabad",
     image:
       "https://cdn.anardana.in/images/outlets/faridabad/fd7e1abb-bf87-4890-ac13-21947598b930.webp",
@@ -86,7 +86,7 @@ export const OUTLETS: Outlet[] = [
   },
   {
     id: "gcr",
-    name: "Anardana Golf Course Road",
+    name: "Malabar Coast Golf Course Road",
     slug: "anardana-gcr",
     image:
       "https://cdn.anardana.in/images/outlets/gcr/55d46df2-42f5-4ead-8611-7614e82c96d2.webp",

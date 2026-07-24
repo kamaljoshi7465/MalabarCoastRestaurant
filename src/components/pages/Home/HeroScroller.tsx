@@ -82,10 +82,10 @@ export default function HeroScroller() {
         );
       })}
 
-      <div className="relative flex h-full items-center">
-        <div className="container-custom px-6 md:px-12">
+      <div className="relative z-10 flex h-full items-center">
+        <div className="container-custom">
           <div className="max-w-3xl">
-            <h1 className="mb-6 text-5xl font-bold text-white md:text-7xl">
+            <h1 className="mb-6 text-5xl font-serif font-bold text-white md:text-7xl">
               {displayContent.title}
             </h1>
             <p className="mb-8 text-xl text-gray-200 md:text-2xl">

@@ -1,2 +1,1 @@
-const Menu = () => <div>Menu</div>
-export default Menu
+export { default } from "./Menu";

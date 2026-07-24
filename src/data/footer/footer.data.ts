@@ -58,12 +58,12 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     title: "Our Restaurants",
     links: [
-      { label: "Anardana Vegas Mall", href: "/restaurants/anardana-vegas-mall" },
-      { label: "Anardana DLF MidTown Plaza", href: "/restaurants/anardana-midtown" },
-      { label: "Anardana UnityOne Elegante Mall", href: "/restaurants/anardana-nsp" },
-      { label: "Anardana Ambience Mall", href: "/restaurants/anardana-vk" },
-      { label: "Anardana Pacific Mall", href: "/restaurants/anardana-faridabad" },
-      { label: "Anardana Golf Course Road", href: "/restaurants/anardana-gcr" },
+      { label: "Malabar Coast Vegas Mall", href: "/restaurants/anardana-vegas-mall" },
+      { label: "Malabar Coast DLF MidTown Plaza", href: "/restaurants/anardana-midtown" },
+      { label: "Malabar Coast UnityOne Elegante Mall", href: "/restaurants/anardana-nsp" },
+      { label: "Malabar Coast Ambience Mall", href: "/restaurants/anardana-vk" },
+      { label: "Malabar Coast Pacific Mall", href: "/restaurants/anardana-faridabad" },
+      { label: "Malabar Coast Golf Course Road", href: "/restaurants/anardana-gcr" },
       { label: "View All Restaurants →", href: "/restaurants", highlight: true },
     ],
   },

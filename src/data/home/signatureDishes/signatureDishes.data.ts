@@ -67,7 +67,7 @@ export const dishes: Dish[] = [
   },
   {
     id: "anardana-shahi-paneer",
-    name: "Anardana Shahi Paneer",
+    name: "Malabar Coast Shahi Paneer",
     description:
       "Paneer simmered in a cashew and tomato gravy, velvety in texture and layered with richness",
     image: "https://cdn.anardana.in/images/signature-dishes/DSC00302-Edit.JPG",

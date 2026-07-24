@@ -5,7 +5,7 @@ const FooterBottom = () => (
     <div className="container-custom py-5">
       <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
         <p className="text-sm text-gray-400">
-          © {new Date().getFullYear()} Malabar Coast Restaurants Pvt. Ltd.. All rights reserved.
+          © {new Date().getFullYear()} Malabar Coast Restaurants Pvt. Ltd. All rights reserved.
         </p>
         <div className="flex space-x-6">
           {LEGAL_LINKS.map(({ label, href }) => (

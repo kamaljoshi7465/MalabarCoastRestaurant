@@ -12,11 +12,7 @@ const Navbar = () => {
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 px-4">
       <div
-        className="mx-auto mt-4 max-w-7xl rounded-2xl border border-white/10 bg-black/40 shadow-2xl shadow-black/50 backdrop-blur-3xl transition-all duration-500"
-        style={{
-          backdropFilter: "blur(40px) saturate(180%)",
-          WebkitBackdropFilter: "blur(40px) saturate(180%)",
-        }}
+        className=" mx-auto mt-4 max-w-7xl rounded-2xl border border-white/10 bg-black/40 backdrop-blur-3xl supports-[backdrop-filter]:bg-black/35 shadow-2xl shadow-black/50 transition-all duration-500 "
       >
         {!mobileOpen && (
           <div className="flex h-16 items-center justify-between px-6">
