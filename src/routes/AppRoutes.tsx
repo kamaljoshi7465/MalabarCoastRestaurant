@@ -14,6 +14,9 @@ import Team from '../pages/Team';
 import Privacy from '../pages/Privacy';
 import Terms from '../pages/Terms';
 import RestaurantDetail from '../pages/RestaurantDetail';
+import Careers from '../pages/Careers';
+import Stories from '../pages/Stories';
+import Events from '../pages/Events';
 
 const AppRoutes = () => (
   <Routes>
@@ -27,6 +30,9 @@ const AppRoutes = () => (
     <Route path="/reservations" element={<Reservations />} />
     <Route path="/restaurants" element={<Restaurants />} />
     <Route path="/restaurants/:slug" element={<RestaurantDetail />} />
+    <Route path="/events" element={<Events />} />
+    <Route path="/stories" element={<Stories />} />
+    <Route path="/careers" element={<Careers />} />
     <Route path="/terms" element={<Terms />} />
     <Route path="/privacy" element={<Privacy />} />
     <Route path="*" element={<NotFound />} />

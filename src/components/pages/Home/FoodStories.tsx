@@ -19,7 +19,7 @@ const FoodStories: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
-          {foodStories.map((story) => (
+          {foodStories.slice(0, 3).map((story) => (
             <FoodStoryCard key={story.href} story={story} />
           ))}
         </div>

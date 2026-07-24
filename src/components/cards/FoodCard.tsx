@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import type { FoodStory } from "../../data/home/foodStories/foodStories.data";
 
 const FoodStoryCard: React.FC<{ story: FoodStory }> = ({ story }) => {
@@ -22,9 +23,9 @@ const FoodStoryCard: React.FC<{ story: FoodStory }> = ({ story }) => {
 
   return (
     <div>
-      <a
+      <Link
         className="group relative block aspect-[3/4] rounded-2xl overflow-hidden bg-gray-900 ring-1 ring-white/5 hover:ring-primary-500/50 transition-shadow duration-500 hover:shadow-2xl hover:shadow-primary-500/20"
-        href={story.href}
+        to={story.href}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -60,7 +61,7 @@ const FoodStoryCard: React.FC<{ story: FoodStory }> = ({ story }) => {
             {story.description}
           </p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
