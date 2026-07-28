@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { MapPin, Volume2, VolumeX } from "lucide-react";
+import { Volume2, VolumeX } from "lucide-react";
 import ViewMoreButton from "../../buttons/ViewMoreButton";
-import { HERO_ASSETS, HERO_CONTENT, HERO_MAPS_HREF } from "../../../data/home/hero/hero.data";
+import { HERO_ASSETS, HERO_CONTENT } from "../../../data/home/hero/hero.data";
 
 const slides = [
   { type: "video", src: HERO_ASSETS.video, content: HERO_CONTENT[0] },
@@ -9,7 +9,6 @@ const slides = [
   { type: "image", src: HERO_ASSETS.gallery[0], content: HERO_CONTENT[2] },
   { type: "image", src: HERO_ASSETS.gallery[1], content: HERO_CONTENT[3] },
   { type: "image", src: HERO_ASSETS.gallery[2], content: HERO_CONTENT[4] },
-  { type: "image", src: HERO_ASSETS.gallery[3] },
 ];
 
 const SLIDE_DURATION = 6000;
@@ -40,7 +39,7 @@ export default function HeroScroller() {
     <section className="relative h-screen overflow-hidden bg-black">
       <div
         className={`absolute inset-0 z-10 transition-opacity duration-1000 ${
-          isVideoSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+          isVideoSlide ? "opacity-50" : "opacity-0 pointer-events-none"
         }`}
       >
         <video
@@ -98,12 +97,17 @@ export default function HeroScroller() {
               />
 
               <ViewMoreButton
+                text={displayContent.secondaryLabel ?? ""}
+                href={displayContent.secondaryHref ?? ""}
+              />
+
+              {/* <ViewMoreButton
                 text="Find Restaurants"
                 href={HERO_MAPS_HREF}
                 light
                 icon={<MapPin size={16} />}
                 arrow={false}
-              />
+              /> */}
             </div>
           </div>
         </div>

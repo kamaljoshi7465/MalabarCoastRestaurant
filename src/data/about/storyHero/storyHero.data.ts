@@ -1,3 +1,5 @@
+import aboutOurStory from "../../../assets/images/AboutSection/about us.png";
+
 interface Stat {
   value: string;
   label: string;
@@ -10,13 +12,13 @@ interface StoryHeroData {
 }
 
 export const stats: Stat[] = [
-  { value: "13", label: "Restaurants" },
-  { value: "1M+", label: "Happy Guests" },
-  { value: "7+", label: "Years" },
+  { value: "3", label: "Restaurants" },
+  { value: "50k+", label: "Happy Guests" },
+  { value: "4+", label: "Years" },
 ];
 
 export const STORY_HERO_DATA: StoryHeroData = {
-  image: "https://cdn.anardana.in/images/gallery-hero/6.jpg",
+  image: aboutOurStory,
   since: "2019",
   title: "A journey of flavours, tradition, and innovation — reimagining Indian cuisine for the modern palate.",
 };

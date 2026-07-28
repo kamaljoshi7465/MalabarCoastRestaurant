@@ -4,7 +4,7 @@ import { SOCIAL_LINKS } from "../../../data/footer/footer.data";
 const FooterBrand = () => (
   <div className="lg:col-span-2 max-w-[380px]">
     <Link className="flex items-center space-x-3 mb-3" to="/">
-      <div className="relative w-14 h-14 flex-shrink-0 rounded-full bg-white p-1.5 shadow-md" />
+      <img src="/favicon.svg" alt="Malabar Coast" className="relative w-8 h-8 flex-shrink-0 rounded-full bg-white shadow-md" />
       <div>
         <h3 className="text-xl font-display font-bold text-white">Malabar Coast</h3>
       </div>

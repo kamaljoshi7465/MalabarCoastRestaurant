@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { CITY_FILTERS, OUTLETS, type CityFilter } from "../../../../data/home/restaurant/RestaurantsSection.data";
+import { RESTAURANT_CITY_FILTERS, OUTLETS, type CityFilter } from "../../../../data/home/restaurant/RestaurantsSection.data";
 import FilterButton from "../../../buttons/FilterButton";
 import OutletCard from "./OutletCard";
 import ViewMoreButton from "../../../buttons/ViewMoreButton";
@@ -25,7 +25,7 @@ const RestaurantsSection = () => {
         </div>
 
         <div className="mb-12 flex flex-wrap justify-center gap-3">
-          {CITY_FILTERS.map((filter) => (
+          {RESTAURANT_CITY_FILTERS.map((filter) => (
             <FilterButton
               key={filter}
               label={filter}

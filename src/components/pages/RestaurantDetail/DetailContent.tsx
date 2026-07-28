@@ -1,9 +1,9 @@
-import type { OutletMenus } from "../../../data/Menu/Outlets.data";
-import type { Restaurant } from "../../../data/restaurants/restaurantsPage.data";
+import type { Outlet } from "../../../data/home/restaurant/RestaurantsSection.data";
+import OnlinePlatformCard from "../../common/OnlinePlatformCard";
 
-type Props = { restaurant: Restaurant; menus: OutletMenus | null };
+type Props = { restaurant: Outlet };
 
-type MenuCardProps = { href: string | null; title: string; description: string; icon: React.ReactNode };
+type MenuCardProps = { href: string; title: string; description: string; icon: React.ReactNode };
 
 const MenuCard = ({ href, title, description, icon }: MenuCardProps) => {
   const content = (
@@ -27,22 +27,20 @@ const MenuCard = ({ href, title, description, icon }: MenuCardProps) => {
 
   const cls = "bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:border-white hover:bg-white/20 rounded-xl p-6 transition-all duration-300 group";
 
-  return href
-    ? <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>
-    : <div className={`${cls} opacity-50 cursor-not-allowed`}>{content}</div>;
+  return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>;
 };
 
-const DetailContent = ({ restaurant, menus }: Props) => (
+const DetailContent = ({ restaurant }: Props) => (
   <div className="lg:col-span-2 space-y-6">
     {/* Menus */}
     <div className="bg-gradient-to-br from-primary-600 to-gold-600 rounded-xl p-6 shadow-md">
       <h2 className="text-2xl font-serif font-bold text-white mb-2">Our Menus</h2>
       <p className="text-white/80 text-sm mb-6">Explore our food and drink offerings</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <MenuCard
-          href={menus?.food ?? null}
+          href={restaurant.menus.food}
           title="Food Menu"
-          description="Explore our delicious food offerings, from appetizers to desserts"
+          description="Explore our coastal delicacies and signature dishes"
           icon={
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -50,17 +48,17 @@ const DetailContent = ({ restaurant, menus }: Props) => (
           }
         />
         <MenuCard
-          href={menus?.drink ?? null}
-          title="Drink Menu"
-          description="Discover our signature cocktails, wines, and beverages"
+          href={restaurant.menus.mocktail}
+          title="Mocktail Menu"
+          description="Discover our signature mocktails and refreshing beverages"
           icon={
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3h6l1 7H8L9 3zM8 10c0 4 2 7 4 9m0 0c2-2 4-5 4-9" />
             </svg>
           }
         />
         <MenuCard
-          href={menus?.botanical ?? null}
+          href={restaurant.menus.botanical}
           title="Botanical Menu"
           description="Fresh seasonal flavours inspired by nature"
           icon={
@@ -74,39 +72,15 @@ const DetailContent = ({ restaurant, menus }: Props) => (
     </div>
 
     {/* Order Online */}
-    {(restaurant.swiggyUrl || restaurant.zomatoUrl) && (
+    {Object.values(restaurant.reservations).some(Boolean) && (
       <div className="bg-white rounded-xl p-6 shadow-md border-2 border-primary-100">
         <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2">Order Online</h2>
         <p className="text-gray-600 text-sm mb-6">Get your favorite dishes delivered to your doorstep</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {restaurant.swiggyUrl && (
-            <a href={restaurant.swiggyUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-[#ff5707] rounded-xl transition-all duration-300 shadow-md hover:shadow-lg group">
-              <div className="flex items-center space-x-3">
-                <img src="https://cdn.anardana.in/logos/partners/swiggy_logo.png" alt="Swiggy" className="w-12 h-12 object-contain" />
-                <div>
-                  <h3 className="text-lg font-bold text-white">Swiggy</h3>
-                  <p className="text-white/80 text-xs">Order Now</p>
-                </div>
-              </div>
-              <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="text-white text-xl group-hover:translate-x-1 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
-          )}
-          {restaurant.zomatoUrl && (
-            <a href={restaurant.zomatoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-[#ff3044] rounded-xl transition-all duration-300 shadow-md hover:shadow-lg group">
-              <div className="flex items-center space-x-3">
-                <img src="https://cdn.anardana.in/logos/partners/zomato_logo.png" alt="Zomato" className="w-12 h-12 object-contain" />
-                <div>
-                  <h3 className="text-lg font-bold text-white">Zomato</h3>
-                  <p className="text-white/80 text-xs">Order Now</p>
-                </div>
-              </div>
-              <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="text-white text-xl group-hover:translate-x-1 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
-          )}
+          {restaurant.reservations.swiggyUrl && <OnlinePlatformCard platform="swiggy" url={restaurant.reservations.swiggyUrl} />}
+          {restaurant.reservations.zomatoUrl && <OnlinePlatformCard platform="zomato" url={restaurant.reservations.zomatoUrl} />}
+          {restaurant.reservations.eazydinerUrl && <OnlinePlatformCard platform="eazydiner" url={restaurant.reservations.eazydinerUrl} />}
+          {restaurant.reservations.districtUrl && <OnlinePlatformCard platform="district" url={restaurant.reservations.districtUrl} />}
         </div>
       </div>
     )}

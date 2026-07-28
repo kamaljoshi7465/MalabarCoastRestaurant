@@ -1,5 +1,6 @@
 import { Clock, MapPin } from "lucide-react";
 import type { FC } from "react";
+import { Link } from "react-router-dom";
 import TagButton from "../../../buttons/TagButton";
 import StatusBadge from "./StatusBadge";
 import type { Outlet } from "../../../../data/home/restaurant/RestaurantsSection.data";
@@ -9,9 +10,9 @@ interface OutletCardProps {
 }
 
 const OutletCard: FC<OutletCardProps> = ({ outlet }) => (
-  <a
+  <Link
     className="card group outlet-card block overflow-hidden rounded-xl bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
-    href={`/restaurants/${outlet.slug}`}
+    to={`/restaurants/${outlet.slug}`}
   >
     <div className="relative h-64 overflow-hidden">
       <img
@@ -21,7 +22,7 @@ const OutletCard: FC<OutletCardProps> = ({ outlet }) => (
       />
       <StatusBadge isOpen={outlet.isOpen} />
       <div className="absolute right-4 top-4 flex flex-wrap gap-2">
-        {outlet.topTags.map((tag) => (
+        {outlet.specialtyTags.map((tag) => (
           <TagButton
             key={tag}
             text={tag}
@@ -51,12 +52,17 @@ const OutletCard: FC<OutletCardProps> = ({ outlet }) => (
       </div>
 
       <div className="mt-4 flex flex-wrap gap-2">
-        {outlet.bottomTags.map((tag) => (
-          <TagButton key={tag} text={tag} className="bg-primary-50 px-2 py-1 text-xs text-primary-700" style={{ borderRadius: "5px" }} />
+        {outlet.specialties.map((tag) => (
+          <TagButton
+            key={tag}
+            text={tag}
+            className="bg-primary-50 px-2 py-1 text-xs text-primary-700"
+            style={{ borderRadius: "5px" }}
+          />
         ))}
       </div>
     </div>
-  </a>
+  </Link>
 );
 
 export default OutletCard;

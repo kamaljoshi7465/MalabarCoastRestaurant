@@ -1,8 +1,16 @@
+import HeroVideo from "../../../assets/videos/Hero-video.mp4";
+import outlet from "../../../assets/images/Home/Hero/malabar-hero-1.webp";
+import gallery1 from "../../../assets/images/Home/Hero/malabar-hero-2.webp";
+import gallery2 from "../../../assets/images/Home/Hero/malabar-hero-3.webp";
+import gallery3 from "../../../assets/images/Home/Hero/malabar-hero-4.webp";
+
 export interface HeroContentItem {
   title: string;
   subtitle: string;
   primaryLabel: string;
   primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
 }
 
 export interface HeroAssets {
@@ -13,45 +21,54 @@ export interface HeroAssets {
 
 export const HERO_CONTENT: HeroContentItem[] = [
   {
-    title: "Malabar Coast Vegas Mall, Dwarka",
-    subtitle: "Authentic flavours, modern setting — visit us at Sector 14 Dwarka",
-    primaryLabel: "Get Directions",
-    primaryHref: "/restaurants/anardana-vegas-mall",
-  },
-  {
-    title: "Progressive Indian Dining",
-    subtitle: "Experience authentic flavors with a contemporary twist",
-    primaryLabel: "Explore Menu",
-    primaryHref: "/menu",
-  },
-  {
-    title: "13 Unique Experiences",
-    subtitle: "Each outlet with its own distinctive vibe, sumptuous menu and cocktails",
-    primaryLabel: "Find Your Restaurant",
-    primaryHref: "/restaurants",
-  },
-  {
-    title: "Craft Your Experience",
-    subtitle: "Signature cocktails and culinary excellence",
-    primaryLabel: "View Our Drinks",
-    primaryHref: "/menu",
-  },
-  {
-    title: "Reserve Your Table",
-    subtitle: "Book now for an unforgettable culinary journey",
-    primaryLabel: "Book Now",
+    title: "A Refined Celebration of Coastal Cuisine",
+    subtitle: "Experience an exquisite blend of Coastal, South Indian, North Indian and Seafood delicacies, thoughtfully crafted with authentic flavours, premium ingredients and impeccable hospitality.",
+    primaryLabel: "Reserve a Table",
     primaryHref: "/reservations",
+    secondaryLabel: "Explore Our Menu",
+    secondaryHref: "/menu",
+  },
+  {
+    title: "Where Culinary Heritage Meets Contemporary Dining",
+    subtitle: "Every dish reflects the richness of India's coastal traditions, elevated with exceptional craftsmanship and served in an elegant setting.",
+    primaryLabel: "Discover Our Story",
+    primaryHref: "/stories",
+    secondaryLabel: "View Gallery",
+    secondaryHref: "/gallery",
+  },
+  {
+    title: "Inspired by the Coast. Crafted for Every Palate.",
+    subtitle: "From signature seafood delicacies and authentic South Indian classics to refined North Indian favourites, every plate is created to leave a lasting impression.",
+    primaryLabel: "Our Signature Collection",
+    primaryHref: "/",
+    secondaryLabel: "Book Your Experience",
+    secondaryHref: "/reservations",
+  },
+  {
+    title: "Celebrate Every Occasion with Exceptional Dining",
+    subtitle: "Whether it's an intimate dinner, family gathering or corporate celebration, The Malabar Coast offers an atmosphere where every moment becomes memorable.",
+    primaryLabel: "Plan Your Celebration",
+    primaryHref: "/reservations",
+    secondaryLabel: "Contact Us",
+    secondaryHref: "/contact",
+  },
+  {
+    title: "Timeless Flavours. Exceptional Hospitality.",
+    subtitle: "An unforgettable dining destination where authentic cuisine, elegant interiors and warm hospitality come together to create remarkable experiences.",
+    primaryLabel: "Visit The Malabar Coast",
+    primaryHref: "/",
+    secondaryLabel: "Find Our Outlets",
+    secondaryHref: "/restaurants",
   },
 ];
 
 export const HERO_ASSETS: HeroAssets = {
-  video: "https://cdn.anardana.in/videos/vegas-website.mp4",
-  outlet: "https://cdn.anardana.in/images/outlets/vegas/ef09d7bc-28df-4407-af87-30ce76fa2a8d.webp",
+  video: HeroVideo,
+  outlet: outlet,
   gallery: [
-    "https://cdn.anardana.in/images/gallery-hero/3.jpg",
-    "https://cdn.anardana.in/images/gallery-hero/2.jpg",
-    "https://cdn.anardana.in/images/gallery-hero/5.jpg",
-    "https://cdn.anardana.in/images/gallery-hero/4.jpg",
+    gallery1,
+    gallery2,
+    gallery3,
   ],
 };
 

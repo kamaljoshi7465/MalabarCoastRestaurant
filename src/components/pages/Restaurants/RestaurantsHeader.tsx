@@ -1,5 +1,5 @@
 import { Map } from "lucide-react";
-import { RESTAURANTS_HEADER_DATA } from "../../../data/restaurants/restaurantsPage.data";
+import { RESTAURANTS_HEADER_DATA } from "../../../data/home/restaurant/RestaurantsSection.data";
 
 const RestaurantsHeader = () => (
   <section className="bg-gradient-to-r from-primary-600 to-gold-600 pt-32 pb-20 text-white">

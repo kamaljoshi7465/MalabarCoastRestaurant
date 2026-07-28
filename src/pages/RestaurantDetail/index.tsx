@@ -1,14 +1,14 @@
 import { useParams, Link } from "react-router-dom";
-import { RESTAURANTS } from "../../data/restaurants/restaurantsPage.data";
 import { OUTLETS_DATA } from "../../data/Menu/Outlets.data";
 import DetailHero from "../../components/pages/RestaurantDetail/DetailHero";
 import DetailInfoBar from "../../components/pages/RestaurantDetail/DetailInfoBar";
 import DetailSidebar from "../../components/pages/RestaurantDetail/DetailSidebar";
 import DetailContent from "../../components/pages/RestaurantDetail/DetailContent";
+import { OUTLETS } from "../../data/home/restaurant/RestaurantsSection.data";
 
 const RestaurantDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const restaurant = RESTAURANTS.find((r) => r.slug === slug);
+  const restaurant = OUTLETS.find((r) => r.slug === slug);
 
   if (!restaurant) {
     return (

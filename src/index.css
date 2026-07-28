@@ -7,7 +7,7 @@
   --font-serif: "Yatra One", serif;
   --font-display: "Yatra One", serif;
 
-  /* Brand Colors */
+  /* Brand Colors 
   --color-primary-50: #fce8f0;
   --color-primary-100: #f8d1e0;
   --color-primary-400: #e34783;
@@ -21,10 +21,60 @@
   --color-gold-500: #eab308;
   --color-gold-600: #ca8a04;
 
-  /* Neutral Colors */
+  Neutral Colors
   --color-black: #000000;
   --color-gray-300: #d1d5db;
+  --color-gray-900: #111827; */
+    /* Primary Green */
+  --color-primary-50: #edf8f0;
+  --color-primary-100: #d7efdf;
+  --color-primary-200: #b3dfc1;
+  --color-primary-300: #7fc89a;
+  --color-primary-400: #3b9b5d;
+  --color-primary-500: #006A2A;
+  --color-primary-600: #004B1D;
+  --color-primary-700: #003916;
+  --color-primary-800: #002A10;
+  --color-primary-900: #001808;
+
+  /* Secondary Cream */
+  --color-secondary-50: #FFFDF8;
+  --color-secondary-100: #FEF8E8;
+  --color-secondary-200: #F9F0DA;
+  --color-secondary-300: #F3E8C9;
+
+  /* Accent Gold */
+  --color-accent-100: #FFF5CC;
+  --color-accent-200: #FDE68A;
+  --color-accent-300: #FACC15;
+  --color-accent-400: #D4A017;
+  --color-accent-500: #B8860B;
+
+  /* Neutral */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  --color-gray-50: #F9FAFB;
+  --color-gray-100: #F3F4F6;
+  --color-gray-200: #E5E7EB;
+  --color-gray-300: #D1D5DB;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #6B7280;
+  --color-gray-600: #4B5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1F2937;
   --color-gray-900: #111827;
+
+  /* States */
+  --color-success: #15803D;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
+  --color-info: #2563EB;
+
+  --color-gold-200: #fde68a;
+  --color-gold-400: #facc15;
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca8a04;
 }
 
 /* ==========================================================================

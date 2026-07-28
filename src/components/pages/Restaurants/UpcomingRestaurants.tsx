@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { UPCOMING_RESTAURANTS_DATA } from "../../../data/restaurants/restaurantsPage.data";
+import { UPCOMING_RESTAURANTS_DATA } from "../../../data/home/restaurant/RestaurantsSection.data";
 
 const UpcomingRestaurants = () => (
   <section id="upcoming" className="section-padding bg-white">
