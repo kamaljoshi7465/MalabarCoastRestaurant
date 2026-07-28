@@ -1,5 +1,4 @@
 import { useParams, Link } from "react-router-dom";
-import { OUTLETS_DATA } from "../../data/Menu/Outlets.data";
 import DetailHero from "../../components/pages/RestaurantDetail/DetailHero";
 import DetailInfoBar from "../../components/pages/RestaurantDetail/DetailInfoBar";
 import DetailSidebar from "../../components/pages/RestaurantDetail/DetailSidebar";
@@ -20,8 +19,6 @@ const RestaurantDetail = () => {
     );
   }
 
-  const outlet = OUTLETS_DATA.find((o) => o.outletUrl === `/restaurants/${slug}`);
-
   return (
     <div className="min-h-screen bg-gray-50">
       <DetailHero restaurant={restaurant} />
@@ -30,7 +27,7 @@ const RestaurantDetail = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <DetailSidebar restaurant={restaurant} />
-            <DetailContent restaurant={restaurant} menus={outlet?.menus ?? null} />
+            <DetailContent restaurant={restaurant} />
           </div>
         </div>
       </section>

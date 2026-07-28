@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import type { Restaurant } from "../../../data/restaurants/restaurantsPage.data";
+import type { Outlet } from "../../../data/home/restaurant/RestaurantsSection.data";
 
-const DetailInfoBar = ({ restaurant }: { restaurant: Restaurant }) => (
+const DetailInfoBar = ({ restaurant }: { restaurant: Outlet }) => (
   <section className="bg-white shadow-md sticky top-20 z-40">
     <div className="container-custom py-4">
       <div className="flex flex-wrap gap-6 justify-between items-center">

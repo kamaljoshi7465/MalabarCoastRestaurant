@@ -1,6 +1,6 @@
-import type { Restaurant } from "../../../data/restaurants/restaurantsPage.data";
+import type { Outlet } from "../../../data/home/restaurant/RestaurantsSection.data";
 
-const DetailSidebar = ({ restaurant }: { restaurant: Restaurant }) => (
+const DetailSidebar = ({ restaurant }: { restaurant: Outlet }) => (
   <div className="lg:col-span-1 space-y-6">
     {/* Contact Information */}
     <div className="bg-white rounded-xl p-6 shadow-md">
