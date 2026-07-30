@@ -1,15 +1,12 @@
-import { GALLERY_IMAGES, type GalleryCategory } from "../../../data/gallery/galleryHeader.data";
+import { GALLERY_IMAGES } from "../../../data/gallery/galleryHeader.data";
 
-type GalleryGridProps = { activeFilter: GalleryCategory };
-
-const GalleryGrid = ({ activeFilter }: GalleryGridProps) => {
-  const visibleImages = activeFilter === "all" ? GALLERY_IMAGES : GALLERY_IMAGES.filter((image) => image.category === activeFilter);
+const GalleryGrid = () => {
 
   return (
     <section className="py-10">
       <div className="container-custom">
         <div className="columns-2 space-y-4 gap-4 md:columns-3 md:space-y-5 md:gap-5 lg:columns-4">
-          {visibleImages.map((image) => (
+          {GALLERY_IMAGES.map((image) => (
             <div key={image.src} className="mb-4 break-inside-avoid md:mb-5">
               <div className="group relative cursor-pointer overflow-hidden rounded-xl ring-1 ring-white/5 transition-all duration-500 hover:shadow-2xl hover:shadow-primary-500/10 hover:ring-primary-500/40">
                 <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -19,7 +16,7 @@ const GalleryGrid = ({ activeFilter }: GalleryGridProps) => {
             </div>
           ))}
         </div>
-        {visibleImages.length === 0 && <p className="py-12 text-center text-sm text-white/50">More moments coming soon.</p>}
+        {GALLERY_IMAGES.length === 0 && <p className="py-12 text-center text-sm text-white/50">More moments coming soon.</p>}
       </div>
     </section>
   );

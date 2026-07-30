@@ -1,7 +1,7 @@
 import { GALLERY_HEADER_DATA } from "../../../data/gallery/galleryHeader.data";
 
 const GalleryHeader = () => (
-  <section className="relative h-[70vh] min-h-[600px] overflow-hidden bg-black">
+  <section className="relative h-[50vh] min-h-[100px] pt-40 overflow-hidden bg-black">
     <div className="absolute inset-0">
       <img src={GALLERY_HEADER_DATA.image} alt="Malabar Coast" className="size-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black" />
