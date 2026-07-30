@@ -1,4 +1,4 @@
-import HeroVideo from "../../../assets/videos/Hero-video.mp4";
+import HeroVideo from "../../../assets/videos/Hero-video.webm";
 import outlet from "../../../assets/images/Home/Hero/malabar-hero-1.webp";
 import gallery1 from "../../../assets/images/Home/Hero/malabar-hero-2.webp";
 import gallery2 from "../../../assets/images/Home/Hero/malabar-hero-3.webp";
@@ -73,4 +73,4 @@ export const HERO_ASSETS: HeroAssets = {
 };
 
 export const HERO_MAPS_HREF =
-  "https://www.google.com/maps/search/?api=1&query=Malabar Coast+Restaurant";
+  "https://www.google.com/maps/search/?api=1&query=Malabar+Coast+Restaurant";

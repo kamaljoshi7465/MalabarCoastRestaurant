@@ -1,7 +1,7 @@
 import { FAQS } from "../../../data/contact/contactDetails.data";
 
 const ContactFaq = () => (
-  <div className="mt-6 rounded-2xl border border-white bg-white/[0.03] p-7 md:p-9">
+  <div className="mt-6 rounded-2xl border border-white/8 bg-white/[0.03] p-7 md:p-9">
     <h2 className="mb-6 text-xl font-serif font-bold text-white">Frequently Asked Questions</h2>
     <div className="space-y-2">
       {FAQS.map((faq) => (

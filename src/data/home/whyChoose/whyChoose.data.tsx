@@ -1,4 +1,5 @@
 import React from "react";
+import { STATS } from "../../common/stats.data";
 
 export interface Feature {
   title: string;
@@ -54,7 +55,7 @@ export const features: Feature[] = [
     ),
   },
   {
-    title: "13 Unique Restaurants",
+    title: `${STATS.outlets.value} Unique Restaurants`,
     description:
       "Each location offers its own distinctive ambiance, vibe, and specially curated menu",
     iconGradient: "from-pink-500 to-fuchsia-600",
@@ -146,8 +147,20 @@ export const features: Feature[] = [
 ];
 
 export const stats: Stat[] = [
-  { value: "13", label: "Unique Restaurants" },
-  { value: "150+", label: "Menu Items" },
-  { value: "1M+", label: "Happy Customers" },
-  { value: "7+", label: "Years of Excellence" },
+  {
+    value: STATS?.outlets?.value?.toString(),
+    label: "Unique Restaurants",
+  },
+  {
+    value: STATS?.authenticMenuItems?.value,
+    label: "Authentic Menu Items",
+  },
+  {
+    value: STATS.happyGuests.value,
+    label: "Happy Guests",
+  },
+  {
+    value: STATS.years.value,
+    label: "Years",
+  },
 ];

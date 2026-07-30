@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { DIET_LABELS, DIET_STYLES, TAG_STYLES, type Dish } from "../../data/home/signatureDishes/signatureDishes.data";
+import { TAG_STYLES, type Dish } from "../../data/home/signatureDishes/signatureDishes.data";
 import TagButton from "../buttons/TagButton";
 
 interface DishCardProps {
@@ -24,19 +24,13 @@ const DishCard: FC<DishCardProps> = ({ dish, delayMs }) => (
       <h3 className="mb-2 font-serif text-lg font-bold text-gray-900 transition-colors group-hover:text-primary-600">
         {dish.name}
       </h3>
-      <p className="mb-3 text-xs text-gray-600 line-clamp-2">{dish.description}</p>
+      <p className="mb-3 text-xs text-gray-600 line-clamp-3">{dish.description}</p>
       <div className="flex flex-wrap gap-1.5">
         <div className="flex flex-wrap gap-2">
           <div className="flex flex-wrap gap-1.5">
-            <TagButton
-              text={DIET_LABELS[dish.diet]}
-              className={DIET_STYLES[dish.diet]}
-            />
-
-            <TagButton
-              text={dish.tag}
-              className={`${TAG_STYLES[dish.tag]} capitalize`}
-            />
+            {dish.tag.map((t) => (
+              <TagButton key={t} text={t} className={`${TAG_STYLES[t]} capitalize`} />
+            ))}
           </div>
         </div>
       </div>

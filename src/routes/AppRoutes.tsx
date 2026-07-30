@@ -16,6 +16,7 @@ import Terms from '../pages/Terms';
 import RestaurantDetail from '../pages/RestaurantDetail';
 import Careers from '../pages/Careers';
 import Stories from '../pages/Stories';
+import StoryDetails from '../pages/StoryDetail';
 import Events from '../pages/Events';
 
 const AppRoutes = () => (
@@ -32,6 +33,7 @@ const AppRoutes = () => (
       <Route path="/restaurants/:slug" element={<RestaurantDetail />} />
       <Route path="/events" element={<Events />} />
       <Route path="/stories" element={<Stories />} />
+      <Route path="/stories/:slug" element={<StoryDetails />} />
       <Route path="/careers" element={<Careers />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />

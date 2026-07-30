@@ -68,8 +68,7 @@ const CraftedDrinksCarousel: React.FC = () => {
             Crafted Drinks
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Experience our signature beverages crafted with premium ingredients and traditional
-            Indian flavors
+            Thoughtfully crafted. Refreshingly authentic.
           </p>
         </div>
 

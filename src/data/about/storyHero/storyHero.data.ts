@@ -1,4 +1,5 @@
 import aboutOurStory from "../../../assets/images/AboutSection/about us.png";
+import { STATS } from "../../common/stats.data";
 
 interface Stat {
   value: string;
@@ -12,13 +13,22 @@ interface StoryHeroData {
 }
 
 export const stats: Stat[] = [
-  { value: "3", label: "Restaurants" },
-  { value: "50k+", label: "Happy Guests" },
-  { value: "4+", label: "Years" },
+  {
+    value: STATS?.outlets?.value?.toString(),
+    label: "Restaurants",
+  },
+  {
+    value: STATS.happyGuests.value,
+    label: "Happy Guests",
+  },
+  {
+    value: STATS.years.value,
+    label: "Years",
+  },
 ];
 
 export const STORY_HERO_DATA: StoryHeroData = {
   image: aboutOurStory,
-  since: "2019",
+  since: "2020",
   title: "A journey of flavours, tradition, and innovation — reimagining Indian cuisine for the modern palate.",
 };

@@ -1,3 +1,5 @@
+import { STATS } from "../../common/stats.data";
+
 export interface Stat {
   value: string;
   label: string;
@@ -67,15 +69,15 @@ export const CTA_CONTENT: CTAData = {
 
 export const CTA_STATS: Stat[] = [
   {
-    value: "13",
+    value: STATS.outlets.value,
     label: "Restaurants",
   },
   {
-    value: "1M+",
+    value: STATS.happyGuests.value,
     label: "Happy Customers",
   },
   {
-    value: "7+",
+    value: STATS.years.value,
     label: "Years",
   },
 ];

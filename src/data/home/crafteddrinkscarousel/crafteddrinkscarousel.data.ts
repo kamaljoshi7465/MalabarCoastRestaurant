@@ -1,63 +1,73 @@
 export interface Drink {
   name: string;
+  description: string;
   image: string;
   category: string;
+  tags: string[];
 }
 
 export const DRINKS: Drink[] = [
   {
-    name: "Citrus Flower Gem",
+    name: "Kokum Shikanji",
+    description: "A revitalizing blend of kokum, hand-crafted spices, lemon and a hint of mint. This traditional coastal cooler uplifts your senses with a tangy, sweet and sour refreshment.",
     image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
-    category: "Cocktail",
+    category: "Mocktail",
+    tags: ["Signature", "Refreshing"]
   },
   {
-    name: "Dad's Shikanji",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Dad_s%20Shikanji.webp",
-    category: "Cocktail",
+    name: "Tender Coconut Blast",
+    description: "A luscious fusion of tender coconut water and cream with a touch of natural sweetness. Smooth, hydrating and tropical – a perfect escape in every sip.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Tropical"]
   },
   {
-    name: "Kokum Picante",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Kokum%20Picante.webp",
-    category: "Cocktail",
+    name: "Kulukki Sarbat",
+    description: "A traditional Kerala favourite made with lime, mint, basil seeds (sabja) and a hint of natural sweetness, hand-shaken to perfection. Zesty, cooling and incredibly refreshing.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Energizing"]
   },
   {
-    name: "Spice Route Mule",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Spice%20Route%20Mule.webp",
-    category: "Cocktail",
+    name: "Kokum Shikanji",
+    description: "A revitalizing blend of kokum, hand-crafted spices, lemon and a hint of mint. This traditional coastal cooler uplifts your senses with a tangy, sweet and sour refreshment.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Refreshing"]
   },
   {
-    name: "Malabar Coast Shrub Highball",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Anardana%20Shrub%20Highball.webp",
-    category: "Cocktail",
+    name: "Tender Coconut Blast",
+    description: "A luscious fusion of tender coconut water and cream with a touch of natural sweetness. Smooth, hydrating and tropical – a perfect escape in every sip.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Tropical"]
   },
   {
-    name: "Gabbar Ki Pasand",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Gabbar%20ki%20Pasand.webp",
-    category: "Cocktail",
+    name: "Kulukki Sarbat",
+    description: "A traditional Kerala favourite made with lime, mint, basil seeds (sabja) and a hint of natural sweetness, hand-shaken to perfection. Zesty, cooling and incredibly refreshing.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Energizing"]
   },
   {
-    name: "Kala Khatta Chuski",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Kala%20Khatta%20Chuski.webp",
-    category: "Cocktail",
+    name: "Kokum Shikanji",
+    description: "A revitalizing blend of kokum, hand-crafted spices, lemon and a hint of mint. This traditional coastal cooler uplifts your senses with a tangy, sweet and sour refreshment.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Refreshing"]
   },
   {
-    name: "Kunafa Shake",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Kunafa%20Shake.webp",
-    category: "Cocktail",
+    name: "Tender Coconut Blast",
+    description: "A luscious fusion of tender coconut water and cream with a touch of natural sweetness. Smooth, hydrating and tropical – a perfect escape in every sip.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Tropical"]
   },
   {
-    name: "Pulse Candy Cooler",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Pulse%20Candy%20Cooler.webp",
-    category: "Cocktail",
-  },
-  {
-    name: "Smoked Old Fashioned",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Smoked%20Old%20Fashioned.webp",
-    category: "Cocktail",
-  },
-  {
-    name: "Spiced Jamun",
-    image: "https://cdn.anardana.in/images/gallery/drinks/Spiced%20Jammun.webp",
-    category: "Cocktail",
+    name: "Kulukki Sarbat",
+    description: "A traditional Kerala favourite made with lime, mint, basil seeds (sabja) and a hint of natural sweetness, hand-shaken to perfection. Zesty, cooling and incredibly refreshing.",
+    image: "https://cdn.anardana.in/images/gallery/drinks/Citrus%20Flower%20Gem.webp",
+    category: "Mocktail",
+    tags: ["Signature", "Energizing"]
   },
 ];

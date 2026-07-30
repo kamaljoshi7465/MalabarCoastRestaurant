@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { SOCIAL_LINKS } from "../../../data/footer/footer.data";
+import { SOCIAL_LINKS } from "../../../data/home/restaurant/RestaurantsSection.data";
 
 const FooterBrand = () => (
   <div className="lg:col-span-2 max-w-[380px]">

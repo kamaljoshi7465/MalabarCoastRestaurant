@@ -1,3 +1,6 @@
+import aboutOurStory from "../../../assets/images/AboutSection/about us.png";
+import { STATS } from "../../common/stats.data";
+
 export interface LegacyData {
   title: string;
   paragraphs: string[];
@@ -13,19 +16,27 @@ export const LEGACY_DATA: LegacyData = {
   title: "The Malabar Coast Legacy",
 
   paragraphs: [
-    `Founded in 2019, Malabar Coast began with a simple vision: To reimagine traditional Indian cuisine for the modern palate while honoring culinary heritage. Our name, meaning "pomegranate seeds" in Hindi, symbolizes the essence of our philosophy—each seed unique, yet part of a greater whole.`,
+    `Welcome to The Malabar Coast, where authentic South Indian flavors meet warm hospitality.`,
 
-    `What started as a single outlet in the heart of Delhi has rapidly blossomed into a family of 13 distinctive restaurants across Delhi NCR. Each location tells its own story, reflecting the local culture while maintaining the core values that define Malabar Coast.`,
+    `Inspired by the rich culinary traditions of Kerala and South India, we serve a carefully crafted menu featuring dosas, idlis, appams, Kerala parottas, biryanis, curries, seafood specialties, refreshing beverages, and traditional desserts.`,
 
-    `Our chefs, trained in both traditional and contemporary techniques, source the finest ingredients to create dishes that honor their heritage while surprising and delighting contemporary diners. From street food reimagined to royal Mughlai feasts, every menu item is a celebration of India's rich culinary diversity.`,
+    `Our commitment is to provide:`,
+
+    `— Fresh, high-quality ingredients`,
+    `— Authentic recipes`,
+    `— Hygienic food preparation`,
+    `— Friendly customer service`,
+    `— A memorable dining experienc`,
+
+    `Whether you're joining us for breakfast, lunch, dinner, or a family celebration, we look forward to serving you with the true taste of the Malabar Coast.`
   ],
 
-  image: "https://cdn.anardana.in/images/about/About-the-brand.jpg",
+  image: aboutOurStory,
 
   imageAlt: "Restaurant interior",
 
   experience: {
-    value: "7+",
+    value: STATS.years.value,
     label: "Years of Excellence",
   },
 };

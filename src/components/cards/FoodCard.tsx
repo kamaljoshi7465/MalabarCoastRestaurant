@@ -57,7 +57,7 @@ const FoodStoryCard: React.FC<{ story: FoodStory }> = ({ story }) => {
           <h3 className="font-serif font-bold text-lg md:text-xl leading-tight text-white drop-shadow-lg group-hover:text-gold-300 transition-colors">
             {story.title}
           </h3>
-          <p className="mt-1.5 text-xs text-white/70 line-clamp-2 leading-relaxed">
+          <p className="mt-1.5 text-xs text-white/70 leading-relaxed">
             {story.description}
           </p>
         </div>

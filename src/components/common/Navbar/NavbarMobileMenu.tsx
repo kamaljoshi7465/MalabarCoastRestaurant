@@ -1,8 +1,8 @@
 import type { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
-import { CONTACT_ITEMS } from "../../../data/footer/footer.data";
 import { MOB_NAV_ITEMS } from "../../../data/navbar/navbar.data";
 import logo2 from "../../../assets/icons/malabar-text-logo.avif";
+import { OUTLETS } from "../../../data/home/restaurant/RestaurantsSection.data";
 
 interface NavbarMobileMenuProps {
   mobileOpen: boolean;
@@ -13,8 +13,7 @@ interface NavbarMobileMenuProps {
 const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileMenuProps) => {
   if (!mobileOpen) return null;
 
-  const emailContact = CONTACT_ITEMS.find((item) => item.label === "Email");
-  const phoneContact = CONTACT_ITEMS.find((item) => item.label === "Phone");
+  const outlet = OUTLETS[0];
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80">
@@ -83,7 +82,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
         <div className="flex-shrink-0 border-t border-primary-600/20 px-6 py-2">
           <div className="space-y-2">
             <a
-              href={phoneContact?.href ?? "tel:"}
+              href={`tel:${outlet.phone}`}
               className="group flex items-center space-x-3 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-primary-600/5"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-md">
@@ -94,13 +93,13 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
               <div className="flex-1">
                 <p className="text-xs text-primary-600/60">Call Us</p>
                 <p className="text-sm font-semibold text-primary-600 transition-colors group-hover:text-primary-700">
-                  {phoneContact?.value ?? "Phone unavailable"}
+                  {outlet.phone}
                 </p>
               </div>
             </a>
 
             <a
-              href={emailContact?.href ?? "mailto:"}
+              href={`mailto:${outlet.email}`}
               className="group flex items-center space-x-3 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-primary-600/5"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-md">
@@ -112,7 +111,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
               <div className="flex-1">
                 <p className="text-xs text-primary-600/60">Email Us</p>
                 <p className="text-sm font-semibold text-primary-600 transition-colors group-hover:text-primary-700">
-                  {emailContact?.value ?? "Email unavailable"}
+                  {outlet.email}
                 </p>
               </div>
             </a>

@@ -7,7 +7,7 @@ const ContactDetails = () => (
     <div className="container-custom">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <ContactSidebar />
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 mt-8">
           <ContactForm />
           <ContactFaq />
         </div>

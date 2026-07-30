@@ -1,3 +1,5 @@
+import { STATS } from "../common/stats.data";
+
 export const EVENTS_HERO = {
   image: "https://images.unsplash.com/photo-1519167758481-83f29da8c898?w=1920&q=80",
   title: "Private Events",
@@ -25,7 +27,7 @@ export const EVENTS_WHY = {
     },
     {
       title: "Premium Venues",
-      description: "Beautifully designed spaces across 14+ restaurants nationwide",
+      description: `Beautifully designed spaces across ${STATS?.outlets?.value} restaurants nationwide`,
       icon: "award",
     },
   ],
@@ -61,19 +63,6 @@ export const EVENTS_TYPES = {
     },
   ],
 };
-
-export const EVENTS_TESTIMONIALS = [
-  { name: "Meera Sharma", event: "Birthday Celebration", quote: "Celebrated my 30th birthday at Malabar Coast and it was absolutely perfect! The ambiance, food, and service exceeded our expectations. The team went above and beyond to make it special." },
-  { name: "Vikram Patel", event: "Corporate Team Dinner", quote: "Hosted a team dinner for 40 people and everything was seamless. The food quality was outstanding and the private dining area was ideal for our group. Will definitely return!" },
-  { name: "Anjali & Rohan", event: "Anniversary Celebration", quote: "Celebrated our 5th anniversary here and it was magical! The staff surprised us with special decorations and a complimentary dessert. Highly recommend for special occasions!" },
-  { name: "Priya Malhotra", event: "Kitty Party", quote: "Our monthly kitty party at Malabar Coast was a huge success! The private dining area was beautifully decorated, and the customized menu was delicious. All the ladies loved it!" },
-  { name: "Rajesh Kumar", event: "Office Anniversary Party", quote: "Organized our company's 10th anniversary celebration here with 150+ guests. The coordination was flawless, food was excellent, and the AV setup was perfect for our presentations." },
-  { name: "Sonia & Family", event: "Retirement Party", quote: "Hosted my father's retirement party at Malabar Coast. The staff was incredibly accommodating, helped with decorations, and the food received compliments from all our guests. Truly memorable!" },
-  { name: "Amit Desai", event: "Product Launch Event", quote: "Perfect venue for our product launch! Professional ambiance, excellent service, and the food impressed our clients. The event coordinator made everything run smoothly." },
-  { name: "Neha Kapoor", event: "Baby Shower", quote: "Had my sister's baby shower here and it was absolutely beautiful! The themed decorations were adorable, food was amazing, and the staff took care of every little detail. Highly recommend!" },
-  { name: "Karan Singh", event: "Engagement Party", quote: "Our engagement party at Malabar Coast was beyond our expectations! The venue was stunning, food was delicious, and the service was impeccable. All our guests are still talking about it!" },
-  { name: "Deepa Reddy", event: "Reunion Party", quote: "Organized our college reunion after 15 years at Malabar Coast. The ambiance was perfect for catching up, food was fantastic, and they even helped us set up a photo slideshow. Great experience!" },
-];
 
 export const EVENTS_FAQS = [
   "How far in advance should I book?",

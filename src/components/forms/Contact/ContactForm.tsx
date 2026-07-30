@@ -3,7 +3,7 @@ import { SUBJECT_OPTIONS } from "../../../data/contact/contactDetails.data";
 import ContactFormField, { contactFieldClass } from "./ContactFormField";
 
 const ContactForm = () => (
-  <div className="rounded-2xl border border-white bg-white/[0.03] p-7 md:p-9">
+  <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-7 md:p-9">
     <h2 className="mb-7 text-xl font-serif font-bold text-white">Send Us a Message</h2>
     <form className="space-y-5" onSubmit={(event) => event.preventDefault()}>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

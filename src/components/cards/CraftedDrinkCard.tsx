@@ -1,7 +1,10 @@
+import TagButton from "../buttons/TagButton";
+
 type Drink = {
   name: string;
   category: string;
   image: string;
+  tags?: string[];
 };
 
 type CraftedDrinkCardProps = {
@@ -20,6 +23,16 @@ export default function CraftedDrinkCard({ drink }: CraftedDrinkCardProps) {
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+          <div className="absolute left-2 top-2 flex flex-wrap gap-1.5 sm:left-3 sm:top-3 lg:left-4 lg:top-4">
+            {drink.tags && drink.tags.length > 0 && drink.tags.map((tag) => (
+              <TagButton
+                key={tag}
+                text={tag}
+                className="bg-green-100 text-green-700 border border-green-200"
+              />
+            ))}
+          </div>
 
           <div className="absolute right-2 top-2 sm:right-3 sm:top-3 lg:right-4 lg:top-4">
             <span className="rounded-full bg-gradient-to-r from-pink-500 to-rose-500 px-1.5 py-0.5 text-[8px] font-semibold text-white backdrop-blur-sm sm:px-2 sm:py-1 sm:text-[10px] lg:px-3 lg:py-1.5 lg:text-xs">

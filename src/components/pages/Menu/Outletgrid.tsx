@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import type { Outlet } from "../../../data/Menu/Outlets.data";
-import { OUTLETS_DATA } from "../../../data/Menu/Outlets.data";
+import { OUTLETS, type Outlet } from "../../../data/home/restaurant/RestaurantsSection.data";
 
 const FoodIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -18,10 +17,12 @@ const DrinkIcon = () => (
   </svg>
 );
 
-const BotanicalIcon = () => (
+const KittyPartyIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+    <path d="M12 2a10 10 0 1 0 10 10" />
+    <path d="M12 8v4l3 3" />
+    <path d="M18 2l2 2-2 2" />
+    <path d="M22 2h-4" />
   </svg>
 );
 
@@ -48,7 +49,7 @@ const PinIcon = () => (
 );
 
 const OutletCard = ({ outlet }: { outlet: Outlet }) => {
-  const { name, locality, region, image, tags, signature, menus, outletUrl } = outlet;
+  const { name, location, city, image, specialtyTags, specialties, menus, slug } = outlet;
 
   return (
     <div className="group relative bg-gradient-to-b from-white/[0.04] to-white/[0.01] backdrop-blur-sm rounded-2xl overflow-hidden ring-1 ring-white/10 hover:ring-primary-500/40 transition-shadow duration-500 hover:shadow-2xl hover:shadow-primary-500/10 flex flex-col">
@@ -59,21 +60,21 @@ const OutletCard = ({ outlet }: { outlet: Outlet }) => {
           <h3 className="text-xl font-serif font-bold text-white mb-1 drop-shadow-lg">{name}</h3>
           <div className="flex items-center text-white/80 text-xs">
             <PinIcon />
-            <span>{locality} · {region}</span>
+            <span>{location} · {city}</span>
           </div>
         </div>
       </div>
 
       <div className="p-4 flex flex-col flex-1">
         <div className="flex flex-wrap gap-1 mb-3">
-          {tags.map((tag) => (
+          {specialtyTags.map((tag) => (
             <span key={tag} className="px-2 py-0.5 rounded-full bg-white/5 text-white/70 text-[10px] uppercase tracking-wider border border-white/10">{tag}</span>
           ))}
         </div>
 
         <div className="mb-4">
           <p className="text-[10px] uppercase tracking-widest text-gold-400/80 mb-1.5">Signatures</p>
-          <p className="text-xs text-white/70 leading-relaxed line-clamp-2">{signature}</p>
+          <p className="text-xs text-white/70 leading-relaxed line-clamp-2">{specialties.join(" · ")}</p>
         </div>
 
         <div className="mt-auto space-y-2">
@@ -91,29 +92,29 @@ const OutletCard = ({ outlet }: { outlet: Outlet }) => {
             </button>
           )}
 
-          {menus.drink ? (
-            <a href={menus.drink} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-gold-600/90 hover:bg-gold-600 border-gold-500/30 hover:border-gold-400">
+          {menus.mocktail ? (
+            <a href={menus.mocktail} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-gold-600/90 hover:bg-gold-600 border-gold-500/30 hover:border-gold-400">
               <span className="group-hover/btn:scale-110 transition-transform"><DrinkIcon /></span>
-              <span className="flex-1 text-left">Beverage Menu</span>
+              <span className="flex-1 text-left">Mocktail Menu</span>
               <DownloadIcon />
             </a>
           ) : (
             <button disabled className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/5 text-white/40 text-sm cursor-not-allowed">
               <span className="opacity-60"><DrinkIcon /></span>
-              <span className="flex-1 text-left">Beverage Menu</span>
+              <span className="flex-1 text-left">Mocktail Menu</span>
               <span className="text-[10px] uppercase tracking-widest opacity-60">Coming Soon</span>
             </button>
           )}
 
-          {menus.botanical && (
-            <a href={menus.botanical} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-green-700/90 hover:bg-green-700 border-green-600/30 hover:border-green-500">
-              <span className="group-hover/btn:scale-110 transition-transform"><BotanicalIcon /></span>
-              <span className="flex-1 text-left">Botanical Menu</span>
+          {menus.kittyParty && (
+            <a href={menus.kittyParty} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-pink-700/90 hover:bg-pink-700 border-pink-600/30 hover:border-pink-500">
+              <span className="group-hover/btn:scale-110 transition-transform"><KittyPartyIcon /></span>
+              <span className="flex-1 text-left">Kitty Party Menu</span>
               <DownloadIcon />
             </a>
           )}
 
-          <Link to={outletUrl} className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs uppercase tracking-wider text-white/70 hover:text-white transition-colors">
+          <Link to={`/restaurants/${slug}`} className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs uppercase tracking-wider text-white/70 hover:text-white transition-colors">
             <span>View Outlet</span>
             <ArrowIcon />
           </Link>
@@ -128,7 +129,7 @@ interface Props {
 }
 
 const Outletgrid = ({ activeRegion }: Props) => {
-  const filtered = activeRegion === "All" ? OUTLETS_DATA : OUTLETS_DATA.filter((o) => o.region === activeRegion);
+  const filtered = activeRegion === "All" ? OUTLETS : OUTLETS.filter((o) => o.city === activeRegion);
 
   return (
     <section className="py-12">

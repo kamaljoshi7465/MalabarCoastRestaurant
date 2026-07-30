@@ -82,7 +82,7 @@ const Testimonials = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 relative">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 relative min-h-[380px] flex flex-col justify-center">
             <div className="text-6xl text-primary-500 opacity-20 absolute top-4 left-4 font-serif">
               "
             </div>
@@ -99,8 +99,8 @@ const Testimonials = () => {
               </p>
 
               <div className="text-center">
-                <h4 className="text-lg font-semibold">{activeTestimonial.name}</h4>
-                <p className="text-sm text-gray-300">{activeTestimonial.location}</p>
+                <h4 className="text-lg font-semibold">{activeTestimonial.designation}</h4>
+                <p className="text-sm text-gray-300">{activeTestimonial.name}</p>
               </div>
             </div>
 
