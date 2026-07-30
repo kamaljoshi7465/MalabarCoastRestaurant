@@ -15,7 +15,7 @@ const Navbar = () => {
         className=" mx-auto mt-4 max-w-7xl rounded-2xl border border-white/10 bg-black/40 backdrop-blur-3xl supports-[backdrop-filter]:bg-black/35 shadow-2xl shadow-black/50 transition-all duration-500 "
       >
         {!mobileOpen && (
-          <div className="flex h-28 items-center justify-between px-6">
+          <div className="flex h-16 items-center justify-between px-6">
             <NavbarBrand imageSrc={logo} />
             <NavbarLinks pathname={pathname} />
 

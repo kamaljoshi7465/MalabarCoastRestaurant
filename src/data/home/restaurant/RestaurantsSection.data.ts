@@ -36,6 +36,12 @@ export interface Outlet {
 
 export type CityFilter = "All" | Outlet["city"];
 
+export const HEADQUARTERS = {
+  email: "",
+  phone: "",
+  address: "",
+}
+
 export const OUTLETS: Outlet[] = [
   {
     id: "0001",

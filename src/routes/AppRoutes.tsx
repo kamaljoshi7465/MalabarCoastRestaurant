@@ -13,6 +13,9 @@ import NotFound from '../pages/NotFound'
 import Team from '../pages/Team';
 import Privacy from '../pages/Privacy';
 import Terms from '../pages/Terms';
+import Cookie from '../pages/Cookie';
+import Shipping from '../pages/Shipping';
+import Refund from '../pages/Refund';
 import RestaurantDetail from '../pages/RestaurantDetail';
 import Careers from '../pages/Careers';
 import Stories from '../pages/Stories';
@@ -37,6 +40,9 @@ const AppRoutes = () => (
       <Route path="/careers" element={<Careers />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
+      <Route path="/cookie-policy" element={<Cookie />} />
+      <Route path="/shipping-policy" element={<Shipping />} />
+      <Route path="/refund-policy" element={<Refund />} />
     </Route>
     <Route path="*" element={<NotFound />} />
   </Routes>

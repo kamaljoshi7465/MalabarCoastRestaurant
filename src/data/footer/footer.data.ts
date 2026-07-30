@@ -59,5 +59,8 @@ export const NAV_SECTIONS: NavSection[] = [
 export const LEGAL_LINKS: LegalItem[] = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
-  { label: "Sitemap", href: "/sitemap.xml" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Shipping & Delivery", href: "/shipping-policy" },
+  { label: "Refund & Cancellation", href: "/refund-policy" },
+  // { label: "Sitemap", href: "/sitemap.xml" },
 ];

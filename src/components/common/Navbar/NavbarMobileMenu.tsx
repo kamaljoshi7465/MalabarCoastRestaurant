@@ -1,8 +1,8 @@
 import type { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import { MOB_NAV_ITEMS } from "../../../data/navbar/navbar.data";
-import logo2 from "../../../assets/icons/malabar-text-logo.avif";
-import { OUTLETS } from "../../../data/home/restaurant/RestaurantsSection.data";
+import logo2 from "../../../assets/icons/malabar-text-logo.png";
+import { OUTLETS, HEADQUARTERS } from "../../../data/home/restaurant/RestaurantsSection.data";
 
 interface NavbarMobileMenuProps {
   mobileOpen: boolean;
@@ -13,7 +13,8 @@ interface NavbarMobileMenuProps {
 const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileMenuProps) => {
   if (!mobileOpen) return null;
 
-  const outlet = OUTLETS[0];
+  const phone = HEADQUARTERS.phone !== "" ? HEADQUARTERS.phone : OUTLETS[0].phone;
+  const email = HEADQUARTERS.email !== "" ? HEADQUARTERS.email : OUTLETS[0].email;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80">
@@ -22,7 +23,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
         {/* Header */}
         <div className="flex flex-shrink-0 items-center justify-between border-b border-primary-600/20 p-6">
           <Link to="/" onClick={() => setMobileOpen(false)}>
-            <img src={logo2} alt="Malabar Coast Restaurant" className="h-8 w-auto" />
+            <img src={logo2} alt="Malabar Coast Restaurant" className="h-16 w-auto" />
           </Link>
           <button
             onClick={() => setMobileOpen(false)}
@@ -82,7 +83,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
         <div className="flex-shrink-0 border-t border-primary-600/20 px-6 py-2">
           <div className="space-y-2">
             <a
-              href={`tel:${outlet.phone}`}
+              href={`tel:${phone}`}
               className="group flex items-center space-x-3 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-primary-600/5"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-md">
@@ -93,13 +94,13 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
               <div className="flex-1">
                 <p className="text-xs text-primary-600/60">Call Us</p>
                 <p className="text-sm font-semibold text-primary-600 transition-colors group-hover:text-primary-700">
-                  {outlet.phone}
+                  {phone}
                 </p>
               </div>
             </a>
 
             <a
-              href={`mailto:${outlet.email}`}
+              href={`mailto:${email}`}
               className="group flex items-center space-x-3 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-primary-600/5"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-md">
@@ -111,7 +112,7 @@ const NavbarMobileMenu = ({ mobileOpen, setMobileOpen, pathname }: NavbarMobileM
               <div className="flex-1">
                 <p className="text-xs text-primary-600/60">Email Us</p>
                 <p className="text-sm font-semibold text-primary-600 transition-colors group-hover:text-primary-700">
-                  {outlet.email}
+                  {email}
                 </p>
               </div>
             </a>

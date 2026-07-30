@@ -1,3 +1,5 @@
+import { OUTLETS, HEADQUARTERS } from "../home/restaurant/RestaurantsSection.data";
+
 export const CAREERS_HERO = {
   image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1920&q=80",
   title: "Join Our Team",
@@ -34,5 +36,5 @@ export const CAREERS_WHY = {
 export const CAREERS_CTA = {
   title: "Don't See Your Role?",
   subtitle: "Send us your resume and we'll keep you in mind for future opportunities",
-  email: "hiring.anardana@themangrove.com",
+  email: HEADQUARTERS.email !== "" ? HEADQUARTERS.email : OUTLETS[0].email,
 };

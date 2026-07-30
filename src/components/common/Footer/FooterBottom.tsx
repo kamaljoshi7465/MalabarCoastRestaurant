@@ -8,7 +8,7 @@ const FooterBottom = () => (
         <p className="text-sm text-gray-400">
           © {new Date().getFullYear()} Malabar Coast Restaurants Pvt. Ltd. All rights reserved.
         </p>
-        <div className="flex space-x-6">
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
           {LEGAL_LINKS.map(({ label, href }) => (
             href.startsWith("/") ? (
               <Link key={href} to={href} className="text-sm text-gray-400 hover:text-primary-400 transition-colors">{label}</Link>

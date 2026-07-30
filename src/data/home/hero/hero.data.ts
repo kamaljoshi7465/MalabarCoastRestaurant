@@ -40,7 +40,7 @@ export const HERO_CONTENT: HeroContentItem[] = [
     title: "Inspired by the Coast. Crafted for Every Palate.",
     subtitle: "From signature seafood delicacies and authentic South Indian classics to refined North Indian favourites, every plate is created to leave a lasting impression.",
     primaryLabel: "Our Signature Collection",
-    primaryHref: "/",
+    primaryHref: "/menu",
     secondaryLabel: "Book Your Experience",
     secondaryHref: "/reservations",
   },

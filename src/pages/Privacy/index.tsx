@@ -13,77 +13,39 @@ const Privacy = () => (
     <section className="section-padding">
       <div className="container-custom max-w-4xl">
         <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 space-y-8">
-
           {PRIVACY_SECTIONS.map((section) => (
             <div key={section.id}>
               <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">{section.heading}</h2>
-
-              {section.subsections ? (
-                <div className="space-y-4">
-                  {section.subsections.map((sub) => (
-                    <div key={sub.heading}>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{sub.heading}</h3>
-                      <p className="text-gray-600 leading-relaxed mb-2">{sub.content}</p>
-                      <ul className="list-disc list-inside text-gray-600 space-y-1 ml-4">
-                        {sub.items.map((item) => <li key={item}>{item}</li>)}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <>
-                  {section.content && (
-                    <p className="text-gray-600 leading-relaxed mb-2">{section.content}</p>
-                  )}
-                  {section.items && (
-                    <ul className="list-disc list-inside text-gray-600 space-y-1 ml-4">
-                      {section.items.map((item) => <li key={item}>{item}</li>)}
-                    </ul>
-                  )}
-                  {section.paragraphAfter && (
-                    <p className="text-gray-600 leading-relaxed mt-2">
-                      {section.id === "your-rights" ? (
-                        <>
-                          To exercise these rights, please contact us at{" "}
-                          <a href={`mailto:${PRIVACY_CONTACT_DATA.email}`} className="text-primary-600 hover:underline">
-                            {PRIVACY_CONTACT_DATA.email}
-                          </a>
-                        </>
-                      ) : (
-                        section.paragraphAfter
-                      )}
-                    </p>
-                  )}
-                </>
+              {section.content && <p className="text-gray-600 leading-relaxed mb-2">{section.content}</p>}
+              {section.items && (
+                <ul className="list-disc list-inside text-gray-600 space-y-1 ml-4">
+                  {section.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              )}
+              {section.paragraphAfter && (
+                <p className="text-gray-600 leading-relaxed mt-2">{section.paragraphAfter}</p>
               )}
             </div>
           ))}
 
           <div className="bg-primary-50 rounded-lg p-6">
-            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">{PRIVACY_CONTACT_DATA.heading}</h2>
-            <p className="text-gray-600 leading-relaxed mb-4">{PRIVACY_CONTACT_DATA.description}</p>
-            <div className="space-y-2 text-gray-600">
-              <p>
-                <strong>Email:</strong>{" "}
-                <a href={`mailto:${PRIVACY_CONTACT_DATA.email}`} className="text-primary-600 hover:underline">
-                  {PRIVACY_CONTACT_DATA.email}
-                </a>
-              </p>
-              <p>
-                <strong>Phone:</strong>{" "}
-                <a href={`tel:${PRIVACY_CONTACT_DATA.phone}`} className="text-primary-600 hover:underline">
-                  {PRIVACY_CONTACT_DATA.phone}
-                </a>
-              </p>
-              <p>
-                <strong>Address:</strong><br />
-                {PRIVACY_CONTACT_DATA.address.map((line) => (
-                  <span key={line}>{line}<br /></span>
-                ))}
-              </p>
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2">{PRIVACY_CONTACT_DATA.heading}</h2>
+            <p className="text-gray-600 mb-4">{PRIVACY_CONTACT_DATA.description}</p>
+            <div className="space-y-3">
+              {PRIVACY_CONTACT_DATA.contacts.map((c) => (
+                <div key={c.label}>
+                  <p className="font-semibold text-gray-800">{c.label}</p>
+                  <p className="text-gray-600 text-sm">
+                    Email:{" "}
+                    <a href={`mailto:${c.email}`} className="text-primary-600 hover:underline">{c.email}</a>
+                    {" · "}
+                    Phone:{" "}
+                    <a href={`tel:${c.phone}`} className="text-primary-600 hover:underline">{c.phone}</a>
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
