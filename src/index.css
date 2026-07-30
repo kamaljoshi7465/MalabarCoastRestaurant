@@ -72,10 +72,13 @@
   --color-error: #DC2626;
   --color-info: #2563EB;
 
+  --color-gold-50: #fefce8;
   --color-gold-200: #fde68a;
   --color-gold-400: #facc15;
   --color-gold-500: #eab308;
   --color-gold-600: #ca8a04;
+  --color-gold-700: #a16207;
+  /* bg-gold-50 text-gold-700 */
 }
 
 /* ==========================================================================

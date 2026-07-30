@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { EVENTS_TESTIMONIALS } from "../../../data/events/events.data";
+import { testimonials as EVENTS_TESTIMONIALS } from "../../../data/home/testimonials/testimonials.data";
 
 const StarIcon = () => (
   <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="text-gold-600 fill-current text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@ const EventsTestimonials = () => {
               <p className="text-gray-700 italic mb-6 min-h-[120px]">{t.quote}</p>
               <div className="border-t pt-4">
                 <h4 className="font-bold text-gray-900 text-lg">{t.name}</h4>
-                <p className="text-sm text-primary-600 font-medium">{t.event}</p>
+                <p className="text-sm text-primary-600 font-medium">{t.designation}</p>
               </div>
             </div>
           ))}

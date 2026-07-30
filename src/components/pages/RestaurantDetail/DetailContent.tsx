@@ -58,7 +58,7 @@ const DetailContent = ({ restaurant }: Props) => (
           }
         />
         <MenuCard
-          href={restaurant.menus.botanical}
+          href={restaurant.menus.kittyParty}
           title="Botanical Menu"
           description="Fresh seasonal flavours inspired by nature"
           icon={

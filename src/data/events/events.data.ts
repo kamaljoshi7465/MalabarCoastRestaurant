@@ -38,28 +38,49 @@ export const EVENTS_TYPES = {
   subtitle: "Choose from our specially curated event experiences",
   events: [
     {
+      title: "Birthday Parties",
+      description: "Celebrate birthdays with delicious Kerala cuisine, customised menus, elegant ambience and dedicated service.",
+      image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80",
+      capacity: "20–50 guests",
+      duration: "2–5 hours",
+      icon: "gift",
+      features: [
+        "Custom food packages",
+        "Decor support",
+        "Music arrangement",
+        "Cake cutting area",
+        "Family-friendly ambience",
+      ],
+      idealFor: ["Kids birthdays", "Adult celebrations", "Surprise parties"],
+    },
+    {
       title: "Kitty Parties",
-      description: "Host your kitty party in style at Malabar Coast. Our dedicated party spaces, delicious multi-cuisine menus, and attentive service ensure your gathering is the talk of the town.",
+      description: "A cosy venue for ladies' get-togethers with curated menus and warm hospitality.",
       image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
-      capacity: "15-50 guests",
-      duration: "3-4 hours",
+      capacity: "15–30 guests",
+      duration: "2–4 hours",
       icon: "team",
+      features: [
+        "Veg & non-veg menus",
+        "Mocktails",
+        "Reserved seating",
+        "Group packages",
+      ],
+      idealFor: ["Monthly kitty clubs", "Social gatherings", "Ladies get-togethers"],
     },
     {
       title: "Office Parties",
-      description: "Whether it's a team celebration, annual party, or client dinner, Malabar Coast provides the perfect setting for corporate events. Professional service meets authentic Indian hospitality.",
+      description: "Host team lunches, corporate dinners and celebrations in a comfortable setting.",
       image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
-      capacity: "20-200 guests",
-      duration: "2-5 hours",
+      capacity: "20–60 guests",
+      duration: "2–6 hours",
       icon: "briefcase",
-    },
-    {
-      title: "Birthday Parties",
-      description: "Make birthdays extra special with our customized party packages. From kids' parties to milestone celebrations, we handle every detail so you can enjoy the moment.",
-      image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80",
-      capacity: "10-100 guests",
-      duration: "2-4 hours",
-      icon: "gift",
+      features: [
+        "Buffet/set menu",
+        "Reserved area",
+        "Billing support",
+      ],
+      idealFor: ["Team outings", "Achievement celebrations", "Festive events"],
     },
   ],
 };
@@ -72,11 +93,3 @@ export const EVENTS_FAQS = [
   "Is there parking available?",
   "Can I arrange entertainment like DJs or live music?",
 ];
-
-export const EVENTS_CONTACT = {
-  title: "Ready to Plan Your Event?",
-  subtitle: "Get in touch with our event planning team to discuss your requirements",
-  phone: "+911234567890",
-  phoneDisplay: "+91 123 456 7890",
-  email: "hello@anardana.in",
-};
