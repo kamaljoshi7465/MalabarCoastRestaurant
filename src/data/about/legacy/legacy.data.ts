@@ -1,4 +1,4 @@
-import aboutOurStory from "../../../assets/images/AboutSection/about us.png";
+import aboutOurStory from "../../../assets/images/AboutSection/about-us.webp";
 import { STATS } from "../../common/stats.data";
 
 export interface LegacyData {

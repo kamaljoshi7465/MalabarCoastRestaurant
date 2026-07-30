@@ -7,11 +7,11 @@ const ContactForm = () => (
     <h2 className="mb-7 text-xl font-serif font-bold text-white">Send Us a Message</h2>
     <form className="space-y-5" onSubmit={(event) => event.preventDefault()}>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <ContactFormField label="Your Name *" name="name" placeholder="Priya Patel" required />
-        <ContactFormField label="Email Address *" name="email" type="email" placeholder="you@example.com" required />
+        <ContactFormField label="Your Name *" name="name" placeholder="Enter Your Name" required />
+        <ContactFormField label="Email Address *" name="email" type="email" placeholder="Enter Your E-mail" required />
       </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <ContactFormField label="Phone Number" name="phone" type="tel" placeholder="+91 98765 43210" />
+        <ContactFormField label="Phone Number" name="phone" type="tel" placeholder="Enter Your Phone Number" />
         <div>
           <label htmlFor="subject" className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">Subject *</label>
           <select id="subject" name="subject" required defaultValue="" className={contactFieldClass}>

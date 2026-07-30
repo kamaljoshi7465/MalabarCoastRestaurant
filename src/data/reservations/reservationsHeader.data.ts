@@ -1,15 +1,19 @@
-const imageBase = "https://cdn.anardana.in/images/outlets";
+import { OUTLETS } from "../home/restaurant/RestaurantsSection.data";
+import BaseImage from "../../assets/images/Home/Hero/malabar-hero-1.webp";
+import Image1 from "../../assets/images/Restaurents/gurugram.webp";
+import Image2 from "../../assets/images/Restaurents/noida.webp";
+import Image3 from "../../assets/images/Restaurents/indore.webp";
 
 export const RESERVATIONS_HEADER_DATA = {
   eyebrow: "Malabar Coast",
   title: "Reserve Your",
   titleAccent: "Table",
-  description: "Book your dining experience at any of our 14 unique restaurants",
+  description: `Book your dining experience at any of our ${OUTLETS.length} unique restaurants`,
   caption: "Crafted with passion since 2019",
-  backgroundImage: `${imageBase}/vasant-kunj/dd3f79c2-c0cf-4f6e-9191-12ddce279663.webp`,
+  backgroundImage: BaseImage,
   galleryImages: [
-    `${imageBase}/gcr/55d46df2-42f5-4ead-8611-7614e82c96d2.webp`,
-    `${imageBase}/vegas/ef09d7bc-28df-4407-af87-30ce76fa2a8d.webp`,
-    `${imageBase}/vasant-kunj/69e3a36b-0e73-451e-bb9a-ff2d178c09e0.webp`,
+    Image1,
+    Image2,
+    Image3,
   ],
 };

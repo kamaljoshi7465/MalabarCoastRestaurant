@@ -1,7 +1,3 @@
-export const OUTLETS = [
-  ["anardana-vegas-mall", "Malabar Coast Vegas Mall — Dwarka, New Delhi"], ["anardana-midtown", "Malabar Coast DLF MidTown Plaza — Moti Nagar, New Delhi"], ["anardana-nsp", "Malabar Coast UnityOne Elegante Mall — Netaji Subhash Palace, New Delhi"], ["anardana-vk", "Malabar Coast Ambience Mall — Vasant Kunj, New Delhi"], ["anardana-faridabad", "Malabar Coast Pacific Mall — Faridabad, Haryana"], ["anardana-gcr", "Malabar Coast Golf Course Road — Gurugram, Haryana"], ["anardana-ranchi", "Malabar Coast Ranchi — Ranchi, Ranchi"], ["anardana-noida", "Malabar Coast Max Square — Noida, Uttar Pradesh"], ["anardana-saket", "Malabar Coast DLF Avenue — Saket, New Delhi"], ["anardana-sangam", "Malabar Coast Sangam Courtyard — R.K Puram, New Delhi"], ["anardana-m3m", "Malabar Coast M3M IFC — Gurugram, Haryana"], ["anardana-chd", "Malabar Coast City Emporium Mall — Industrial Area Phase I, Chandigarh"], ["anardana-kkd", "Malabar Coast East Delhi — Karkardooma, New Delhi"],
-] as const;
-
 export const DATES = Array.from({ length: 30 }, (_, index) => {
   const date = new Date(2026, 6, 23 + index);
   return { value: date.toISOString().slice(0, 10), label: date.toLocaleDateString("en-IN", { weekday: "short", month: "short", day: "numeric", year: "numeric" }) };

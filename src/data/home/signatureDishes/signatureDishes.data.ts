@@ -1,3 +1,9 @@
+import PollichathuPaneer from "../../../assets/images/Signature/PollichathuPaneer.webp" 
+import TenderCoconutPayasam from "../../../assets/images/Signature/TenderCoconutPayasam.webp" 
+import PrawnButterPepperGarlic from "../../../assets/images/Signature/PrawnButterPepperGarlic.webp" 
+import PomfretMasalaFry from "../../../assets/images/Signature/PomfretMasalaFry.webp" 
+import SeaCrabButterPepperGarlic from "../../../assets/images/Signature/SeaCrabButterPepperGarlic.webp" 
+
 export type TagVariant = "Signature" | "Veg" | "Dessert" | "Seafood";
 
 export interface Dish {
@@ -21,7 +27,7 @@ export const dishes: Dish[] = [
     name: "Pollichathu Paneer",
     description:
       "Soft paneer marinated in authentic Kerala spices, wrapped in banana leaf and slow-cooked to lock in rich smoky flavours.",
-    image: "https://cdn.anardana.in/images/signature-dishes/DSC09852-Edit.JPG",
+    image: PollichathuPaneer,
     tag: ["Signature", "Veg"],
   },
   {
@@ -29,7 +35,7 @@ export const dishes: Dish[] = [
     name: "Tender Coconut Payasam",
     description:
       "A traditional Kerala dessert made with tender coconut, creamy milk and subtle sweetness.",
-    image: "https://cdn.anardana.in/images/signature-dishes/DSC09852-Edit.JPG",
+    image: TenderCoconutPayasam,
     tag: ["Signature", "Dessert"],
   },
   {
@@ -37,7 +43,7 @@ export const dishes: Dish[] = [
     name: "Prawn Butter Pepper Garlic",
     description:
       "Succulent prawns tossed in aromatic butter, roasted garlic and freshly cracked black pepper.",
-    image: "https://cdn.anardana.in/images/signature-dishes/DSC09852-Edit.JPG",
+    image: PrawnButterPepperGarlic,
     tag: ["Signature", "Seafood"],
   },
   {
@@ -45,7 +51,7 @@ export const dishes: Dish[] = [
     name: "Pomfret Masala Fry",
     description:
       "Whole pomfret marinated with Malabar spices and perfectly pan-fried for a crispy, flavourful finish.",
-    image: "https://cdn.anardana.in/images/signature-dishes/DSC09852-Edit.JPG",
+    image: PomfretMasalaFry,
     tag: ["Signature", "Seafood"],
   },
   {
@@ -53,7 +59,7 @@ export const dishes: Dish[] = [
     name: "Sea Crab Butter Pepper Garlic",
     description:
       "Fresh sea crab cooked in a rich butter, garlic and crushed black pepper sauce for a bold coastal flavour.",
-    image: "https://cdn.anardana.in/images/signature-dishes/DSC09852-Edit.JPG",
+    image: SeaCrabButterPepperGarlic,
     tag: ["Signature", "Seafood"],
   },
 ];
