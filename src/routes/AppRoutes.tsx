@@ -26,6 +26,10 @@ import SuperAdminRestaurants from '../pages/Superadmin/restaurants';
 import SuperAdminBookings from '../pages/Superadmin/bookings';
 import SuperAdminRestaurantDetail from '../pages/Superadmin/restaurantDetail';
 import RestaurantDashboard from '../pages/RestaurantAdmin/dashboard';
+import RestaurantLogin from '../pages/Auth/RestaurantLogin';
+import RestaurantSignup from '../pages/Auth/RestaurantSignup';
+import SuperAdminLogin from '../pages/Auth/SuperAdminLogin';
+import SuperAdminSignup from '../pages/Auth/SuperAdminSignup';
 
 const AppRoutes = () => (
   <Routes>
@@ -49,6 +53,10 @@ const AppRoutes = () => (
       <Route path="/shipping-policy" element={<Shipping />} />
       <Route path="/refund-policy" element={<Refund />} />
     </Route>
+    <Route path="/restaurant-login" element={<RestaurantLogin />} />
+    <Route path="/restaurant-signup" element={<RestaurantSignup />} />
+    <Route path="/super-admin-login" element={<SuperAdminLogin />} />
+    <Route path="/super-admin-signup" element={<SuperAdminSignup />} />
     <Route path="/super-admin-dashboard" element={<SuperAdminDashboard />} />
     <Route path="/super-admin-dashboard/restaurants" element={<SuperAdminRestaurants />} />
     <Route path="/super-admin-dashboard/restaurants/:restaurantId" element={<SuperAdminRestaurantDetail />} />

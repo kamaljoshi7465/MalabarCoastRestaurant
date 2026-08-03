@@ -61,7 +61,10 @@ const SuperAdminRestaurantDetail: React.FC = () => {
         notifications={notifications}
         admin={ADMIN_PROFILE}
         onBellReview={handleBellReview}
-        onLogout={() => push("Logged out (demo only)", "info")}
+        onLogout={() => {
+          push("Logged out", "info");
+          navigate("/super-admin-login");
+        }}
         toasts={toasts}
       >
         <div className="card flex flex-col items-center gap-4 bg-white p-10 text-center">
@@ -88,7 +91,10 @@ const SuperAdminRestaurantDetail: React.FC = () => {
       notifications={notifications}
       admin={ADMIN_PROFILE}
       onBellReview={handleBellReview}
-      onLogout={() => push("Logged out (demo only)", "info")}
+      onLogout={() => {
+        push("Logged out", "info");
+        navigate("/super-admin-login");
+      }}
       toasts={toasts}
     >
       <section>

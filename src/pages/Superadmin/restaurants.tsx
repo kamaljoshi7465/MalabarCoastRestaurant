@@ -29,7 +29,10 @@ const SuperAdminRestaurants: React.FC = () => {
       notifications={notifications}
       admin={ADMIN_PROFILE}
       onBellReview={handleBellReview}
-      onLogout={() => push("Logged out (demo only)", "info")}
+      onLogout={() => {
+        push("Logged out", "info");
+        navigate("/super-admin-login");
+      }}
       toasts={toasts}
     >
       <section>

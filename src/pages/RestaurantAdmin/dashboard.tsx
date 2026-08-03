@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { StatCard } from "../../components/admin/StatCard";
 import { useToasts } from "../../components/admin/Toast";
 import { RESTAURANT_API_RESPONSE } from "./data";
@@ -12,6 +13,7 @@ import { RecentActivityList } from "./components/RecentActivityList";
 import type { RestaurantBookingStatus } from "./types";
 
 const RestaurantDashboard: React.FC = () => {
+  const navigate = useNavigate();
   const { data } = RESTAURANT_API_RESPONSE;
   const {
     restaurant,
@@ -69,7 +71,10 @@ const RestaurantDashboard: React.FC = () => {
       today={today}
       pendingApproval={notifications.pending_approval}
       onRequestsClick={jumpToPendingApprovals}
-      onLogout={() => push("Logged out (demo only)", "info")}
+      onLogout={() => {
+        push("Logged out", "info");
+        navigate("/restaurant-login");
+      }}
       toasts={toasts}
     >
       <TodayAvailabilityCard today={today} />
