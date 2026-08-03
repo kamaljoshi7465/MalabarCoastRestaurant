@@ -1,0 +1,104 @@
+import type { DashboardApiResponse } from "../../pages/Superadmin/types";
+
+export const dashboardData: DashboardApiResponse = {
+  success: true,
+  message: "Dashboard data fetched successfully.",
+  data: {
+    summary: {
+      total_restaurants: 45,
+      active_restaurants: 41,
+      inactive_restaurants: 4,
+      total_bookings: 15420,
+      today_bookings: 286,
+      upcoming_bookings: 512,
+      pending_bookings: 142,
+      accepted_bookings: 198,
+      completed_bookings: 13894,
+      cancelled_bookings: 386,
+      rejected_bookings: 34,
+    },
+    restaurant_booking_summary: [
+      {
+        restaurant_id: 1,
+        restaurant_name: "The Malabar Coast",
+        today_bookings: 32,
+        upcoming_bookings: 18,
+        total_bookings: 1480,
+        pending_bookings: 4,
+        accepted_bookings: 22,
+        completed_bookings: 1380,
+        cancelled_bookings: 42,
+        rejected_bookings: 12,
+        status: "ACTIVE",
+      },
+      {
+        restaurant_id: 3,
+        restaurant_name: "Punjab Grill",
+        today_bookings: 15,
+        upcoming_bookings: 9,
+        total_bookings: 842,
+        pending_bookings: 3,
+        accepted_bookings: 10,
+        completed_bookings: 785,
+        cancelled_bookings: 22,
+        rejected_bookings: 4,
+        status: "INACTIVE",
+      },
+    ],
+    restaurant_bookings: [
+      {
+        restaurant_id: 1,
+        restaurant_name: "The Malabar Coast",
+        bookings: [
+          {
+            booking_id: 101,
+            booking_number: "BK000101",
+            customer_name: "Kamal Joshi",
+            phone: "9876543210",
+            booking_date: "2026-08-15",
+            booking_time: "19:00",
+            guests: 4,
+            status: "ACCEPTED",
+          },
+          {
+            booking_id: 102,
+            booking_number: "BK000102",
+            customer_name: "Rahul Sharma",
+            phone: "9876500000",
+            booking_date: "2026-08-15",
+            booking_time: "20:00",
+            guests: 2,
+            status: "PENDING",
+          },
+        ],
+      },
+      {
+        restaurant_id: 2,
+        restaurant_name: "Anardana",
+        bookings: [
+          {
+            booking_id: 201,
+            booking_number: "BK000201",
+            customer_name: "Amit Kumar",
+            phone: "9876511111",
+            booking_date: "2026-08-15",
+            booking_time: "18:30",
+            guests: 6,
+            status: "COMPLETED",
+          },
+        ],
+      },
+    ],
+    chart_data: {
+      weekly_bookings: [
+        { date: "2026-08-09", count: 218 },
+        { date: "2026-08-10", count: 245 },
+        { date: "2026-08-11", count: 231 },
+      ],
+    },
+    notifications: {
+      pending_restaurant_approvals: 5,
+      pending_booking_approvals: 142,
+    },
+  },
+};

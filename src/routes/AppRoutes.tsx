@@ -21,6 +21,11 @@ import Careers from '../pages/Careers';
 import Stories from '../pages/Stories';
 import StoryDetails from '../pages/StoryDetail';
 import Events from '../pages/Events';
+import SuperAdminDashboard from '../pages/Superadmin/dashboard';
+import SuperAdminRestaurants from '../pages/Superadmin/restaurants';
+import SuperAdminBookings from '../pages/Superadmin/bookings';
+import SuperAdminRestaurantDetail from '../pages/Superadmin/restaurantDetail';
+import RestaurantDashboard from '../pages/RestaurantAdmin/dashboard';
 
 const AppRoutes = () => (
   <Routes>
@@ -44,6 +49,11 @@ const AppRoutes = () => (
       <Route path="/shipping-policy" element={<Shipping />} />
       <Route path="/refund-policy" element={<Refund />} />
     </Route>
+    <Route path="/super-admin-dashboard" element={<SuperAdminDashboard />} />
+    <Route path="/super-admin-dashboard/restaurants" element={<SuperAdminRestaurants />} />
+    <Route path="/super-admin-dashboard/restaurants/:restaurantId" element={<SuperAdminRestaurantDetail />} />
+    <Route path="/super-admin-dashboard/bookings" element={<SuperAdminBookings />} />
+    <Route path="/restaurant-dashboard" element={<RestaurantDashboard />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 )
