@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusPill } from "./RestaurantStatusPill";
-import { formatDate } from "../utils";
-import type { RestaurantBookingStatus, UpcomingBooking } from "../types";
+import type { RestaurantBookingStatus, UpcomingBooking } from "../../../pages/RestaurantAdmin/types";
+import { formatDate } from "../../../pages/RestaurantAdmin/utils";
 
 export const BookingCard: React.FC<{
   booking: UpcomingBooking;

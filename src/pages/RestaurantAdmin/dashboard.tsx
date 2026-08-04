@@ -1,76 +1,29 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { StatCard } from "../../components/admin/StatCard";
 import { useToasts } from "../../components/admin/Toast";
 import { RESTAURANT_API_RESPONSE } from "./data";
-import { RestaurantDashboardLayout } from "./components/RestaurantDashboardLayout";
-import { TodayAvailabilityCard } from "./components/TodayAvailabilityCard";
-import { WeeklyBookingsChart } from "./components/WeeklyBookingsChart";
-import { BookingStatusBreakdown } from "./components/BookingStatusBreakdown";
-import { TodaysTimeline } from "./components/TodaysTimeline";
-import { UpcomingBookingsExplorer } from "./components/UpcomingBookingsExplorer";
-import { RecentActivityList } from "./components/RecentActivityList";
-import type { RestaurantBookingStatus } from "./types";
+import { formatDate } from "./utils";
+import { RestaurantAdminLayout } from "../../layouts/RestaurantAdminLayout";
+import { TodayAvailabilityCard } from "../../components/pages/RestaurantsAdmin/TodayAvailabilityCard";
 
-const RestaurantDashboard: React.FC = () => {
+const RestaurantOverview: React.FC = () => {
   const navigate = useNavigate();
   const { data } = RESTAURANT_API_RESPONSE;
-  const {
-    restaurant,
-    today,
-    summary,
-    booking_status_count,
-    chart_data,
-    today_bookings,
-    upcoming_bookings,
-    recent_bookings,
-    notifications,
-  } = data;
+  const { restaurant, today, summary, notifications } = data;
 
   const { toasts, push } = useToasts();
-  const [overrides, setOverrides] = useState<Record<number, RestaurantBookingStatus>>({});
-  const [upcomingStatusFilter, setUpcomingStatusFilter] = useState<RestaurantBookingStatus | "ALL">(
-    "ALL"
-  );
-  const upcomingRef = useRef<HTMLDivElement>(null);
 
-  const liveTodayBookings = today_bookings.map((b) => ({
-    ...b,
-    status: overrides[b.booking_id] ?? b.status,
-  }));
-  const liveUpcomingBookings = upcoming_bookings.map((b) => ({
-    ...b,
-    status: overrides[b.booking_id] ?? b.status,
-  }));
-
-  const handleAct = (
-    booking: { booking_id: number; booking_number: string },
-    next: RestaurantBookingStatus
-  ) => {
-    setOverrides((o) => ({ ...o, [booking.booking_id]: next }));
-    const messages: Record<RestaurantBookingStatus, string> = {
-      PENDING: `Booking ${booking.booking_number} set to pending`,
-      ACCEPTED: `Booking ${booking.booking_number} approved`,
-      COMPLETED: `Booking ${booking.booking_number} marked completed`,
-      CANCELLED: `Booking ${booking.booking_number} cancelled`,
-      REJECTED: `Booking ${booking.booking_number} rejected`,
-      NO_SHOW: `Booking ${booking.booking_number} marked no-show`,
-    };
-    const tone = next === "REJECTED" || next === "CANCELLED" ? "error" : "success";
-    push(messages[next], tone);
-  };
-
-  const jumpToPendingApprovals = () => {
-    setUpcomingStatusFilter("PENDING");
-    upcomingRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const goToPendingApprovals = () => navigate("/restaurant-dashboard/bookings?status=PENDING");
 
   return (
-    <RestaurantDashboardLayout
+    <RestaurantAdminLayout
+      active="overview"
+      title="Overview"
+      subtitle={`${restaurant.outlet_name} · ${formatDate(today.date)}`}
       restaurant={restaurant}
       today={today}
       pendingApproval={notifications.pending_approval}
-      onRequestsClick={jumpToPendingApprovals}
       onLogout={() => {
         push("Logged out", "info");
         navigate("/restaurant-login");
@@ -91,8 +44,8 @@ const RestaurantDashboard: React.FC = () => {
             label="Pending"
             value={summary.pending_bookings}
             accent="gold"
-            onClick={jumpToPendingApprovals}
-            activeLabel="Jump to requests ↓"
+            onClick={goToPendingApprovals}
+            activeLabel="Review requests →"
           />
           <StatCard label="Approved" value={summary.accepted_bookings} accent="primary" />
           <StatCard label="Completed" value={summary.completed_bookings} accent="primary" />
@@ -104,9 +57,9 @@ const RestaurantDashboard: React.FC = () => {
       <section className="card bg-primary-600 p-5 text-secondary-50 sm:p-6">
         <h3 className="font-serif text-lg sm:text-xl">Needs Your Attention</h3>
         <p className="mt-1 text-sm text-primary-700">Requests waiting from guests</p>
-        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
           <button
-            onClick={jumpToPendingApprovals}
+            onClick={goToPendingApprovals}
             className="flex items-center justify-between rounded-lg bg-primary-700/60 px-4 py-3 text-left transition-colors hover:bg-primary-700 cursor-pointer"
           >
             <span className="text-sm text-primary-50">Pending approvals</span>
@@ -114,51 +67,19 @@ const RestaurantDashboard: React.FC = () => {
               {notifications.pending_approval}
             </span>
           </button>
-          <div className="flex items-center justify-between rounded-lg bg-primary-700/60 px-4 py-3">
-            <span className="text-sm text-primary-50">Cancel requests</span>
-            <span className="rounded-full bg-accent-400 px-2.5 py-0.5 text-sm font-bold text-primary-900">
-              {notifications.cancel_requests}
-            </span>
-          </div>
-          <div className="flex items-center justify-between rounded-lg bg-primary-700/60 px-4 py-3">
+          <button
+            onClick={goToPendingApprovals}
+            className="flex items-center justify-between rounded-lg bg-primary-700/60 px-4 py-3 text-left transition-colors hover:bg-primary-700 cursor-pointer"
+          >
             <span className="text-sm text-primary-50">Reschedule requests</span>
             <span className="rounded-full bg-accent-400 px-2.5 py-0.5 text-sm font-bold text-primary-900">
               {notifications.reschedule_requests}
             </span>
-          </div>
+          </button>
         </div>
       </section>
-
-      <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <WeeklyBookingsChart points={chart_data.weekly_bookings} todayDate={today.date} />
-        </div>
-        <BookingStatusBreakdown counts={booking_status_count} />
-      </section>
-
-      <section>
-        <TodaysTimeline
-          bookings={liveTodayBookings}
-          totalToday={summary.today_bookings}
-          onAct={handleAct}
-        />
-      </section>
-
-      <section ref={upcomingRef}>
-        <UpcomingBookingsExplorer
-          bookings={liveUpcomingBookings}
-          totalUpcoming={summary.upcoming_bookings}
-          statusFilter={upcomingStatusFilter}
-          onStatusFilterChange={setUpcomingStatusFilter}
-          onAct={handleAct}
-        />
-      </section>
-
-      <section>
-        <RecentActivityList bookings={recent_bookings} />
-      </section>
-    </RestaurantDashboardLayout>
+    </RestaurantAdminLayout>
   );
 };
 
-export default RestaurantDashboard;
+export default RestaurantOverview;

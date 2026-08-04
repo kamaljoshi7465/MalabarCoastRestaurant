@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useClickOutside } from "../utils";
-import type { AdminProfile } from "../types";
+import type { AdminProfile } from "../../../pages/Superadmin/types";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 
 export const AdminProfileMenu: React.FC<{
   admin: AdminProfile;

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { formatDate } from "../utils";
 import { StatusPill } from "./StatusPill";
-import type { BookingStatus, FlatBooking } from "../types";
+import type { BookingStatus, FlatBooking } from "../../../types/booking";
+import { formatDate } from "../../../pages/Superadmin/utils";
 
 export const BookingDetailModal: React.FC<{
   booking: FlatBooking | null;

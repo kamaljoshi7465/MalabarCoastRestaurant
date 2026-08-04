@@ -1,0 +1,15 @@
+export const ENDPOINTS = {
+  createBooking: "/booking",
+  sendOtp: "/booking/send-otp",
+  verifyOtp: "/booking/verify-otp",
+  bookingList: "/bookings",
+  bookingDetails: (id: number | string) => `/bookings/${id}`,
+  cancelBooking: (id: number | string) => `/bookings/${id}/cancel`,
+  rescheduleBooking: (id: number | string) => `/bookings/${id}/reschedule`,
+  signup: "/auth/signup",
+  login: "/auth/login",
+  restaurantDashboard: "/admin/dashboard",
+  superAdminDashboard: "/super-admin/dashboard",
+  bookingSlotStatus: "/admin/booking-slots/status",
+  bookingStatus: "/admin/bookings/status",
+} as const;

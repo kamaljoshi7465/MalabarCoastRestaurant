@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusPill } from "./RestaurantStatusPill";
-import { formatDate } from "../utils";
-import type { RecentBooking } from "../types";
+import type { RecentBooking } from "../../../pages/RestaurantAdmin/types";
+import { formatDate } from "../../../pages/RestaurantAdmin/utils";
 
 export const RecentActivityList: React.FC<{ bookings: RecentBooking[] }> = ({
   bookings,

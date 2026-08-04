@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { formatNumber } from "../utils";
 import { RestaurantStatusPill } from "./StatusPill";
-import type { RestaurantBookingSummary, RestaurantStatus } from "../types";
+import type { RestaurantBookingSummary, RestaurantStatus } from "../../../pages/Superadmin/types";
+import { formatNumber } from "../../../pages/Superadmin/utils";
 
 type SortKey = keyof Pick<
   RestaurantBookingSummary,

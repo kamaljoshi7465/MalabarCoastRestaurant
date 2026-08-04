@@ -2,11 +2,11 @@ import React, { useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_RESPONSE, ADMIN_PROFILE } from "./data";
 import { formatNumber, formatDate } from "./utils";
-import { StatCard } from "./components/StatCard";
-import { StatusPill, RestaurantStatusPill } from "./components/StatusPill";
-import { WeeklyBookingsChart } from "./components/WeeklyBookingsChart";
-import { SuperAdminLayout } from "./components/SuperAdminLayout";
-import { useToasts } from "./components/Toast";
+import { RestaurantStatusPill, StatusPill } from "../../components/pages/SuperAdmin/StatusPill";
+import { useToasts } from "../../components/admin/Toast";
+import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
+import { StatCard } from "../../components/admin/StatCard";
+import { WeeklyBookingsChart } from "../../components/pages/SuperAdmin/WeeklyBookingsChart";
 import type { BookingStatus, FlatBooking, RestaurantBookingSummary } from "./types";
 
 const RESTAURANT_PREVIEW_LIMIT = 5;

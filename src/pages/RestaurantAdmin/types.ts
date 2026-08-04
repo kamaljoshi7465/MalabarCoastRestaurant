@@ -73,10 +73,49 @@ export interface RecentBooking {
   status: RestaurantBookingStatus;
 }
 
+/* Normalised shape used by the All Bookings table — a merge of today/upcoming/recent bookings. */
+export interface AnyBooking {
+  booking_id: number;
+  booking_number: string;
+  customer_name: string;
+  phone?: string;
+  booking_date: string;
+  booking_time: string;
+  guests?: number;
+  occasion?: string;
+  status: RestaurantBookingStatus;
+}
+
 export interface RestaurantNotifications {
   pending_approval: number;
   cancel_requests: number;
   reschedule_requests: number;
+}
+
+export type SlotStatus = "ENABLED" | "DISABLED";
+
+/* A single bookable time slot for a given date. */
+export interface DaySlot {
+  time: string;
+  demand: number;
+  status: SlotStatus;
+  reason?: string;
+}
+
+/* Mirrors the outlet slot-status PATCH request body. */
+export interface SlotStatusUpdateRequest {
+  outlet_id: number;
+  date: string;
+  slots: string[];
+  status: SlotStatus;
+  reason?: string;
+}
+
+/* POST /admin/bookings/status — accept/reject (or otherwise update) a booking. */
+export interface BookingStatusUpdateRequest {
+  booking_id: number;
+  status: RestaurantBookingStatus;
+  reason?: string;
 }
 
 export interface RestaurantDashboardData {
@@ -89,6 +128,7 @@ export interface RestaurantDashboardData {
   upcoming_bookings: UpcomingBooking[];
   recent_bookings: RecentBooking[];
   notifications: RestaurantNotifications;
+  slot_availability: DaySlot[];
 }
 
 export interface RestaurantDashboardApiResponse {

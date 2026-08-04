@@ -1,6 +1,6 @@
 import React from "react";
-import { formatDate } from "../utils";
-import type { TodayInfo } from "../types";
+import type { TodayInfo } from "../../../pages/RestaurantAdmin/types";
+import { formatDate } from "../../../pages/RestaurantAdmin/utils";
 
 export const TodayAvailabilityCard: React.FC<{ today: TodayInfo }> = ({ today }) => {
   const total = today.available_slots + today.disabled_slots;

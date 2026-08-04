@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AdminProfileMenu } from "./AdminProfileMenu";
-import { NotificationBell } from "./NotificationBell";
-import { ToastStack, type Toast } from "./Toast";
-import type { AdminProfile, Notifications, Summary } from "../types";
+import { AdminProfileMenu } from "../components/pages/SuperAdmin/AdminProfileMenu";
+import { NotificationBell } from "../components/pages/SuperAdmin/NotificationBell";
+import { ToastStack, type Toast } from "../components/pages/SuperAdmin/Toast";
+import { CalendarDays, LayoutDashboard, UtensilsCrossed, type LucideIcon } from "lucide-react";
+import type { AdminProfile, Notifications, Summary } from "../pages/Superadmin/types";
 
 export type NavKey = "overview" | "restaurants" | "bookings";
 
-const NAV_ITEMS: { key: NavKey; label: string; icon: string; to: string }[] = [
-  { key: "overview", label: "Overview", icon: "▦", to: "/super-admin-dashboard" },
-  { key: "restaurants", label: "Restaurants", icon: "🍽", to: "/super-admin-dashboard/restaurants" },
-  { key: "bookings", label: "Bookings", icon: "📅", to: "/super-admin-dashboard/bookings" },
+const NAV_ITEMS: { key: NavKey; label: string; icon: LucideIcon; to: string }[] = [
+  { key: "overview", label: "Overview", icon: LayoutDashboard, to: "/super-admin-dashboard" },
+  { key: "restaurants", label: "Restaurants", icon: UtensilsCrossed, to: "/super-admin-dashboard/restaurants" },
+  { key: "bookings", label: "Bookings", icon: CalendarDays, to: "/super-admin-dashboard/bookings" },
 ];
 
 const SidebarContent: React.FC<{
@@ -43,7 +44,7 @@ const SidebarContent: React.FC<{
               : "text-primary-100 hover:bg-primary-600/60"
           }`}
         >
-          <span aria-hidden>{item.icon}</span>
+          <item.icon className="size-4.5" aria-hidden />
           {item.label}
         </Link>
       ))}

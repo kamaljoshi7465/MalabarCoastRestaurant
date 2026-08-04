@@ -8,8 +8,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatDate, formatNumber } from "../utils";
-import type { WeeklyBookingPoint } from "../types";
+import type { WeeklyBookingPoint } from "../../../pages/Superadmin/types";
+import { formatDate, formatNumber } from "../../../pages/Superadmin/utils";
 
 export const WeeklyBookingsChart: React.FC<{ points: WeeklyBookingPoint[] }> = ({
   points,

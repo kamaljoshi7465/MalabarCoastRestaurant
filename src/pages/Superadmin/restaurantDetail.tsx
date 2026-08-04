@@ -1,13 +1,13 @@
 import React, { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { API_RESPONSE, ADMIN_PROFILE } from "./data";
-import { useToasts } from "./components/Toast";
-import { SuperAdminLayout } from "./components/SuperAdminLayout";
-import { StatCard } from "./components/StatCard";
-import { RestaurantStatusPill } from "./components/StatusPill";
-import { LiveBookingsExplorer } from "./components/LiveBookingsExplorer";
-import { BookingDetailModal } from "./components/BookingDetailModal";
 import type { BookingStatus, FlatBooking, RestaurantBookings } from "./types";
+import { useToasts } from "../../components/admin/Toast";
+import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
+import { RestaurantStatusPill } from "../../components/pages/SuperAdmin/StatusPill";
+import { StatCard } from "../../components/admin/StatCard";
+import { LiveBookingsExplorer } from "../../components/pages/SuperAdmin/LiveBookingsExplorer";
+import { BookingDetailModal } from "../../components/pages/SuperAdmin/BookingDetailModal";
 
 const SuperAdminRestaurantDetail: React.FC = () => {
   const { restaurantId } = useParams<{ restaurantId: string }>();

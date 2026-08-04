@@ -65,7 +65,7 @@ const AuthShell: React.FC<AuthShellProps> = ({
         <img src={logo} alt="Malabar Coast Restaurant" className="h-11 w-auto" />
       </Link>
 
-      <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-100 sm:p-8">
+      <div className="w-full max-w-3xl rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-100 sm:p-8">
         <h2 className="font-serif text-2xl text-primary-700">{title}</h2>
         <p className="mt-1.5 text-sm text-gray-500">{subtitle}</p>
 

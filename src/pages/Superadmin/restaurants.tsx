@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { API_RESPONSE, ADMIN_PROFILE } from "./data";
-import { useToasts } from "./components/Toast";
-import { SuperAdminLayout } from "./components/SuperAdminLayout";
-import { RestaurantSummaryTable } from "./components/RestaurantSummaryTable";
+import { useToasts } from "../../components/admin/Toast";
+import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
+import { RestaurantSummaryTable } from "../../components/pages/SuperAdmin/RestaurantSummaryTable";
 
 const SuperAdminRestaurants: React.FC = () => {
   const { data } = API_RESPONSE;

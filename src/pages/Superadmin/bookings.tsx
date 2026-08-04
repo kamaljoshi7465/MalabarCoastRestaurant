@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { API_RESPONSE, ADMIN_PROFILE } from "./data";
-import { useToasts } from "./components/Toast";
-import { SuperAdminLayout } from "./components/SuperAdminLayout";
-import { LiveBookingsExplorer } from "./components/LiveBookingsExplorer";
-import { BookingDetailModal } from "./components/BookingDetailModal";
-import { STATUS_ORDER } from "./components/StatusPill";
 import type { BookingStatus, FlatBooking } from "./types";
+import { STATUS_ORDER } from "../../components/admin/BookingStatusPill";
+import { useToasts } from "../../components/admin/Toast";
+import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
+import { LiveBookingsExplorer } from "../../components/pages/SuperAdmin/LiveBookingsExplorer";
+import { BookingDetailModal } from "../../components/pages/SuperAdmin/BookingDetailModal";
 
 const isBookingStatus = (v: string | null): v is BookingStatus =>
   !!v && (STATUS_ORDER as string[]).includes(v);

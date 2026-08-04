@@ -29,9 +29,9 @@ export const UpcomingBookingsExplorer: React.FC<{
     <div className="card bg-white p-4 sm:p-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-serif text-lg text-primary-700 sm:text-xl">Upcoming Bookings</h3>
+          <h3 className="font-serif text-lg text-primary-700 sm:text-xl">Today Upcoming Bookings</h3>
           <p className="text-sm text-gray-500">
-            Showing {filtered.length} of {totalUpcoming} upcoming bookings
+            Showing {filtered.length} of {totalUpcoming} upcoming bookings today
           </p>
         </div>
         <div className="relative">

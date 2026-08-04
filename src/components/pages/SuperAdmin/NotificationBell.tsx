@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useClickOutside } from "../utils";
-import type { Notifications } from "../types";
+import type { Notifications } from "../../../pages/Superadmin/types";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 
 export const NotificationBell: React.FC<{
   notifications: Notifications;

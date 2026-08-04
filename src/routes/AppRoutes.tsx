@@ -25,7 +25,10 @@ import SuperAdminDashboard from '../pages/Superadmin/dashboard';
 import SuperAdminRestaurants from '../pages/Superadmin/restaurants';
 import SuperAdminBookings from '../pages/Superadmin/bookings';
 import SuperAdminRestaurantDetail from '../pages/Superadmin/restaurantDetail';
-import RestaurantDashboard from '../pages/RestaurantAdmin/dashboard';
+import RestaurantOverview from '../pages/RestaurantAdmin/dashboard';
+import RestaurantBookings from '../pages/RestaurantAdmin/bookings';
+import RestaurantSlots from '../pages/RestaurantAdmin/slots';
+import RestaurantAnalytics from '../pages/RestaurantAdmin/analytics';
 import RestaurantLogin from '../pages/Auth/RestaurantLogin';
 import RestaurantSignup from '../pages/Auth/RestaurantSignup';
 import SuperAdminLogin from '../pages/Auth/SuperAdminLogin';
@@ -61,7 +64,10 @@ const AppRoutes = () => (
     <Route path="/super-admin-dashboard/restaurants" element={<SuperAdminRestaurants />} />
     <Route path="/super-admin-dashboard/restaurants/:restaurantId" element={<SuperAdminRestaurantDetail />} />
     <Route path="/super-admin-dashboard/bookings" element={<SuperAdminBookings />} />
-    <Route path="/restaurant-dashboard" element={<RestaurantDashboard />} />
+    <Route path="/restaurant-dashboard" element={<RestaurantOverview />} />
+    <Route path="/restaurant-dashboard/bookings" element={<RestaurantBookings />} />
+    <Route path="/restaurant-dashboard/slots" element={<RestaurantSlots />} />
+    <Route path="/restaurant-dashboard/analytics" element={<RestaurantAnalytics />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 )
