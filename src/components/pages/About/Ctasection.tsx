@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CTA_CONTENT, CTA_ICONS, CTA_STATS } from "../../../data/about/cta/cta.data";
 
 const CtaSection = () => {
@@ -29,20 +30,20 @@ const CtaSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12">
-          <a
-            href="/restaurants"
+          <Link
+            to="/restaurants"
             className="group inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
           >
             <span>Find an Outlet</span>
             {CTA_ICONS.arrowRight}
-          </a>
-          <a
-            href="/reservations"
+          </Link>
+          <Link
+            to="/reservations"
             className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-primary-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
           >
             <span>Book a Table</span>
             {CTA_ICONS.calendar}
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto pt-8 border-t border-white/30">

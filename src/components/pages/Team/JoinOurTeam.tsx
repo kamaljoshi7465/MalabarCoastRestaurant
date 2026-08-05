@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { JOIN_OUR_TEAM_CONTENT, JOIN_OUR_TEAM_ICONS } from "../../../data/Team/joinOurTeam.data";
 
 const JoinOurTeam = () => {
@@ -16,13 +17,13 @@ const JoinOurTeam = () => {
           {JOIN_OUR_TEAM_CONTENT.description}
         </p>
 
-        <a
-          href={JOIN_OUR_TEAM_CONTENT.buttonLink}
+        <Link
+          to={JOIN_OUR_TEAM_CONTENT.buttonLink}
           className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-primary-700 hover:shadow-xl"
         >
           <span>{JOIN_OUR_TEAM_CONTENT.buttonText}</span>
           {JOIN_OUR_TEAM_ICONS.arrowRight}
-        </a>
+        </Link>
       </div>
     </section>
   );

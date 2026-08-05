@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import type { CSSProperties, ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 type ViewMoreButtonProps = {
   text: string;
@@ -29,8 +30,8 @@ export default function ViewMoreButton({
 
   return (
     <div className="text-center" style={style}>
-      <a
-        href={href}
+      <Link
+        to={href}
         className={`${baseClasses} ${variantClasses} ${className}`}
       >
         {icon}
@@ -38,7 +39,7 @@ export default function ViewMoreButton({
         <span>{text}</span>
 
         {arrow && <ArrowRight size="1em" />}
-      </a>
+      </Link>
     </div>
   );
 }

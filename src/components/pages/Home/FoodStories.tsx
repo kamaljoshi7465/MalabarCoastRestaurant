@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { foodStories } from "../../../data/home/foodStories/foodStories.data";
 import FoodStoryCard from "../../cards/FoodCard";
 
@@ -25,9 +26,9 @@ const FoodStories: React.FC = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a
+          <Link
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium text-sm tracking-wide"
-            href="/stories"
+            to="/stories"
           >
             <span>View All Stories</span>
             <svg
@@ -44,7 +45,7 @@ const FoodStories: React.FC = () => {
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
