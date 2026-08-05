@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { API_RESPONSE, ADMIN_PROFILE } from "./data";
-import type { BookingStatus, FlatBooking, RestaurantBookings } from "./types";
+import type { BookingStatus, PlatformBooking } from "./types";
+import { mergeBookings } from "./utils";
 import { useToasts } from "../../components/admin/Toast";
 import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
-import { RestaurantStatusPill } from "../../components/pages/SuperAdmin/StatusPill";
 import { StatCard } from "../../components/admin/StatCard";
 import { LiveBookingsExplorer } from "../../components/pages/SuperAdmin/LiveBookingsExplorer";
 import { BookingDetailModal } from "../../components/pages/SuperAdmin/BookingDetailModal";
@@ -12,26 +12,37 @@ import { BookingDetailModal } from "../../components/pages/SuperAdmin/BookingDet
 const SuperAdminRestaurantDetail: React.FC = () => {
   const { restaurantId } = useParams<{ restaurantId: string }>();
   const { data } = API_RESPONSE;
-  const { summary, restaurant_booking_summary, restaurant_bookings, notifications } = data;
+  const { summary, restaurants, upcoming_bookings, today_bookings, recent_bookings } = data;
 
   const { toasts, push } = useToasts();
   const navigate = useNavigate();
-  const [selectedBooking, setSelectedBooking] = useState<FlatBooking | null>(null);
+  const [selectedBooking, setSelectedBooking] = useState<PlatformBooking | null>(null);
   const [statusFilter, setStatusFilter] = useState<BookingStatus | "ALL">("ALL");
   const [overrides, setOverrides] = useState<Record<number, BookingStatus>>({});
 
   const restaurant = useMemo(
-    () => restaurant_booking_summary.find((r) => String(r.restaurant_id) === restaurantId),
-    [restaurant_booking_summary, restaurantId]
+    () => restaurants.find((r) => String(r.id) === restaurantId),
+    [restaurants, restaurantId]
   );
 
-  const restaurantBookingGroup: RestaurantBookings[] = useMemo(() => {
-    const match = restaurant_bookings.find((r) => String(r.restaurant_id) === restaurantId);
-    return match ? [match] : [];
-  }, [restaurant_bookings, restaurantId]);
+  const restaurantBookings: PlatformBooking[] = useMemo(() => {
+    if (!restaurant) return [];
+    return mergeBookings(upcoming_bookings, today_bookings, recent_bookings).filter(
+      (b) => b.outlet_id === restaurant.id
+    );
+  }, [upcoming_bookings, today_bookings, recent_bookings, restaurant]);
 
-  const handleAct = (booking: FlatBooking, next: BookingStatus) => {
-    setOverrides((o) => ({ ...o, [booking.booking_id]: next }));
+  const todayCount = useMemo(
+    () => (restaurant ? today_bookings.filter((b) => b.outlet_id === restaurant.id).length : 0),
+    [today_bookings, restaurant]
+  );
+  const upcomingCount = useMemo(
+    () => (restaurant ? upcoming_bookings.filter((b) => b.outlet_id === restaurant.id).length : 0),
+    [upcoming_bookings, restaurant]
+  );
+
+  const handleAct = (booking: PlatformBooking, next: BookingStatus) => {
+    setOverrides((o) => ({ ...o, [booking.id]: next }));
     setSelectedBooking(null);
     const messages: Record<BookingStatus, string> = {
       PENDING: `Booking ${booking.booking_number} set to pending`,
@@ -44,12 +55,8 @@ const SuperAdminRestaurantDetail: React.FC = () => {
     push(messages[next], tone);
   };
 
-  const handleBellReview = (kind: "restaurant" | "booking") => {
-    if (kind === "booking") {
-      navigate("/super-admin-dashboard/bookings?status=PENDING");
-    } else {
-      navigate("/super-admin-dashboard/restaurants");
-    }
+  const handleBellReview = () => {
+    navigate("/super-admin-dashboard/bookings?status=PENDING");
   };
 
   if (!restaurant) {
@@ -58,7 +65,6 @@ const SuperAdminRestaurantDetail: React.FC = () => {
         active="restaurants"
         title="Restaurant not found"
         summary={summary}
-        notifications={notifications}
         admin={ADMIN_PROFILE}
         onBellReview={handleBellReview}
         onLogout={() => {
@@ -88,7 +94,6 @@ const SuperAdminRestaurantDetail: React.FC = () => {
       title={restaurant.restaurant_name}
       subtitle="Restaurant details & bookings"
       summary={summary}
-      notifications={notifications}
       admin={ADMIN_PROFILE}
       onBellReview={handleBellReview}
       onLogout={() => {
@@ -112,25 +117,23 @@ const SuperAdminRestaurantDetail: React.FC = () => {
       <section className="card flex flex-col gap-4 bg-white p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div>
           <h2 className="font-serif text-2xl text-primary-700">{restaurant.restaurant_name}</h2>
-          <p className="text-sm text-gray-500">Restaurant ID #{restaurant.restaurant_id}</p>
+          <p className="text-sm text-gray-500">Restaurant ID #{restaurant.id} · {restaurant.outlet_name}</p>
+          <p className="mt-1 text-sm text-gray-500">
+            {restaurant.owner_name} · {restaurant.email}
+          </p>
         </div>
-        <RestaurantStatusPill status={restaurant.status} />
       </section>
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-        <StatCard label="Today" value={restaurant.today_bookings} accent="gold" />
-        <StatCard label="Upcoming" value={restaurant.upcoming_bookings} accent="gold" />
+        <StatCard label="Today" value={todayCount} accent="gold" />
+        <StatCard label="Upcoming" value={upcomingCount} accent="gold" />
         <StatCard label="Pending" value={restaurant.pending_bookings} accent="gold" />
-        <StatCard label="Approved" value={restaurant.accepted_bookings} accent="primary" />
-        <StatCard label="Completed" value={restaurant.completed_bookings} accent="primary" />
-        <StatCard label="Cancelled" value={restaurant.cancelled_bookings} accent="neutral" />
-        <StatCard label="Rejected" value={restaurant.rejected_bookings} accent="neutral" />
         <StatCard label="Total" value={restaurant.total_bookings} accent="primary" />
       </section>
 
       <section>
         <LiveBookingsExplorer
-          restaurants={restaurantBookingGroup}
+          bookings={restaurantBookings}
           statusFilter={statusFilter}
           onStatusFilterChange={setStatusFilter}
           bookingOverrides={overrides}

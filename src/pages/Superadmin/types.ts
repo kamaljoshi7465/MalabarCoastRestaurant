@@ -1,41 +1,54 @@
-import type { Booking } from "../../types/booking";
-export type { BookingStatus, Booking, FlatBooking } from "../../types/booking";
+export type { BookingStatus } from "../../types/booking";
+import type { BookingStatus } from "../../types/booking";
 
 export interface Summary {
   total_restaurants: number;
-  active_restaurants: number;
-  inactive_restaurants: number;
   total_bookings: number;
   today_bookings: number;
   upcoming_bookings: number;
+  completed_bookings: number;
   pending_bookings: number;
   accepted_bookings: number;
-  completed_bookings: number;
-  cancelled_bookings: number;
   rejected_bookings: number;
-  no_show_bookings: number;
+  cancelled_bookings: number;
 }
 
-export type RestaurantStatus = "ACTIVE" | "INACTIVE";
+export type BookingStatusCount = Record<
+  "PENDING" | "ACCEPTED" | "REJECTED" | "COMPLETED" | "CANCELLED" | "NO_SHOW" | "CONFIRMED",
+  number
+>;
 
-export interface RestaurantBookingSummary {
-  restaurant_id: number;
+/* GET /superadmin/dashboard — data.restaurants[]: one row per outlet on the platform. */
+export interface PlatformRestaurant {
+  id: number;
   restaurant_name: string;
-  today_bookings: number;
-  upcoming_bookings: number;
+  owner_name: string;
+  email: string;
+  outlet_name: string;
   total_bookings: number;
   pending_bookings: number;
-  accepted_bookings: number;
-  completed_bookings: number;
-  cancelled_bookings: number;
-  rejected_bookings: number;
-  status: RestaurantStatus;
 }
 
-export interface RestaurantBookings {
-  restaurant_id: number;
-  restaurant_name: string;
-  bookings: Booking[];
+/* Booking-list items share one rich shape across upcoming/today/recent lists
+   (and can appear in more than one). */
+export interface PlatformBooking {
+  id: number;
+  booking_number: string;
+  outlet_id: number;
+  restaurant: string;
+  outlet_name: string;
+  date: string;
+  time: string;
+  guests: number;
+  occasion: string | null;
+  name: string;
+  email: string;
+  phone: string;
+  special_requests: string | null;
+  status: BookingStatus;
+  cancel_reason: string | null;
+  rejection_reason: string | null;
+  created_at: string;
 }
 
 export interface WeeklyBookingPoint {
@@ -47,17 +60,14 @@ export interface ChartData {
   weekly_bookings: WeeklyBookingPoint[];
 }
 
-export interface Notifications {
-  pending_restaurant_approvals: number;
-  pending_booking_approvals: number;
-}
-
 export interface DashboardData {
   summary: Summary;
-  restaurant_booking_summary: RestaurantBookingSummary[];
-  restaurant_bookings: RestaurantBookings[];
+  booking_status_count: BookingStatusCount;
+  restaurants: PlatformRestaurant[];
+  upcoming_bookings: PlatformBooking[];
+  today_bookings: PlatformBooking[];
+  recent_bookings: PlatformBooking[];
   chart_data: ChartData;
-  notifications: Notifications;
 }
 
 export interface DashboardApiResponse {

@@ -7,17 +7,13 @@ import { RestaurantSummaryTable } from "../../components/pages/SuperAdmin/Restau
 
 const SuperAdminRestaurants: React.FC = () => {
   const { data } = API_RESPONSE;
-  const { summary, restaurant_booking_summary, notifications } = data;
+  const { summary, restaurants } = data;
 
   const { toasts, push } = useToasts();
   const navigate = useNavigate();
 
-  const handleBellReview = (kind: "restaurant" | "booking") => {
-    if (kind === "booking") {
-      navigate("/super-admin-dashboard/bookings?status=PENDING");
-    } else {
-      push("You're already viewing restaurants", "info");
-    }
+  const handleBellReview = () => {
+    navigate("/super-admin-dashboard/bookings?status=PENDING");
   };
 
   return (
@@ -26,7 +22,6 @@ const SuperAdminRestaurants: React.FC = () => {
       title="Restaurants"
       subtitle={`${summary.total_restaurants} restaurants on the platform`}
       summary={summary}
-      notifications={notifications}
       admin={ADMIN_PROFILE}
       onBellReview={handleBellReview}
       onLogout={() => {
@@ -36,7 +31,7 @@ const SuperAdminRestaurants: React.FC = () => {
       toasts={toasts}
     >
       <section>
-        <RestaurantSummaryTable rows={restaurant_booking_summary} />
+        <RestaurantSummaryTable rows={restaurants} />
       </section>
     </SuperAdminLayout>
   );

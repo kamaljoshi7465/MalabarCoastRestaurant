@@ -1,17 +1,17 @@
 import React, { useMemo, useState } from "react";
 import { BOOKING_STATUS_LABEL, STATUS_ORDER, StatusPill } from "./StatusPill";
-import type { BookingStatus, FlatBooking, RestaurantBookings } from "../../../pages/Superadmin/types";
+import type { BookingStatus, PlatformBooking } from "../../../pages/Superadmin/types";
 import { formatDate } from "../../../pages/Superadmin/utils";
 
 export const LiveBookingsExplorer: React.FC<{
-  restaurants: RestaurantBookings[];
+  bookings: PlatformBooking[];
   statusFilter: BookingStatus | "ALL";
   onStatusFilterChange: (s: BookingStatus | "ALL") => void;
   bookingOverrides: Record<number, BookingStatus>;
-  onOpenBooking: (b: FlatBooking) => void;
+  onOpenBooking: (b: PlatformBooking) => void;
   title?: string;
 }> = ({
-  restaurants,
+  bookings,
   statusFilter,
   onStatusFilterChange,
   bookingOverrides,
@@ -20,17 +20,13 @@ export const LiveBookingsExplorer: React.FC<{
 }) => {
   const [query, setQuery] = useState("");
 
-  const flat: FlatBooking[] = useMemo(
+  const flat: PlatformBooking[] = useMemo(
     () =>
-      restaurants.flatMap((r) =>
-        r.bookings.map((b) => ({
-          ...b,
-          status: bookingOverrides[b.booking_id] ?? b.status,
-          restaurant_id: r.restaurant_id,
-          restaurant_name: r.restaurant_name,
-        }))
-      ),
-    [restaurants, bookingOverrides]
+      bookings.map((b) => ({
+        ...b,
+        status: bookingOverrides[b.id] ?? b.status,
+      })),
+    [bookings, bookingOverrides]
   );
 
   const filtered = useMemo(() => {
@@ -39,9 +35,9 @@ export const LiveBookingsExplorer: React.FC<{
       const q = query.toLowerCase();
       const matchesQuery =
         !q ||
-        b.customer_name.toLowerCase().includes(q) ||
+        b.name.toLowerCase().includes(q) ||
         b.booking_number.toLowerCase().includes(q) ||
-        b.restaurant_name.toLowerCase().includes(q) ||
+        b.restaurant.toLowerCase().includes(q) ||
         b.phone.includes(q);
       return matchesStatus && matchesQuery;
     });
@@ -119,7 +115,7 @@ export const LiveBookingsExplorer: React.FC<{
             ) : (
               filtered.map((b) => (
                 <tr
-                  key={b.booking_id}
+                  key={b.id}
                   onClick={() => onOpenBooking(b)}
                   className="cursor-pointer transition-colors hover:bg-secondary-50"
                 >
@@ -127,11 +123,11 @@ export const LiveBookingsExplorer: React.FC<{
                     {b.booking_number}
                   </td>
                   <td className="px-4 py-4 font-medium text-gray-800">
-                    {b.customer_name}
+                    {b.name}
                   </td>
-                  <td className="px-4 py-4 text-gray-600">{b.restaurant_name}</td>
+                  <td className="px-4 py-4 text-gray-600">{b.restaurant}</td>
                   <td className="whitespace-nowrap px-4 py-4 text-gray-600">
-                    {formatDate(b.booking_date)} · {b.booking_time}
+                    {formatDate(b.date)} · {b.time}
                   </td>
                   <td className="px-4 py-4 text-center text-gray-600">{b.guests}</td>
                   <td className="px-6 py-4 text-right">

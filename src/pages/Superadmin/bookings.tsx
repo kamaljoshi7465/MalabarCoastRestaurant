@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { API_RESPONSE, ADMIN_PROFILE } from "./data";
-import type { BookingStatus, FlatBooking } from "./types";
+import type { BookingStatus, PlatformBooking } from "./types";
+import { mergeBookings } from "./utils";
 import { STATUS_ORDER } from "../../components/admin/BookingStatusPill";
 import { useToasts } from "../../components/admin/Toast";
 import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
@@ -13,7 +14,11 @@ const isBookingStatus = (v: string | null): v is BookingStatus =>
 
 const SuperAdminBookings: React.FC = () => {
   const { data } = API_RESPONSE;
-  const { summary, restaurant_bookings, notifications } = data;
+  const { summary, upcoming_bookings, today_bookings, recent_bookings } = data;
+  const bookings = useMemo(
+    () => mergeBookings(upcoming_bookings, today_bookings, recent_bookings),
+    [upcoming_bookings, today_bookings, recent_bookings]
+  );
 
   const { toasts, push } = useToasts();
   const navigate = useNavigate();
@@ -23,11 +28,11 @@ const SuperAdminBookings: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState<BookingStatus | "ALL">(
     isBookingStatus(initialStatus) ? initialStatus : "ALL"
   );
-  const [selectedBooking, setSelectedBooking] = useState<FlatBooking | null>(null);
+  const [selectedBooking, setSelectedBooking] = useState<PlatformBooking | null>(null);
   const [overrides, setOverrides] = useState<Record<number, BookingStatus>>({});
 
-  const handleAct = (booking: FlatBooking, next: BookingStatus) => {
-    setOverrides((o) => ({ ...o, [booking.booking_id]: next }));
+  const handleAct = (booking: PlatformBooking, next: BookingStatus) => {
+    setOverrides((o) => ({ ...o, [booking.id]: next }));
     setSelectedBooking(null);
     const messages: Record<BookingStatus, string> = {
       PENDING: `Booking ${booking.booking_number} set to pending`,
@@ -40,12 +45,8 @@ const SuperAdminBookings: React.FC = () => {
     push(messages[next], tone);
   };
 
-  const handleBellReview = (kind: "restaurant" | "booking") => {
-    if (kind === "booking") {
-      setStatusFilter("PENDING");
-    } else {
-      navigate("/super-admin-dashboard/restaurants");
-    }
+  const handleBellReview = () => {
+    setStatusFilter("PENDING");
   };
 
   return (
@@ -54,7 +55,6 @@ const SuperAdminBookings: React.FC = () => {
       title="Bookings"
       subtitle={`${summary.total_bookings.toLocaleString("en-IN")} bookings across the platform`}
       summary={summary}
-      notifications={notifications}
       admin={ADMIN_PROFILE}
       onBellReview={handleBellReview}
       onLogout={() => {
@@ -65,7 +65,7 @@ const SuperAdminBookings: React.FC = () => {
     >
       <section>
         <LiveBookingsExplorer
-          restaurants={restaurant_bookings}
+          bookings={bookings}
           statusFilter={statusFilter}
           onStatusFilterChange={setStatusFilter}
           bookingOverrides={overrides}

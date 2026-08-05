@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { StatusPill } from "./StatusPill";
-import type { BookingStatus, FlatBooking } from "../../../types/booking";
+import type { BookingStatus, PlatformBooking } from "../../../pages/Superadmin/types";
 import { formatDate } from "../../../pages/Superadmin/utils";
 
 export const BookingDetailModal: React.FC<{
-  booking: FlatBooking | null;
+  booking: PlatformBooking | null;
   onClose: () => void;
-  onAct: (booking: FlatBooking, next: BookingStatus) => void;
+  onAct: (booking: PlatformBooking, next: BookingStatus) => void;
 }> = ({ booking, onClose, onAct }) => {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -32,7 +32,7 @@ export const BookingDetailModal: React.FC<{
             <p className="text-xs uppercase tracking-wider text-primary-100">
               {booking.booking_number}
             </p>
-            <h3 className="truncate font-serif text-lg sm:text-xl">{booking.customer_name}</h3>
+            <h3 className="truncate font-serif text-lg sm:text-xl">{booking.name}</h3>
           </div>
           <button
             onClick={onClose}
@@ -49,7 +49,8 @@ export const BookingDetailModal: React.FC<{
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <p className="text-xs uppercase tracking-wide text-gray-400">Restaurant</p>
-              <p className="mt-0.5 font-medium text-gray-800">{booking.restaurant_name}</p>
+              <p className="mt-0.5 font-medium text-gray-800">{booking.restaurant}</p>
+              <p className="text-xs text-gray-400">{booking.outlet_name}</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-wide text-gray-400">Phone</p>
@@ -58,7 +59,7 @@ export const BookingDetailModal: React.FC<{
             <div>
               <p className="text-xs uppercase tracking-wide text-gray-400">Date &amp; time</p>
               <p className="mt-0.5 font-medium text-gray-800">
-                {formatDate(booking.booking_date)} · {booking.booking_time}
+                {formatDate(booking.date)} · {booking.time}
               </p>
             </div>
             <div>

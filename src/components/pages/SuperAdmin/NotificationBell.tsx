@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import type { Notifications } from "../../../pages/Superadmin/types";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 
 export const NotificationBell: React.FC<{
-  notifications: Notifications;
-  onReview: (kind: "restaurant" | "booking") => void;
-}> = ({ notifications, onReview }) => {
+  pendingBookings: number;
+  onReview: () => void;
+}> = ({ pendingBookings, onReview }) => {
   const [open, setOpen] = useState(false);
   const ref = useClickOutside(() => setOpen(false));
 
-  const total =
-    notifications.pending_restaurant_approvals +
-    notifications.pending_booking_approvals;
+  const total = pendingBookings;
 
   return (
     <div className="relative" ref={ref}>
@@ -39,34 +36,15 @@ export const NotificationBell: React.FC<{
             <div className="flex items-center justify-between gap-3 px-4 py-3">
               <div className="min-w-0">
                 <p className="text-sm font-medium text-gray-800">
-                  Restaurant approvals
-                </p>
-                <p className="truncate text-xs text-gray-500">
-                  {notifications.pending_restaurant_approvals} outlets waiting to go live
-                </p>
-              </div>
-              <button
-                onClick={() => {
-                  onReview("restaurant");
-                  setOpen(false);
-                }}
-                className="shrink-0 rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-600 hover:bg-primary-100"
-              >
-                Review
-              </button>
-            </div>
-            <div className="flex items-center justify-between gap-3 px-4 py-3">
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-gray-800">
                   Booking approvals
                 </p>
                 <p className="truncate text-xs text-gray-500">
-                  {notifications.pending_booking_approvals} bookings need a response
+                  {pendingBookings} bookings need a response
                 </p>
               </div>
               <button
                 onClick={() => {
-                  onReview("booking");
+                  onReview();
                   setOpen(false);
                 }}
                 className="shrink-0 rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-600 hover:bg-primary-100"

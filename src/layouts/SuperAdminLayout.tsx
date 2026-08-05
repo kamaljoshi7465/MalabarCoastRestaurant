@@ -5,7 +5,7 @@ import { NotificationBell } from "../components/pages/SuperAdmin/NotificationBel
 import { ToastStack, type Toast } from "../components/pages/SuperAdmin/Toast";
 import { clearSuperAdminToken } from "../api/tokens";
 import { CalendarDays, LayoutDashboard, UtensilsCrossed, type LucideIcon } from "lucide-react";
-import type { AdminProfile, Notifications, Summary } from "../pages/Superadmin/types";
+import type { AdminProfile, Summary } from "../pages/Superadmin/types";
 
 export type NavKey = "overview" | "restaurants" | "bookings";
 
@@ -53,10 +53,10 @@ const SidebarContent: React.FC<{
 
     <div className="mx-3 mb-6 rounded-xl bg-primary-600/60 p-4 text-xs text-primary-100">
       <p className="font-semibold text-secondary-50">
-        {summary.active_restaurants} restaurants live
+        {summary.total_restaurants} restaurants on the platform
       </p>
       <p className="mt-1">
-        {summary.inactive_restaurants} awaiting reactivation
+        {summary.pending_bookings} bookings awaiting review
       </p>
     </div>
   </>
@@ -67,9 +67,8 @@ export const SuperAdminLayout: React.FC<{
   title: string;
   subtitle?: string;
   summary: Summary;
-  notifications: Notifications;
   admin: AdminProfile;
-  onBellReview: (kind: "restaurant" | "booking") => void;
+  onBellReview: () => void;
   onLogout: () => void;
   toasts: Toast[];
   children: React.ReactNode;
@@ -78,7 +77,6 @@ export const SuperAdminLayout: React.FC<{
   title,
   subtitle,
   summary,
-  notifications,
   admin,
   onBellReview,
   onLogout,
@@ -153,7 +151,7 @@ export const SuperAdminLayout: React.FC<{
               </div>
             </div>
             <div className="flex shrink-0 items-center gap-2 sm:gap-4">
-              <NotificationBell notifications={notifications} onReview={onBellReview} />
+              <NotificationBell pendingBookings={summary.pending_bookings} onReview={onBellReview} />
               <AdminProfileMenu admin={admin} onLogout={handleLogout} />
             </div>
           </header>

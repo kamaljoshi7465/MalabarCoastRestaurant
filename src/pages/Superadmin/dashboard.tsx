@@ -3,19 +3,19 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { ADMIN_PROFILE } from "./data";
 import { formatNumber, formatDate } from "./utils";
-import { RestaurantStatusPill, StatusPill } from "../../components/pages/SuperAdmin/StatusPill";
+import { StatusPill } from "../../components/pages/SuperAdmin/StatusPill";
 import { useToasts } from "../../components/admin/Toast";
 import { useSuperAdminDashboard } from "../../hooks/useSuperAdminDashboard";
 import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
 import { StatCard } from "../../components/admin/StatCard";
 import { WeeklyBookingsChart } from "../../components/pages/SuperAdmin/WeeklyBookingsChart";
-import type { BookingStatus, FlatBooking, RestaurantBookingSummary } from "./types";
+import type { BookingStatus, PlatformBooking, PlatformRestaurant } from "./types";
 
 const RESTAURANT_PREVIEW_LIMIT = 5;
 const BOOKINGS_PREVIEW_LIMIT = 5;
 
 const RestaurantPerformancePreview: React.FC<{
-  rows: RestaurantBookingSummary[];
+  rows: PlatformRestaurant[];
 }> = ({ rows }) => {
   const top5 = useMemo(
     () => [...rows].sort((a, b) => b.total_bookings - a.total_bookings).slice(0, RESTAURANT_PREVIEW_LIMIT),
@@ -44,12 +44,11 @@ const RestaurantPerformancePreview: React.FC<{
         </Link>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[760px] text-sm">
+        <table className="w-full min-w-[680px] text-sm">
           <thead>
             <tr className="bg-secondary-100 text-left text-xs uppercase tracking-wider text-gray-500">
               <th className="whitespace-nowrap px-6 py-3 font-semibold">Restaurant</th>
-              <th className="whitespace-nowrap px-4 py-3 font-semibold">Status</th>
-              <th className="whitespace-nowrap px-4 py-3 font-semibold text-right">Today</th>
+              <th className="whitespace-nowrap px-4 py-3 font-semibold">Owner</th>
               <th className="whitespace-nowrap px-4 py-3 font-semibold text-right">Pending</th>
               <th className="whitespace-nowrap px-6 py-3 font-semibold text-right">Total</th>
               <th className="whitespace-nowrap px-6 py-3 font-semibold text-right">Details</th>
@@ -57,19 +56,16 @@ const RestaurantPerformancePreview: React.FC<{
           </thead>
           <tbody className="divide-y divide-gray-100">
             {top5.map((r) => (
-              <tr key={r.restaurant_id} className="hover:bg-secondary-50">
+              <tr key={r.id} className="hover:bg-secondary-50">
                 <td className="px-6 py-4 font-medium text-gray-800">
                   <Link
-                    to={`/super-admin-dashboard/restaurants/${r.restaurant_id}`}
+                    to={`/super-admin-dashboard/restaurants/${r.id}`}
                     className="hover:text-primary-600 hover:underline"
                   >
                     {r.restaurant_name}
                   </Link>
                 </td>
-                <td className="px-4 py-4">
-                  <RestaurantStatusPill status={r.status} />
-                </td>
-                <td className="px-4 py-4 text-right text-gray-600">{r.today_bookings}</td>
+                <td className="px-4 py-4 text-gray-600">{r.owner_name}</td>
                 <td className="px-4 py-4 text-right">
                   <span className="font-semibold text-accent-500">{r.pending_bookings}</span>
                 </td>
@@ -78,7 +74,7 @@ const RestaurantPerformancePreview: React.FC<{
                 </td>
                 <td className="px-6 py-4 text-right">
                   <Link
-                    to={`/super-admin-dashboard/restaurants/${r.restaurant_id}`}
+                    to={`/super-admin-dashboard/restaurants/${r.id}`}
                     className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-600 hover:bg-primary-100"
                   >
                     View
@@ -97,21 +93,13 @@ const RestaurantPerformancePreview: React.FC<{
 };
 
 /* ============================================================================
-   LIVE BOOKINGS PREVIEW — 5 latest bookings + "view all"
+   LIVE BOOKINGS PREVIEW — 5 most recent bookings + "view all"
    ============================================================================ */
 
-const LiveBookingsPreview: React.FC<{ flatBookings: FlatBooking[] }> = ({
-  flatBookings,
+const LiveBookingsPreview: React.FC<{ bookings: PlatformBooking[] }> = ({
+  bookings,
 }) => {
-  const latest5 = useMemo(
-    () =>
-      [...flatBookings]
-        .sort((a, b) =>
-          `${b.booking_date}T${b.booking_time}`.localeCompare(`${a.booking_date}T${a.booking_time}`)
-        )
-        .slice(0, BOOKINGS_PREVIEW_LIMIT),
-    [flatBookings]
-  );
+  const latest5 = useMemo(() => bookings.slice(0, BOOKINGS_PREVIEW_LIMIT), [bookings]);
 
   return (
     <div className="card overflow-hidden bg-white">
@@ -119,7 +107,7 @@ const LiveBookingsPreview: React.FC<{ flatBookings: FlatBooking[] }> = ({
         <div>
           <h3 className="font-serif text-lg text-primary-700 sm:text-xl">Live Bookings</h3>
           <p className="text-sm text-gray-500">
-            Showing {latest5.length} of {flatBookings.length} bookings
+            Showing {latest5.length} of {bookings.length} recent bookings
           </p>
         </div>
         <Link
@@ -145,12 +133,12 @@ const LiveBookingsPreview: React.FC<{ flatBookings: FlatBooking[] }> = ({
           </thead>
           <tbody className="divide-y divide-gray-100">
             {latest5.map((b) => (
-              <tr key={b.booking_id} className="hover:bg-secondary-50">
+              <tr key={b.id} className="hover:bg-secondary-50">
                 <td className="px-6 py-4 font-mono text-xs text-gray-600">{b.booking_number}</td>
-                <td className="px-4 py-4 font-medium text-gray-800">{b.customer_name}</td>
-                <td className="px-4 py-4 text-gray-600">{b.restaurant_name}</td>
+                <td className="px-4 py-4 font-medium text-gray-800">{b.name}</td>
+                <td className="px-4 py-4 text-gray-600">{b.restaurant}</td>
                 <td className="whitespace-nowrap px-4 py-4 text-gray-600">
-                  {formatDate(b.booking_date)} · {b.booking_time}
+                  {formatDate(b.date)} · {b.time}
                 </td>
                 <td className="px-6 py-4 text-right">
                   <StatusPill status={b.status} />
@@ -173,28 +161,12 @@ const SuperAdminDashboard: React.FC = () => {
   const { toasts, push } = useToasts();
   const navigate = useNavigate();
 
-  const flatBookings: FlatBooking[] = useMemo(
-    () =>
-      (data?.restaurant_bookings ?? []).flatMap((r) =>
-        r.bookings.map((b) => ({
-          ...b,
-          restaurant_id: r.restaurant_id,
-          restaurant_name: r.restaurant_name,
-        }))
-      ),
-    [data]
-  );
-
   const goToBookings = (status: BookingStatus | "ALL") => {
     navigate(status === "ALL" ? "/super-admin-dashboard/bookings" : `/super-admin-dashboard/bookings?status=${status}`);
   };
 
-  const handleBellReview = (kind: "restaurant" | "booking") => {
-    if (kind === "booking") {
-      goToBookings("PENDING");
-    } else {
-      navigate("/super-admin-dashboard/restaurants");
-    }
+  const handleBellReview = () => {
+    goToBookings("PENDING");
   };
 
   if (unauthorized) {
@@ -220,7 +192,7 @@ const SuperAdminDashboard: React.FC = () => {
     );
   }
 
-  const { summary, restaurant_booking_summary, chart_data, notifications } = data;
+  const { summary, restaurants, recent_bookings, chart_data } = data;
 
   return (
     <SuperAdminLayout
@@ -228,7 +200,6 @@ const SuperAdminDashboard: React.FC = () => {
       title="Dashboard Overview"
       subtitle="Platform-wide snapshot"
       summary={summary}
-      notifications={notifications}
       admin={ADMIN_PROFILE}
       onBellReview={handleBellReview}
       onLogout={() => {
@@ -239,10 +210,8 @@ const SuperAdminDashboard: React.FC = () => {
     >
       {/* Restaurant summary row */}
       <section>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="max-w-xs">
           <StatCard label="Total Restaurants" value={summary.total_restaurants} accent="primary" />
-          <StatCard label="Active Restaurants" value={summary.active_restaurants} accent="primary" />
-          <StatCard label="Inactive Restaurants" value={summary.inactive_restaurants} accent="neutral" />
         </div>
       </section>
 
@@ -290,11 +259,10 @@ const SuperAdminDashboard: React.FC = () => {
             accent="neutral"
             onClick={() => goToBookings("REJECTED")}
           />
-          <StatCard label="No Show" value={summary.no_show_bookings} accent="neutral" />
         </div>
       </section>
 
-      {/* Chart + notifications */}
+      {/* Chart + pending bookings shortcut */}
       <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <WeeklyBookingsChart points={chart_data.weekly_bookings} />
@@ -306,21 +274,12 @@ const SuperAdminDashboard: React.FC = () => {
           </p>
           <div className="mt-5 space-y-3">
             <button
-              onClick={() => navigate("/super-admin-dashboard/restaurants")}
-              className="flex w-full items-center justify-between rounded-lg bg-primary-700/60 px-4 py-3 text-left transition-colors hover:bg-primary-700"
-            >
-              <span className="text-sm text-primary-50">Restaurant approvals</span>
-              <span className="rounded-full bg-accent-400 px-2.5 py-0.5 text-sm font-bold text-primary-900">
-                {notifications.pending_restaurant_approvals}
-              </span>
-            </button>
-            <button
               onClick={() => goToBookings("PENDING")}
               className="flex w-full items-center justify-between rounded-lg bg-primary-700/60 px-4 py-3 text-left transition-colors hover:bg-primary-700"
             >
               <span className="text-sm text-primary-50">Booking approvals</span>
               <span className="rounded-full bg-accent-400 px-2.5 py-0.5 text-sm font-bold text-primary-900">
-                {notifications.pending_booking_approvals}
+                {summary.pending_bookings}
               </span>
             </button>
           </div>
@@ -329,12 +288,12 @@ const SuperAdminDashboard: React.FC = () => {
 
       {/* Restaurant performance preview — top 5 + view all */}
       <section>
-        <RestaurantPerformancePreview rows={restaurant_booking_summary} />
+        <RestaurantPerformancePreview rows={restaurants} />
       </section>
 
       {/* Live bookings preview — latest 5 + view all */}
       <section>
-        <LiveBookingsPreview flatBookings={flatBookings} />
+        <LiveBookingsPreview bookings={recent_bookings} />
       </section>
     </SuperAdminLayout>
   );

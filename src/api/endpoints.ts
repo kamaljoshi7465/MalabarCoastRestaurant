@@ -11,7 +11,7 @@ export const ENDPOINTS = {
   superAdminLogin: "/superadmin/login",
   restaurantDashboard: "/restaurant/dashboard",
   bookingSlots: "/restaurant/booking-slots",
-  superAdminDashboard: "/super-admin/dashboard",
+  superAdminDashboard: "/superadmin/dashboard",
   bookingSlotStatus: "/admin/booking-slots/status",
   bookingStatus: "/admin/bookings/status",
 } as const;
