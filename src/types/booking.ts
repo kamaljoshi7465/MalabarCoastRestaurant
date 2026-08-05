@@ -24,13 +24,14 @@ export interface FlatBooking extends Booking {
 /* POST /booking — no auth */
 export interface CreateBookingRequest {
   outlet_id: number;
-  customer_name: string;
-  email: string;
-  phone: string;
-  booking_date: string;
-  booking_time: string;
+  date: string;
+  time: string;
   guests: number;
   occasion?: string;
+  name: string;
+  email: string;
+  phone: string;
+  special_requests?: string;
 }
 
 /* POST /booking/send-otp — no auth */
@@ -39,7 +40,7 @@ export interface SendOtpRequest {
 }
 
 export interface SendOtpResponseData {
-  otp_expires_in: number;
+  expires_in: string;
 }
 
 /* POST /booking/verify-otp — no auth */
@@ -52,6 +53,26 @@ export interface VerifyOtpResponseData {
   token: string;
 }
 
+/* GET /bookings — OTP token; a customer's own booking history */
+export interface CustomerBooking {
+  id: number;
+  booking_number: string;
+  restaurant: string;
+  outlet_name: string;
+  status: BookingStatus;
+  cancel_reason: string | null;
+  created_at: string;
+  outlet_id: number;
+  date: string;
+  time: string;
+  guests: number;
+  occasion: string | null;
+  name: string;
+  email: string;
+  phone: string;
+  special_requests: string | null;
+}
+
 /* PATCH /bookings/:id/cancel — OTP token */
 export interface CancelBookingRequest {
   reason?: string;
@@ -59,6 +80,7 @@ export interface CancelBookingRequest {
 
 /* PATCH /bookings/:id/reschedule — OTP token */
 export interface RescheduleBookingRequest {
-  booking_date: string;
-  booking_time: string;
+  date: string;
+  time: string;
+  guests: number;
 }

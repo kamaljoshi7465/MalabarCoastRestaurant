@@ -33,6 +33,7 @@ import RestaurantLogin from '../pages/Auth/RestaurantLogin';
 import RestaurantSignup from '../pages/Auth/RestaurantSignup';
 import SuperAdminLogin from '../pages/Auth/SuperAdminLogin';
 import SuperAdminSignup from '../pages/Auth/SuperAdminSignup';
+import { RequireRestaurantAuth, RequireSuperAdminAuth } from './RequireAuth';
 
 const AppRoutes = () => (
   <Routes>
@@ -50,24 +51,33 @@ const AppRoutes = () => (
       <Route path="/stories" element={<Stories />} />
       <Route path="/stories/:slug" element={<StoryDetails />} />
       <Route path="/careers" element={<Careers />} />
-      <Route path="/terms" element={<Terms />} />
-      <Route path="/privacy" element={<Privacy />} />
-      <Route path="/cookie-policy" element={<Cookie />} />
-      <Route path="/shipping-policy" element={<Shipping />} />
-      <Route path="/refund-policy" element={<Refund />} />
     </Route>
+
+    <Route path="/terms" element={<Terms />} />
+    <Route path="/privacy" element={<Privacy />} />
+    <Route path="/cookie-policy" element={<Cookie />} />
+    <Route path="/shipping-policy" element={<Shipping />} />
+    <Route path="/refund-policy" element={<Refund />} />
+
     <Route path="/restaurant-login" element={<RestaurantLogin />} />
     <Route path="/restaurant-signup" element={<RestaurantSignup />} />
     <Route path="/super-admin-login" element={<SuperAdminLogin />} />
     <Route path="/super-admin-signup" element={<SuperAdminSignup />} />
-    <Route path="/super-admin-dashboard" element={<SuperAdminDashboard />} />
-    <Route path="/super-admin-dashboard/restaurants" element={<SuperAdminRestaurants />} />
-    <Route path="/super-admin-dashboard/restaurants/:restaurantId" element={<SuperAdminRestaurantDetail />} />
-    <Route path="/super-admin-dashboard/bookings" element={<SuperAdminBookings />} />
-    <Route path="/restaurant-dashboard" element={<RestaurantOverview />} />
-    <Route path="/restaurant-dashboard/bookings" element={<RestaurantBookings />} />
-    <Route path="/restaurant-dashboard/slots" element={<RestaurantSlots />} />
-    <Route path="/restaurant-dashboard/analytics" element={<RestaurantAnalytics />} />
+
+    <Route element={<RequireSuperAdminAuth />}>
+      <Route path="/super-admin-dashboard" element={<SuperAdminDashboard />} />
+      <Route path="/super-admin-dashboard/restaurants" element={<SuperAdminRestaurants />} />
+      <Route path="/super-admin-dashboard/restaurants/:restaurantId" element={<SuperAdminRestaurantDetail />} />
+      <Route path="/super-admin-dashboard/bookings" element={<SuperAdminBookings />} />
+    </Route>
+
+    <Route element={<RequireRestaurantAuth />}>
+      <Route path="/restaurant-dashboard" element={<RestaurantOverview />} />
+      <Route path="/restaurant-dashboard/bookings" element={<RestaurantBookings />} />
+      <Route path="/restaurant-dashboard/slots" element={<RestaurantSlots />} />
+      <Route path="/restaurant-dashboard/analytics" element={<RestaurantAnalytics />} />
+    </Route>
+
     <Route path="*" element={<NotFound />} />
   </Routes>
 )

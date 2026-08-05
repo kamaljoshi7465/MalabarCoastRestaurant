@@ -1,14 +1,13 @@
 import React, { useMemo, useState } from "react";
-import type { DaySlot, SlotStatusUpdateRequest } from "../../../pages/RestaurantAdmin/types";
+import type { BookingSlot, SlotStatusUpdateRequest } from "../../../pages/RestaurantAdmin/types";
 import { formatDate, formatTime } from "../../../pages/RestaurantAdmin/utils";
 
 const DEFAULT_REASON = "Restaurant Full";
-const HIGH_DEMAND_THRESHOLD = 4;
 
 export const SlotAvailabilityManager: React.FC<{
   outletId: number;
   date: string;
-  slots: DaySlot[];
+  slots: BookingSlot[];
   onUpdate: (request: SlotStatusUpdateRequest) => void;
 }> = ({ outletId, date, slots, onUpdate }) => {
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -127,7 +126,7 @@ export const SlotAvailabilityManager: React.FC<{
             <button
               key={slot.time}
               onClick={() => toggleSelect(slot.time)}
-              title={isDisabled ? slot.reason : undefined}
+              title={isDisabled ? (slot.reason ?? undefined) : undefined}
               className={`flex flex-col items-start gap-0.5 rounded-xl border px-3 py-2.5 text-left transition-colors cursor-pointer ${
                 isSelected
                   ? "border-primary-500 ring-2 ring-primary-100"
@@ -142,12 +141,7 @@ export const SlotAvailabilityManager: React.FC<{
               {isDisabled ? (
                 <span className="text-[11px] font-medium text-error">Disabled</span>
               ) : (
-                <span className="flex items-center gap-1 text-[11px] text-gray-500">
-                  {slot.demand} booking{slot.demand === 1 ? "" : "s"}
-                  {slot.demand >= HIGH_DEMAND_THRESHOLD && (
-                    <span className="font-medium text-accent-500">· High demand</span>
-                  )}
-                </span>
+                <span className="text-[11px] text-gray-500">Open</span>
               )}
             </button>
           );

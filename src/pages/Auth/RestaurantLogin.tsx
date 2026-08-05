@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Mail, Lock, Loader2, ShieldCheck } from "lucide-react";
 import AuthShell from "./components/AuthShell";
 import AuthField from "./components/AuthField";
 import { useToasts } from "../../components/admin/Toast";
+import { useRestaurantLogin } from "../../hooks/useRestaurantLogin";
+import { getAdminToken } from "../../api/tokens";
 
 const RestaurantLogin: React.FC = () => {
   const navigate = useNavigate();
   const { toasts, push } = useToasts();
+  const { mutate: login, loading: submitting } = useRestaurantLogin();
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
-  const [submitting, setSubmitting] = useState(false);
+
+  if (getAdminToken()) return <Navigate to="/restaurant-dashboard" replace />;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,16 +29,17 @@ const RestaurantLogin: React.FC = () => {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
-    setSubmitting(true);
-    window.setTimeout(() => {
-      setSubmitting(false);
+    try {
+      await login({ email: form.email, password: form.password });
       push("Signed in successfully", "success");
       navigate("/restaurant-dashboard");
-    }, 700);
+    } catch (err) {
+      push(err instanceof Error ? err.message : "Something went wrong. Please try again.", "error");
+    }
   };
 
   return (
@@ -88,15 +93,15 @@ const RestaurantLogin: React.FC = () => {
             <input type="checkbox" className="size-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
             Remember me
           </label>
-          <button type="button" className="font-medium text-primary-600 hover:text-primary-700">
+          {/* <button type="button" className="font-medium text-primary-600 hover:text-primary-700">
             Forgot password?
-          </button>
+          </button> */}
         </div>
 
         <button
           type="submit"
           disabled={submitting}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 py-3.5 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 py-3.5 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
         >
           {submitting && <Loader2 className="size-4 animate-spin" />}
           {submitting ? "Signing in..." : "Sign In"}

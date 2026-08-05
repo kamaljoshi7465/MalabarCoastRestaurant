@@ -16,6 +16,7 @@ export const dashboardData: DashboardApiResponse = {
       completed_bookings: 13894,
       cancelled_bookings: 386,
       rejected_bookings: 34,
+      no_show_bookings: 254,
     },
     restaurant_booking_summary: [
       {

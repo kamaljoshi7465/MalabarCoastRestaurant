@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LayoutDashboard, CalendarDays, Clock, BarChart3, type LucideIcon } from "lucide-react";
 import { ToastStack, type Toast } from "../components/admin/Toast";
-import type { RestaurantInfo, TodayInfo } from "../pages/RestaurantAdmin/types";
+import { clearAdminToken } from "../api/tokens";
+import { RestaurantNotificationBell } from "../components/pages/RestaurantsAdmin/RestaurantNotificationBell";
+import type { RestaurantInfo, RestaurantNotifications, TodayInfo } from "../pages/RestaurantAdmin/types";
 
 export type RestaurantNavKey = "overview" | "bookings" | "slots" | "analytics";
 
@@ -12,23 +14,6 @@ const NAV_ITEMS: { key: RestaurantNavKey; label: string; icon: LucideIcon; to: s
   { key: "slots", label: "Slot Availability", icon: Clock, to: "/restaurant-dashboard/slots" },
   { key: "analytics", label: "Analytics", icon: BarChart3, to: "/restaurant-dashboard/analytics" },
 ];
-
-const RequestsBell: React.FC<{ count: number; onClick: () => void }> = ({ count, onClick }) => (
-  <button
-    onClick={onClick}
-    className="relative rounded-full p-2.5 text-primary-700 ring-1 ring-gray-200 transition-colors hover:bg-white cursor-pointer"
-    aria-label="Pending booking approvals"
-  >
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2a2 2 0 01-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-    </svg>
-    {count > 0 && (
-      <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-accent-400 text-[10px] font-bold text-primary-900">
-        {count > 9 ? "9+" : count}
-      </span>
-    )}
-  </button>
-);
 
 const SidebarContent: React.FC<{
   restaurant: RestaurantInfo;
@@ -80,11 +65,11 @@ export const RestaurantAdminLayout: React.FC<{
   subtitle?: string;
   restaurant: RestaurantInfo;
   today: TodayInfo;
-  pendingApproval: number;
+  notifications: RestaurantNotifications;
   onLogout: () => void;
   toasts: Toast[];
   children: React.ReactNode;
-}> = ({ active, title, subtitle, restaurant, today, pendingApproval, onLogout, toasts, children }) => {
+}> = ({ active, title, subtitle, restaurant, today, notifications, onLogout, toasts, children }) => {
   const navigate = useNavigate();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -95,7 +80,13 @@ export const RestaurantAdminLayout: React.FC<{
     };
   }, [mobileNavOpen]);
 
-  const goToPendingApprovals = () => navigate("/restaurant-dashboard/bookings?status=PENDING");
+  const handleBellReview = (kind: "pending" | "reschedule" | "cancel") => {
+    navigate(kind === "pending" ? "/restaurant-dashboard/bookings?status=PENDING" : "/restaurant-dashboard/bookings");
+  };
+  const handleLogout = () => {
+    clearAdminToken();
+    onLogout();
+  };
 
   return (
     <div className="min-h-screen bg-secondary-100 font-sans text-gray-800">
@@ -149,9 +140,9 @@ export const RestaurantAdminLayout: React.FC<{
               </div>
             </div>
             <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-              <RequestsBell count={pendingApproval} onClick={goToPendingApprovals} />
+              <RestaurantNotificationBell notifications={notifications} onReview={handleBellReview} />
               <button
-                onClick={onLogout}
+                onClick={handleLogout}
                 className="rounded-full bg-primary-700 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-primary-800 cursor-pointer sm:px-4"
               >
                 Log out

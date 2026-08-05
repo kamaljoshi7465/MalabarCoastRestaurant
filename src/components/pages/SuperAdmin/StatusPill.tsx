@@ -1,5 +1,5 @@
 import React from "react";
-import type { RestaurantStatus } from "../types";
+import type { RestaurantStatus } from "../../../pages/Superadmin/types";
 
 export {
   BOOKING_STATUS_LABEL,

@@ -1,5 +1,5 @@
 import type { ApiResponse } from "../types/api";
-import { getAdminToken, getOtpToken, getSuperAdminToken } from "./tokens";
+import { clearAdminToken, clearOtpToken, clearSuperAdminToken, getAdminToken, getOtpToken, getSuperAdminToken } from "./tokens";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
 
@@ -50,6 +50,11 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
   const payload = (await response.json().catch(() => null)) as ApiResponse<T> | null;
 
   if (!response.ok || !payload || !payload.success) {
+    if (response.status === 401) {
+      if (auth === "admin") clearAdminToken();
+      else if (auth === "super-admin") clearSuperAdminToken();
+      else if (auth === "otp") clearOtpToken();
+    }
     throw new ApiError(payload?.message ?? `Request failed with status ${response.status}`, response.status);
   }
 

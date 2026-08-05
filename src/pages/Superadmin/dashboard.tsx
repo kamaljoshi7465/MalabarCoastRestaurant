@@ -1,9 +1,11 @@
 import React, { useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { API_RESPONSE, ADMIN_PROFILE } from "./data";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
+import { ADMIN_PROFILE } from "./data";
 import { formatNumber, formatDate } from "./utils";
 import { RestaurantStatusPill, StatusPill } from "../../components/pages/SuperAdmin/StatusPill";
 import { useToasts } from "../../components/admin/Toast";
+import { useSuperAdminDashboard } from "../../hooks/useSuperAdminDashboard";
 import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
 import { StatCard } from "../../components/admin/StatCard";
 import { WeeklyBookingsChart } from "../../components/pages/SuperAdmin/WeeklyBookingsChart";
@@ -167,22 +169,20 @@ const LiveBookingsPreview: React.FC<{ flatBookings: FlatBooking[] }> = ({
    ============================================================================ */
 
 const SuperAdminDashboard: React.FC = () => {
-  const { data } = API_RESPONSE;
-  const { summary, restaurant_booking_summary, restaurant_bookings, chart_data, notifications } = data;
-
+  const { data, loading, error, unauthorized, refetch } = useSuperAdminDashboard();
   const { toasts, push } = useToasts();
   const navigate = useNavigate();
 
   const flatBookings: FlatBooking[] = useMemo(
     () =>
-      restaurant_bookings.flatMap((r) =>
+      (data?.restaurant_bookings ?? []).flatMap((r) =>
         r.bookings.map((b) => ({
           ...b,
           restaurant_id: r.restaurant_id,
           restaurant_name: r.restaurant_name,
         }))
       ),
-    [restaurant_bookings]
+    [data]
   );
 
   const goToBookings = (status: BookingStatus | "ALL") => {
@@ -197,11 +197,36 @@ const SuperAdminDashboard: React.FC = () => {
     }
   };
 
+  if (unauthorized) {
+    return <Navigate to="/super-admin-login" replace />;
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-secondary-100 px-4 text-center">
+        <p className="text-sm text-error">{error}</p>
+        <button onClick={refetch} className="rounded-full bg-primary-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (loading || !data) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-secondary-100">
+        <Loader2 className="size-6 animate-spin text-primary-600" />
+      </div>
+    );
+  }
+
+  const { summary, restaurant_booking_summary, chart_data, notifications } = data;
+
   return (
     <SuperAdminLayout
       active="overview"
       title="Dashboard Overview"
-      subtitle="Monday, August 3, 2026 — platform-wide snapshot"
+      subtitle="Platform-wide snapshot"
       summary={summary}
       notifications={notifications}
       admin={ADMIN_PROFILE}
@@ -265,6 +290,7 @@ const SuperAdminDashboard: React.FC = () => {
             accent="neutral"
             onClick={() => goToBookings("REJECTED")}
           />
+          <StatCard label="No Show" value={summary.no_show_bookings} accent="neutral" />
         </div>
       </section>
 

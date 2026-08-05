@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AdminProfileMenu } from "../components/pages/SuperAdmin/AdminProfileMenu";
 import { NotificationBell } from "../components/pages/SuperAdmin/NotificationBell";
 import { ToastStack, type Toast } from "../components/pages/SuperAdmin/Toast";
+import { clearSuperAdminToken } from "../api/tokens";
 import { CalendarDays, LayoutDashboard, UtensilsCrossed, type LucideIcon } from "lucide-react";
 import type { AdminProfile, Notifications, Summary } from "../pages/Superadmin/types";
 
@@ -93,6 +94,11 @@ export const SuperAdminLayout: React.FC<{
     };
   }, [mobileNavOpen]);
 
+  const handleLogout = () => {
+    clearSuperAdminToken();
+    onLogout();
+  };
+
   return (
     <div className="min-h-screen bg-secondary-100 font-sans text-gray-800">
       <div className="flex">
@@ -148,7 +154,7 @@ export const SuperAdminLayout: React.FC<{
             </div>
             <div className="flex shrink-0 items-center gap-2 sm:gap-4">
               <NotificationBell notifications={notifications} onReview={onBellReview} />
-              <AdminProfileMenu admin={admin} onLogout={onLogout} />
+              <AdminProfileMenu admin={admin} onLogout={handleLogout} />
             </div>
           </header>
 

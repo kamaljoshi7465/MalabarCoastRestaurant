@@ -1,20 +1,67 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 import { StatCard } from "../../components/admin/StatCard";
 import { useToasts } from "../../components/admin/Toast";
-import { RESTAURANT_API_RESPONSE } from "./data";
+import { useRestaurantDashboard } from "../../hooks/useRestaurantDashboard";
+import { useBookingSlots } from "../../hooks/useBookingSlots";
 import { formatDate } from "./utils";
 import { RestaurantAdminLayout } from "../../layouts/RestaurantAdminLayout";
 import { TodayAvailabilityCard } from "../../components/pages/RestaurantsAdmin/TodayAvailabilityCard";
+import { OUTLETS } from "../../data/home/restaurant/RestaurantsSection.data";
+import { getOutletTimeSlots, isWeekend } from "../../data/reservations/reservationDetails.data";
+
+const todayIso = () => new Date().toISOString().slice(0, 10);
 
 const RestaurantOverview: React.FC = () => {
   const navigate = useNavigate();
-  const { data } = RESTAURANT_API_RESPONSE;
-  const { restaurant, today, summary, notifications } = data;
-
+  const { data, loading, error, unauthorized, refetch } = useRestaurantDashboard();
+  const { data: slots } = useBookingSlots(todayIso());
   const { toasts, push } = useToasts();
 
   const goToPendingApprovals = () => navigate("/restaurant-dashboard/bookings?status=PENDING");
+
+  if (unauthorized) {
+    return <Navigate to="/restaurant-login" replace />;
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-secondary-100 px-4 text-center">
+        <p className="text-sm text-error">{error}</p>
+        <button onClick={refetch} className="rounded-full bg-primary-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (loading || !data) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-secondary-100">
+        <Loader2 className="size-6 animate-spin text-primary-600" />
+      </div>
+    );
+  }
+
+  const { restaurant, today, summary, notifications } = data;
+
+  // Same fix as the Slots tab: the API only returns slots with an explicit override,
+  // so build the full day from the outlet's hours and default to ENABLED before
+  // layering in whatever the API actually returned for today.
+  const outlet = OUTLETS.find((o) => Number(o.id) === restaurant.id);
+  const hoursRange = outlet ? (isWeekend(today.date) ? outlet.hours.weekend : outlet.hours.weekday) : null;
+  const fullDaySlots = hoursRange
+    ? getOutletTimeSlots(hoursRange).map(({ value }) => {
+        const override = (slots ?? []).find((s) => s.time === value);
+        return override ?? { outlet_id: restaurant.id, date: today.date, time: value, status: "ENABLED" as const, reason: null };
+      })
+    : slots ?? [];
+  const liveToday = {
+    ...today,
+    available_slots: fullDaySlots.filter((s) => s.status === "ENABLED").length,
+    disabled_slots: fullDaySlots.filter((s) => s.status === "DISABLED").length,
+  };
 
   return (
     <RestaurantAdminLayout
@@ -22,15 +69,15 @@ const RestaurantOverview: React.FC = () => {
       title="Overview"
       subtitle={`${restaurant.outlet_name} · ${formatDate(today.date)}`}
       restaurant={restaurant}
-      today={today}
-      pendingApproval={notifications.pending_approval}
+      today={liveToday}
+      notifications={notifications}
       onLogout={() => {
         push("Logged out", "info");
         navigate("/restaurant-login");
       }}
       toasts={toasts}
     >
-      <TodayAvailabilityCard today={today} />
+      <TodayAvailabilityCard today={liveToday} />
 
       <section>
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">

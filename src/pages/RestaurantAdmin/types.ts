@@ -3,8 +3,9 @@ export type RestaurantBookingStatus =
   | "ACCEPTED"
   | "COMPLETED"
   | "CANCELLED"
-  | "REJECTED"
-  | "NO_SHOW";
+  | "REJECTED";
+  // | "NO_SHOW"
+  // | "CONFIRMED";
 
 export interface RestaurantInfo {
   id: number;
@@ -40,52 +41,6 @@ export interface ChartData {
   weekly_bookings: WeeklyBookingPoint[];
 }
 
-/* Today's bookings — no phone or date (implied "today"). */
-export interface TodayBooking {
-  booking_id: number;
-  booking_number: string;
-  customer_name: string;
-  guests: number;
-  booking_time: string;
-  status: RestaurantBookingStatus;
-}
-
-/* Upcoming bookings — the richest shape: has phone, date, and occasion. */
-export interface UpcomingBooking {
-  booking_id: number;
-  booking_number: string;
-  customer_name: string;
-  phone: string;
-  booking_date: string;
-  booking_time: string;
-  guests: number;
-  occasion: string;
-  status: RestaurantBookingStatus;
-}
-
-/* Recent activity — the leanest shape: no guests or phone, read-only. */
-export interface RecentBooking {
-  booking_id: number;
-  booking_number: string;
-  customer_name: string;
-  booking_date: string;
-  booking_time: string;
-  status: RestaurantBookingStatus;
-}
-
-/* Normalised shape used by the All Bookings table — a merge of today/upcoming/recent bookings. */
-export interface AnyBooking {
-  booking_id: number;
-  booking_number: string;
-  customer_name: string;
-  phone?: string;
-  booking_date: string;
-  booking_time: string;
-  guests?: number;
-  occasion?: string;
-  status: RestaurantBookingStatus;
-}
-
 export interface RestaurantNotifications {
   pending_approval: number;
   cancel_requests: number;
@@ -94,15 +49,16 @@ export interface RestaurantNotifications {
 
 export type SlotStatus = "ENABLED" | "DISABLED";
 
-/* A single bookable time slot for a given date. */
-export interface DaySlot {
+/* GET /restaurant/booking-slots?date= — a single bookable time slot for a given date. */
+export interface BookingSlot {
+  outlet_id: number;
+  date: string;
   time: string;
-  demand: number;
   status: SlotStatus;
-  reason?: string;
+  reason: string | null;
 }
 
-/* Mirrors the outlet slot-status PATCH request body. */
+/* POST /admin/booking-slots/status — enable/disable a batch of slots on a date. */
 export interface SlotStatusUpdateRequest {
   outlet_id: number;
   date: string;
@@ -118,21 +74,36 @@ export interface BookingStatusUpdateRequest {
   reason?: string;
 }
 
-export interface RestaurantDashboardData {
-  restaurant: RestaurantInfo;
-  today: TodayInfo;
-  summary: RestaurantSummary;
-  booking_status_count: BookingStatusCount;
-  chart_data: ChartData;
-  today_bookings: TodayBooking[];
-  upcoming_bookings: UpcomingBooking[];
-  recent_bookings: RecentBooking[];
-  notifications: RestaurantNotifications;
-  slot_availability: DaySlot[];
+/* GET /restaurant/dashboard — live API (admin auth). Booking-list items share one
+   rich shape across today/upcoming/recent lists (and can appear in more than one). */
+export interface RestaurantDashboardBooking {
+  id: number;
+  booking_number: string;
+  outlet_id: number;
+  restaurant: string;
+  outlet_name: string;
+  date: string;
+  time: string;
+  guests: number;
+  occasion: string | null;
+  name: string;
+  email: string;
+  phone: string;
+  special_requests: string | null;
+  status: RestaurantBookingStatus;
+  cancel_reason: string | null;
+  rejection_reason: string | null;
+  created_at: string;
 }
 
-export interface RestaurantDashboardApiResponse {
-  success: boolean;
-  message: string;
-  data: RestaurantDashboardData;
+export interface RestaurantDashboardOverview {
+  restaurant: RestaurantInfo;
+  summary: RestaurantSummary;
+  today: TodayInfo;
+  booking_status_count: BookingStatusCount;
+  upcoming_bookings: RestaurantDashboardBooking[];
+  today_bookings: RestaurantDashboardBooking[];
+  recent_bookings: RestaurantDashboardBooking[];
+  chart_data: ChartData;
+  notifications: RestaurantNotifications;
 }

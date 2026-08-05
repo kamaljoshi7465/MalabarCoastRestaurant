@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from "react";
 import { BOOKING_STATUS_LABEL, STATUS_ORDER } from "./RestaurantStatusPill";
 import { BookingCard } from "./BookingCard";
-import type { RestaurantBookingStatus, UpcomingBooking } from "../types";
+import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 
 export const UpcomingBookingsExplorer: React.FC<{
-  bookings: UpcomingBooking[];
+  bookings: RestaurantDashboardBooking[];
   totalUpcoming: number;
   statusFilter: RestaurantBookingStatus | "ALL";
   onStatusFilterChange: (s: RestaurantBookingStatus | "ALL") => void;
-  onAct: (booking: UpcomingBooking, next: RestaurantBookingStatus) => void;
+  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
 }> = ({ bookings, totalUpcoming, statusFilter, onStatusFilterChange, onAct }) => {
   const [query, setQuery] = useState("");
 
@@ -18,7 +18,7 @@ export const UpcomingBookingsExplorer: React.FC<{
       const q = query.toLowerCase();
       const matchesQuery =
         !q ||
-        b.customer_name.toLowerCase().includes(q) ||
+        b.name.toLowerCase().includes(q) ||
         b.booking_number.toLowerCase().includes(q) ||
         b.phone.includes(q);
       return matchesStatus && matchesQuery;
@@ -29,9 +29,9 @@ export const UpcomingBookingsExplorer: React.FC<{
     <div className="card bg-white p-4 sm:p-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-serif text-lg text-primary-700 sm:text-xl">Today Upcoming Bookings</h3>
+          <h3 className="font-serif text-lg text-primary-700 sm:text-xl">Upcoming Bookings</h3>
           <p className="text-sm text-gray-500">
-            Showing {filtered.length} of {totalUpcoming} upcoming bookings today
+            Showing {filtered.length} of {totalUpcoming} upcoming bookings
           </p>
         </div>
         <div className="relative">
@@ -80,7 +80,7 @@ export const UpcomingBookingsExplorer: React.FC<{
       ) : (
         <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {filtered.map((b) => (
-            <BookingCard key={b.booking_id} booking={b} onAct={onAct} />
+            <BookingCard key={b.id} booking={b} onAct={onAct} />
           ))}
         </div>
       )}

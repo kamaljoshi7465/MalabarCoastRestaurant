@@ -1,17 +1,17 @@
 import React from "react";
 import { StatusPill } from "./RestaurantStatusPill";
-import type { RestaurantBookingStatus, UpcomingBooking } from "../../../pages/RestaurantAdmin/types";
+import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 import { formatDate } from "../../../pages/RestaurantAdmin/utils";
 
 export const BookingCard: React.FC<{
-  booking: UpcomingBooking;
-  onAct: (booking: UpcomingBooking, next: RestaurantBookingStatus) => void;
+  booking: RestaurantDashboardBooking;
+  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
 }> = ({ booking, onAct }) => (
   <div className="card flex flex-col gap-3 bg-white p-4">
     <div className="flex items-start justify-between gap-2">
       <div className="min-w-0">
         <p className="truncate font-serif text-base text-primary-700">
-          {booking.customer_name}
+          {booking.name}
         </p>
         <p className="truncate text-xs text-gray-500">{booking.booking_number}</p>
       </div>
@@ -28,7 +28,7 @@ export const BookingCard: React.FC<{
       <div>
         <p className="text-[11px] uppercase tracking-wide text-gray-400">Date &amp; time</p>
         <p className="font-medium text-gray-800">
-          {formatDate(booking.booking_date)} · {booking.booking_time}
+          {formatDate(booking.date)} · {booking.time}
         </p>
       </div>
       <div>

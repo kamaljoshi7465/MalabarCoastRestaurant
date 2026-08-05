@@ -1,9 +1,44 @@
-export const DATES = Array.from({ length: 30 }, (_, index) => {
-  const date = new Date(2026, 6, 23 + index);
-  return { value: date.toISOString().slice(0, 10), label: date.toLocaleDateString("en-IN", { weekday: "short", month: "short", day: "numeric", year: "numeric" }) };
-});
+export const isWeekend = (dateStr: string) => {
+  const day = new Date(`${dateStr}T00:00:00`).getDay();
+  return day === 0 || day === 6;
+};
 
-export const TIMES = ["12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM", "12:00 AM"].map((label, index) => ({ value: index === 24 ? "00:00" : `${String(12 + Math.floor(index / 2)).padStart(2, "0")}:${index % 2 ? "30" : "00"}`, label }));
+const parseHourLabel = (label: string): number => {
+  const match = label.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+  if (!match) return 0;
+  const [, hourStr, minuteStr, meridiem] = match;
+  const hour = (Number(hourStr) % 12) + (meridiem.toUpperCase() === "PM" ? 12 : 0);
+  return hour * 60 + Number(minuteStr);
+};
+
+const formatSlot = (minutes: number) => {
+  const normalized = ((minutes % 1440) + 1440) % 1440;
+  const hour24 = Math.floor(normalized / 60);
+  const minute = normalized % 60;
+  const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
+  return {
+    value: `${String(hour24).padStart(2, "0")}:${String(minute).padStart(2, "0")}`,
+    label: `${hour12}:${String(minute).padStart(2, "0")} ${hour24 < 12 ? "AM" : "PM"}`,
+  };
+};
+
+/** Converts a 24-hour "HH:MM" value (as returned by the booking API) into a "7:00 PM"-style label. */
+export const formatTimeLabel = (value: string) => {
+  const [hour, minute] = value.split(":").map(Number);
+  return formatSlot(hour * 60 + minute).label;
+};
+
+/** Half-hour slots spanning an outlet's "9:00 AM – 11:30 PM"-style hours range. */
+export const getOutletTimeSlots = (hoursRange: string) => {
+  const [openLabel, closeLabel] = hoursRange.split("–").map((part) => part.trim());
+  const open = parseHourLabel(openLabel);
+  const close = parseHourLabel(closeLabel);
+  const closeAdjusted = close <= open ? close + 24 * 60 : close;
+
+  const slots = [];
+  for (let minutes = open; minutes <= closeAdjusted; minutes += 30) slots.push(formatSlot(minutes));
+  return slots;
+};
 
 export const GUESTS = Array.from({ length: 8 }, (_, index) => ({ value: String(index + 1), label: `${index + 1} Guest${index ? "s" : ""}` }));
 export const OCCASIONS = [["", "Optional"], ["birthday", "Birthday"], ["anniversary", "Anniversary"], ["business", "Business Meeting"], ["date", "Date Night"], ["family", "Family Gathering"], ["other", "Other"]] as const;

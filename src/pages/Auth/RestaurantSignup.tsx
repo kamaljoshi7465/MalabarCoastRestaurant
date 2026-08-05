@@ -4,6 +4,7 @@ import { Mail, Lock, Loader2, User, Phone, UtensilsCrossed } from "lucide-react"
 import AuthShell from "./components/AuthShell";
 import AuthField from "./components/AuthField";
 import { useToasts } from "../../components/admin/Toast";
+import { useRestaurantSignup } from "../../hooks/useRestaurantSignup";
 
 interface FormState {
   restaurantName: string;
@@ -26,10 +27,10 @@ const INITIAL_FORM: FormState = {
 const RestaurantSignup: React.FC = () => {
   const navigate = useNavigate();
   const { toasts, push } = useToasts();
+  const { mutate: signup, loading: submitting } = useRestaurantSignup();
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [agreed, setAgreed] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -48,7 +49,7 @@ const RestaurantSignup: React.FC = () => {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     if (!agreed) {
@@ -56,12 +57,20 @@ const RestaurantSignup: React.FC = () => {
       return;
     }
 
-    setSubmitting(true);
-    window.setTimeout(() => {
-      setSubmitting(false);
+    try {
+      await signup({
+        restaurant_name: form.restaurantName,
+        owner_name: form.ownerName,
+        email: form.email,
+        phone: form.phone,
+        password: form.password,
+        confirm_password: form.confirmPassword,
+      });
       push("Account created — welcome to Malabar Coast", "success");
-      navigate("/restaurant-dashboard");
-    }, 700);
+      navigate("/restaurant-login");
+    } catch (err) {
+      push(err instanceof Error ? err.message : "Something went wrong. Please try again.", "error");
+    }
   };
 
   return (
@@ -177,7 +186,7 @@ const RestaurantSignup: React.FC = () => {
         <button
           type="submit"
           disabled={submitting}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 py-3.5 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 py-3.5 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
         >
           {submitting && <Loader2 className="size-4 animate-spin" />}
           {submitting ? "Creating account..." : "Create Account"}

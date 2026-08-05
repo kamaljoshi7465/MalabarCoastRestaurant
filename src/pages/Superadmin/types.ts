@@ -13,6 +13,7 @@ export interface Summary {
   completed_bookings: number;
   cancelled_bookings: number;
   rejected_bookings: number;
+  no_show_bookings: number;
 }
 
 export type RestaurantStatus = "ACTIVE" | "INACTIVE";

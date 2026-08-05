@@ -1,13 +1,13 @@
 import React from "react";
 import { StatusPill } from "./RestaurantStatusPill";
-import type { RestaurantBookingStatus, TodayBooking } from "../types";
+import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 
 export const TodaysTimeline: React.FC<{
-  bookings: TodayBooking[];
+  bookings: RestaurantDashboardBooking[];
   totalToday: number;
-  onAct: (booking: TodayBooking, next: RestaurantBookingStatus) => void;
+  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
 }> = ({ bookings, totalToday, onAct }) => {
-  const sorted = [...bookings].sort((a, b) => a.booking_time.localeCompare(b.booking_time));
+  const sorted = [...bookings].sort((a, b) => a.time.localeCompare(b.time));
 
   return (
     <div className="card bg-white p-4 sm:p-6">
@@ -26,13 +26,13 @@ export const TodaysTimeline: React.FC<{
         <div className="max-h-[620px] overflow-y-auto pr-2">
           <ol className="ml-2 relative space-y-4 border-l-2 border-secondary-200 pl-5">
             {sorted.map((b) => (
-              <li key={b.booking_id} className="relative">
+              <li key={b.id} className="relative">
                 <span className="absolute -left-[27px] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-primary-500" />
                 <div className="flex flex-col gap-3 rounded-lg bg-secondary-50 p-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="min-w-0">
-                    <p className="font-serif text-base text-primary-700">{b.booking_time}</p>
+                    <p className="font-serif text-base text-primary-700">{b.time}</p>
                     <p className="truncate text-sm font-medium text-gray-800">
-                      {b.customer_name} · {b.guests} guest{b.guests === 1 ? "" : "s"}
+                      {b.name} · {b.guests} guest{b.guests === 1 ? "" : "s"}
                     </p>
                     <p className="truncate text-xs text-gray-500">{b.booking_number}</p>
                   </div>
