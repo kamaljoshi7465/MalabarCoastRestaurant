@@ -18,11 +18,11 @@ const isBookingStatus = (v: string | null): v is RestaurantBookingStatus =>
 const STATUS_ACTION_LABEL: Record<RestaurantBookingStatus, string> = {
   PENDING: "set to pending",
   ACCEPTED: "approved",
-  CONFIRMED: "confirmed",
+  // CONFIRMED: "confirmed",
   COMPLETED: "marked completed",
   CANCELLED: "cancelled",
   REJECTED: "rejected",
-  NO_SHOW: "marked no-show",
+  // NO_SHOW: "marked no-show",
 };
 
 const RestaurantBookings: React.FC = () => {
