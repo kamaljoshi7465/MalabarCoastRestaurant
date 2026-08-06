@@ -86,10 +86,34 @@ export const EVENTS_TYPES = {
 };
 
 export const EVENTS_FAQS = [
-  "How far in advance should I book?",
-  "Can I customize the menu?",
-  "What is your cancellation policy?",
-  "Do you provide decoration services?",
-  "Is there parking available?",
-  "Can I arrange entertainment like DJs or live music?",
+  {
+    question: "How far in advance should I book?",
+    answer:
+      "We recommend booking at least 1-2 weeks in advance for smaller gatherings and 3-4 weeks for larger events, especially during weekends and festive seasons, to ensure your preferred date and time slot.",
+  },
+  {
+    question: "Can I customize the menu?",
+    answer:
+      "Yes, our chefs can tailor the food and beverage menu to your preferences, including vegetarian, non-vegetarian and dietary requirements, as part of our all-inclusive event packages.",
+  },
+  {
+    question: "What is your cancellation policy?",
+    answer:
+      "Cancellations made at least 48 hours before the event are eligible for a full refund of any advance paid. For cancellations within 48 hours, please reach out to your outlet's event coordinator to discuss options.",
+  },
+  {
+    question: "Do you provide decoration services?",
+    answer:
+      "Yes, we offer decor support ranging from simple table setups to themed arrangements. Let our event coordinator know your vision and we'll help bring it to life.",
+  },
+  {
+    question: "Is there parking available?",
+    answer:
+      "Most of our outlets offer on-site or nearby parking for guests. Availability varies by location, so please check with your chosen outlet while booking.",
+  },
+  {
+    question: "Can I arrange entertainment like DJs or live music?",
+    answer:
+      "Absolutely - we can help coordinate DJs, live music and other entertainment for your event, subject to venue guidelines and local noise regulations. Speak to our team while planning your event.",
+  },
 ];

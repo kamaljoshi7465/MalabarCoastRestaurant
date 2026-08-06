@@ -23,7 +23,14 @@ const ReservationForm = () => {
   const selectedOutlet = OUTLETS.find((o) => String(Number(o.id)) === outletId);
   const timeOptions = useMemo(() => {
     if (!selectedOutlet || !date) return [];
-    return getOutletTimeSlots(isWeekend(date) ? selectedOutlet.hours.weekend : selectedOutlet.hours.weekday);
+    const slots = getOutletTimeSlots(isWeekend(date) ? selectedOutlet.hours.weekend : selectedOutlet.hours.weekday);
+    if (date !== todayIso()) return slots;
+    const now = new Date();
+    const nowMinutes = now.getHours() * 60 + now.getMinutes();
+    return slots.filter(({ value }) => {
+      const [hour, minute] = value.split(":").map(Number);
+      return hour * 60 + minute > nowMinutes;
+    });
   }, [selectedOutlet, date]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -58,10 +65,10 @@ const ReservationForm = () => {
     <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
       <h2 className="mb-6 text-xl font-serif font-bold text-white">Your Details</h2>
       <form className="space-y-5" onSubmit={handleSubmit}>
-        <ReservationSelect label="Select Outlet *" name="outlet" options={OUTLETS.map((o) => ({ value: String(Number(o.id)), label: o.name }))} placeholder="Choose an outlet" required onChange={setOutletId} />
+        <ReservationSelect label="Select Outlet *" name="outlet" options={OUTLETS.map((o) => ({ value: String(Number(o.id)), label: `${o.name} - ${o.city}` }))} placeholder="Choose an outlet" required onChange={setOutletId} />
         <div className="grid grid-cols-2 gap-4">
           <ReservationDateField label="Date *" name="date" value={date} onChange={setDate} min={minDate} required icon={<CalendarDays className={labelIconClass} />} />
-          <ReservationSelect key={`${outletId}-${date}`} label="Time *" name="time" options={timeOptions} placeholder={timeOptions.length ? "Pick a time" : "Choose outlet & date first"} required disabled={timeOptions.length === 0} icon={<Clock className={labelIconClass} />} />
+          <ReservationSelect key={`${outletId}-${date}`} label="Time *" name="time" options={timeOptions} placeholder={timeOptions.length ? "Pick a time" : outletId && date ? "No slots left today" : "Choose outlet & date first"} required disabled={timeOptions.length === 0} icon={<Clock className={labelIconClass} />} />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <ReservationSelect label="Guests *" name="guests" options={GUESTS.map(({ value, label }) => [value, label] as const)} required defaultValue="1" icon={<Users className={labelIconClass} />} />

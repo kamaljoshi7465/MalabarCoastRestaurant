@@ -30,9 +30,9 @@ import RestaurantBookings from '../pages/RestaurantAdmin/bookings';
 import RestaurantSlots from '../pages/RestaurantAdmin/slots';
 import RestaurantAnalytics from '../pages/RestaurantAdmin/analytics';
 import RestaurantLogin from '../pages/Auth/RestaurantLogin';
-import RestaurantSignup from '../pages/Auth/RestaurantSignup';
+// import RestaurantSignup from '../pages/Auth/RestaurantSignup';
 import SuperAdminLogin from '../pages/Auth/SuperAdminLogin';
-import SuperAdminSignup from '../pages/Auth/SuperAdminSignup';
+// import SuperAdminSignup from '../pages/Auth/SuperAdminSignup';
 import { RequireRestaurantAuth, RequireSuperAdminAuth } from './RequireAuth';
 
 const AppRoutes = () => (
@@ -60,9 +60,9 @@ const AppRoutes = () => (
     <Route path="/refund-policy" element={<Refund />} />
 
     <Route path="/restaurant-login" element={<RestaurantLogin />} />
-    <Route path="/restaurant-signup" element={<RestaurantSignup />} />
+    {/* <Route path="/restaurant-signup" element={<RestaurantSignup />} /> */}
     <Route path="/super-admin-login" element={<SuperAdminLogin />} />
-    <Route path="/super-admin-signup" element={<SuperAdminSignup />} />
+    {/* <Route path="/super-admin-signup" element={<SuperAdminSignup />} /> */}
 
     <Route element={<RequireSuperAdminAuth />}>
       <Route path="/super-admin-dashboard" element={<SuperAdminDashboard />} />

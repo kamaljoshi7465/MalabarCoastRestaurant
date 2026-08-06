@@ -51,7 +51,7 @@ const BookingHistoryList = ({ onStartOver, push }: { onStartOver: () => void; pu
       )}
 
       {!loading && !error && data?.length === 0 && (
-        <p className="py-10 text-center text-sm text-white/40">No reservations found for this phone number.</p>
+        <p className="py-10 text-center text-sm text-white/40">No Bookings found for this phone number.</p>
       )}
 
       {!loading && !error && data && data.length > 0 && (

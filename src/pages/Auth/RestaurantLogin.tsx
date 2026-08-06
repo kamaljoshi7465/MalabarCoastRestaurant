@@ -57,10 +57,10 @@ const RestaurantLogin: React.FC = () => {
       toasts={toasts}
       footer={
         <>
-          New restaurant partner?{" "}
+          {/* New restaurant partner?{" "}
           <Link to="/restaurant-signup" className="font-semibold text-primary-600 hover:text-primary-700">
             Create an account
-          </Link>
+          </Link> */}
         </>
       }
     >
