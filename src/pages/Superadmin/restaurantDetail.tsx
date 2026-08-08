@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import type { BookingStatus, PlatformBooking } from "./types";
-import { mergeBookings, toAdminProfile } from "./utils";
+import { toAdminProfile } from "./utils";
 import { useToasts } from "../../components/admin/Toast";
 import { useSuperAdminDashboard } from "../../hooks/useSuperAdminDashboard";
 import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
@@ -48,7 +48,6 @@ const SuperAdminRestaurantDetail: React.FC = () => {
       COMPLETED: `Booking ${booking.booking_number} marked completed`,
       CANCELLED: `Booking ${booking.booking_number} cancelled`,
       REJECTED: `Booking ${booking.booking_number} rejected`,
-      CONFIRMED: `Booking ${booking.booking_number} confirmed`,
       NO_SHOW: `Booking ${booking.booking_number} marked no-show`,
     };
     const tone = next === "REJECTED" || next === "CANCELLED" ? "error" : "success";
