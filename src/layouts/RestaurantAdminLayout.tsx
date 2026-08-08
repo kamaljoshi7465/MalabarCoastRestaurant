@@ -5,6 +5,8 @@ import { ToastStack, type Toast } from "../components/admin/Toast";
 import { clearAdminToken } from "../api/tokens";
 import { RestaurantNotificationBell } from "../components/pages/RestaurantsAdmin/RestaurantNotificationBell";
 import type { RestaurantInfo, RestaurantNotifications, TodayInfo } from "../pages/RestaurantAdmin/types";
+import { OUTLETS } from "../data/home/restaurant/RestaurantsSection.data";
+import { getOutletTimeSlots, isWeekend } from "../data/reservations/reservationDetails.data";
 
 export type RestaurantNavKey = "overview" | "bookings" | "slots" | "analytics";
 
@@ -20,44 +22,51 @@ const SidebarContent: React.FC<{
   today: TodayInfo;
   active: RestaurantNavKey;
   onNavigate?: () => void;
-}> = ({ restaurant, today, active, onNavigate }) => (
-  <>
-    <div className="flex items-center gap-2 px-6 py-6">
-      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-400 font-serif text-lg text-primary-900">
-        {restaurant.name.charAt(0)}
-      </span>
-      <div className="min-w-0">
-        <p className="truncate font-serif text-lg leading-tight">{restaurant.name}</p>
-        <p className="truncate text-[11px] uppercase tracking-widest text-primary-200">
-          {restaurant.outlet_name}
-        </p>
+}> = ({ restaurant, today, active, onNavigate }) => {
+  const outlet = OUTLETS.find((o) => Number(o.id) === restaurant.id);
+  const hoursRange = outlet ? (isWeekend(today.date) ? outlet.hours.weekend : outlet.hours.weekday) : null;
+  const totalSlots = hoursRange ? getOutletTimeSlots(hoursRange).length : null;
+  const availableSlots = totalSlots !== null ? Math.max(totalSlots - today.disabled_slots, 0) : today.available_slots;
+
+  return (
+    <>
+      <div className="flex items-center gap-2 px-6 py-6">
+        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-400 font-serif text-lg text-primary-900">
+          {restaurant.name.charAt(0)}
+        </span>
+        <div className="min-w-0">
+          <p className="truncate font-serif text-lg leading-tight">{restaurant.name}</p>
+          <p className="truncate text-[11px] uppercase tracking-widest text-primary-200">
+            {restaurant.outlet_name}
+          </p>
+        </div>
       </div>
-    </div>
 
-    <nav className="mt-4 flex-1 space-y-1 px-3">
-      {NAV_ITEMS.map((item) => (
-        <Link
-          key={item.key}
-          to={item.to}
-          onClick={onNavigate}
-          className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm transition-colors ${
-            active === item.key
-              ? "bg-primary-600 font-semibold text-white"
-              : "text-primary-100 hover:bg-primary-600/60"
-          }`}
-        >
-          <item.icon className="size-4.5" aria-hidden />
-          {item.label}
-        </Link>
-      ))}
-    </nav>
+      <nav className="mt-4 flex-1 space-y-1 px-3">
+        {NAV_ITEMS.map((item) => (
+          <Link
+            key={item.key}
+            to={item.to}
+            onClick={onNavigate}
+            className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm transition-colors ${
+              active === item.key
+                ? "bg-primary-600 font-semibold text-white"
+                : "text-primary-100 hover:bg-primary-600/60"
+            }`}
+          >
+            <item.icon className="size-4.5" aria-hidden />
+            {item.label}
+          </Link>
+        ))}
+      </nav>
 
-    <div className="mx-3 mb-6 rounded-xl bg-primary-600/60 p-4 text-xs text-primary-100">
-      <p className="font-semibold text-secondary-50">{today.available_slots} slots open today</p>
-      <p className="mt-1">{today.disabled_slots} slots disabled</p>
-    </div>
-  </>
-);
+      <div className="mx-3 mb-6 rounded-xl bg-primary-600/60 p-4 text-xs text-primary-100">
+        <p className="font-semibold text-secondary-50">{availableSlots} slots open today</p>
+        <p className="mt-1">{today.disabled_slots} slots disabled</p>
+      </div>
+    </>
+  );
+};
 
 export const RestaurantAdminLayout: React.FC<{
   active: RestaurantNavKey;

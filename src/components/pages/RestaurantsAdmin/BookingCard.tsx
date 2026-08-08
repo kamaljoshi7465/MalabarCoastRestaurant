@@ -1,11 +1,11 @@
 import React from "react";
 import { StatusPill } from "./RestaurantStatusPill";
-import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
+import type { BookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 import { formatDate } from "../../../pages/RestaurantAdmin/utils";
 
 export const BookingCard: React.FC<{
   booking: RestaurantDashboardBooking;
-  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
+  onAct: (booking: RestaurantDashboardBooking, next: BookingStatus) => void;
 }> = ({ booking, onAct }) => (
   <div className="card flex flex-col gap-3 bg-white p-4">
     <div className="flex items-start justify-between gap-2">
@@ -66,10 +66,16 @@ export const BookingCard: React.FC<{
           Complete
         </button>
         <button
-          onClick={() => onAct(booking, "CANCELLED")}
-          className="flex-1 rounded-lg border border-gray-200 px-3 py-2 text-xs font-semibold text-gray-600 transition-colors hover:bg-gray-50 cursor-pointer"
+          onClick={() => onAct(booking, "NO_SHOW")}
+          className="flex-1 rounded-lg border border-orange-200 px-3 py-2 text-xs font-semibold text-orange-600 transition-colors hover:bg-orange-50 cursor-pointer"
         >
-          Cancel
+          No-show
+        </button>
+        <button
+          onClick={() => onAct(booking, "REJECTED")}
+          className="flex-1 rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-error transition-colors hover:bg-red-50 cursor-pointer"
+        >
+          Reject
         </button>
       </div>
     )}

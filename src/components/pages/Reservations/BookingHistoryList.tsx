@@ -3,16 +3,9 @@ import { Loader2, RotateCcw } from "lucide-react";
 import { useBookingList } from "../../../hooks/useBookingList";
 import { formatTimeLabel } from "../../../data/reservations/reservationDetails.data";
 import type { BookingStatus, CustomerBooking } from "../../../types/booking";
+import { BOOKING_STATUS_LABEL, BOOKING_STATUS_STYLES } from "../../admin/BookingStatusPill";
 import BookingActionPanel from "./BookingActionPanel";
 import type { Toast } from "../../admin/Toast";
-
-const STATUS_STYLES: Record<BookingStatus, string> = {
-  PENDING: "bg-amber-500/15 text-amber-300 ring-1 ring-inset ring-amber-500/30",
-  ACCEPTED: "bg-blue-500/15 text-blue-300 ring-1 ring-inset ring-blue-500/30",
-  COMPLETED: "bg-primary-500/15 text-primary-300 ring-1 ring-inset ring-primary-500/30",
-  CANCELLED: "bg-white/10 text-white/50 ring-1 ring-inset ring-white/15",
-  REJECTED: "bg-red-500/15 text-error ring-1 ring-inset ring-red-500/30",
-};
 
 const ACTIONABLE_STATUSES: BookingStatus[] = ["PENDING", "ACCEPTED"];
 
@@ -63,7 +56,7 @@ const BookingHistoryList = ({ onStartOver, push }: { onStartOver: () => void; pu
                   <p className="text-xs uppercase tracking-wider text-white/40">{booking.booking_number}</p>
                   <p className="font-serif text-base text-white">{booking.outlet_name}</p>
                 </div>
-                <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${STATUS_STYLES[booking.status]}`}>{booking.status}</span>
+                <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${BOOKING_STATUS_STYLES[booking.status]}`}>{BOOKING_STATUS_LABEL[booking.status]}</span>
               </div>
               <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs text-white/60">
                 <p>{formatDate(booking.date)}</p>

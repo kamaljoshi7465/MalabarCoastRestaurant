@@ -1,11 +1,11 @@
 import React from "react";
 import { StatusPill } from "./RestaurantStatusPill";
-import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
+import type { BookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 
 export const TodaysTimeline: React.FC<{
   bookings: RestaurantDashboardBooking[];
   totalToday: number;
-  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
+  onAct: (booking: RestaurantDashboardBooking, next: BookingStatus) => void;
 }> = ({ bookings, totalToday, onAct }) => {
   const sorted = [...bookings].sort((a, b) => a.time.localeCompare(b.time));
 
@@ -63,10 +63,16 @@ export const TodaysTimeline: React.FC<{
                           Complete
                         </button>
                         <button
-                          onClick={() => onAct(b, "CANCELLED")}
-                          className="rounded-full border border-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:bg-gray-50 cursor-pointer"
+                          onClick={() => onAct(b, "NO_SHOW")}
+                          className="rounded-full border border-orange-200 px-3 py-1.5 text-xs font-semibold text-orange-600 transition-colors hover:bg-orange-50 cursor-pointer"
                         >
-                          Cancel
+                          No-show
+                        </button>
+                        <button
+                          onClick={() => onAct(b, "REJECTED")}
+                          className="rounded-full border border-red-200 px-3 py-1.5 text-xs font-semibold text-error transition-colors hover:bg-red-50 cursor-pointer"
+                        >
+                          Reject
                         </button>
                       </>
                     )}

@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { API_RESPONSE, ADMIN_PROFILE } from "./data";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 import type { BookingStatus, PlatformBooking } from "./types";
-import { mergeBookings } from "./utils";
+import { mergeBookings, toAdminProfile } from "./utils";
 import { useToasts } from "../../components/admin/Toast";
+import { useSuperAdminDashboard } from "../../hooks/useSuperAdminDashboard";
 import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
 import { StatCard } from "../../components/admin/StatCard";
 import { LiveBookingsExplorer } from "../../components/pages/SuperAdmin/LiveBookingsExplorer";
@@ -11,8 +12,7 @@ import { BookingDetailModal } from "../../components/pages/SuperAdmin/BookingDet
 
 const SuperAdminRestaurantDetail: React.FC = () => {
   const { restaurantId } = useParams<{ restaurantId: string }>();
-  const { data } = API_RESPONSE;
-  const { summary, restaurants, upcoming_bookings, today_bookings, recent_bookings } = data;
+  const { data, loading, error, unauthorized, refetch } = useSuperAdminDashboard();
 
   const { toasts, push } = useToasts();
   const navigate = useNavigate();
@@ -21,24 +21,22 @@ const SuperAdminRestaurantDetail: React.FC = () => {
   const [overrides, setOverrides] = useState<Record<number, BookingStatus>>({});
 
   const restaurant = useMemo(
-    () => restaurants.find((r) => String(r.id) === restaurantId),
-    [restaurants, restaurantId]
+    () => data?.restaurants.find((r) => String(r.id) === restaurantId),
+    [data, restaurantId]
   );
 
   const restaurantBookings: PlatformBooking[] = useMemo(() => {
-    if (!restaurant) return [];
-    return mergeBookings(upcoming_bookings, today_bookings, recent_bookings).filter(
-      (b) => b.outlet_id === restaurant.id
-    );
-  }, [upcoming_bookings, today_bookings, recent_bookings, restaurant]);
+    if (!data || !restaurant) return [];
+    return data.restaurants.filter((r) => r.id === restaurant.id).flatMap((r) => r.bookings);
+  }, [data, restaurant]);
 
   const todayCount = useMemo(
-    () => (restaurant ? today_bookings.filter((b) => b.outlet_id === restaurant.id).length : 0),
-    [today_bookings, restaurant]
+    () => (data && restaurant ? data.today_bookings.filter((b) => b.outlet_id === restaurant.id).length : 0),
+    [data, restaurant]
   );
   const upcomingCount = useMemo(
-    () => (restaurant ? upcoming_bookings.filter((b) => b.outlet_id === restaurant.id).length : 0),
-    [upcoming_bookings, restaurant]
+    () => (data && restaurant ? data.upcoming_bookings.filter((b) => b.outlet_id === restaurant.id).length : 0),
+    [data, restaurant]
   );
 
   const handleAct = (booking: PlatformBooking, next: BookingStatus) => {
@@ -50,6 +48,8 @@ const SuperAdminRestaurantDetail: React.FC = () => {
       COMPLETED: `Booking ${booking.booking_number} marked completed`,
       CANCELLED: `Booking ${booking.booking_number} cancelled`,
       REJECTED: `Booking ${booking.booking_number} rejected`,
+      CONFIRMED: `Booking ${booking.booking_number} confirmed`,
+      NO_SHOW: `Booking ${booking.booking_number} marked no-show`,
     };
     const tone = next === "REJECTED" || next === "CANCELLED" ? "error" : "success";
     push(messages[next], tone);
@@ -59,13 +59,39 @@ const SuperAdminRestaurantDetail: React.FC = () => {
     navigate("/super-admin-dashboard/bookings?status=PENDING");
   };
 
+  if (unauthorized) {
+    return <Navigate to="/super-admin-login" replace />;
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-secondary-100 px-4 text-center">
+        <p className="text-sm text-error">{error}</p>
+        <button onClick={refetch} className="rounded-full bg-primary-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (loading || !data) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-secondary-100">
+        <Loader2 className="size-6 animate-spin text-primary-600" />
+      </div>
+    );
+  }
+
+  const { summary, user_profile } = data;
+  const adminProfile = toAdminProfile(user_profile);
+
   if (!restaurant) {
     return (
       <SuperAdminLayout
         active="restaurants"
         title="Restaurant not found"
         summary={summary}
-        admin={ADMIN_PROFILE}
+        admin={adminProfile}
         onBellReview={handleBellReview}
         onLogout={() => {
           push("Logged out", "info");
@@ -94,7 +120,7 @@ const SuperAdminRestaurantDetail: React.FC = () => {
       title={restaurant.restaurant_name}
       subtitle="Restaurant details & bookings"
       summary={summary}
-      admin={ADMIN_PROFILE}
+      admin={adminProfile}
       onBellReview={handleBellReview}
       onLogout={() => {
         push("Logged out", "info");

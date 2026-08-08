@@ -4,26 +4,16 @@ import { Loader2 } from "lucide-react";
 import { useToasts } from "../../components/admin/Toast";
 import { useRestaurantDashboard } from "../../hooks/useRestaurantDashboard";
 import { useUpdateBookingStatus } from "../../hooks/useUpdateBookingStatus";
-import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "./types";
-import { STATUS_ORDER } from "../../components/pages/RestaurantsAdmin/RestaurantStatusPill";
+import type { BookingStatus, RestaurantDashboardBooking } from "./types";
+import { BOOKING_STATUS_LABEL, STATUS_ORDER } from "../../components/admin/BookingStatusPill";
 import { RestaurantAdminLayout } from "../../layouts/RestaurantAdminLayout";
 import { AllBookingsTable } from "../../components/pages/RestaurantsAdmin/AllBookingsTable";
 import { TodaysTimeline } from "../../components/pages/RestaurantsAdmin/TodaysTimeline";
 import { UpcomingBookingsExplorer } from "../../components/pages/RestaurantsAdmin/UpcomingBookingsExplorer";
 import { RecentActivityList } from "../../components/pages/RestaurantsAdmin/RecentActivityList";
 
-const isBookingStatus = (v: string | null): v is RestaurantBookingStatus =>
+const isBookingStatus = (v: string | null): v is BookingStatus =>
   !!v && (STATUS_ORDER as string[]).includes(v);
-
-const STATUS_ACTION_LABEL: Record<RestaurantBookingStatus, string> = {
-  PENDING: "set to pending",
-  ACCEPTED: "approved",
-  // CONFIRMED: "confirmed",
-  COMPLETED: "marked completed",
-  CANCELLED: "cancelled",
-  REJECTED: "rejected",
-  // NO_SHOW: "marked no-show",
-};
 
 const RestaurantBookings: React.FC = () => {
   const navigate = useNavigate();
@@ -33,28 +23,26 @@ const RestaurantBookings: React.FC = () => {
   const { toasts, push } = useToasts();
   const [searchParams] = useSearchParams();
   const initialStatus = searchParams.get("status");
-  const [upcomingStatusFilter, setUpcomingStatusFilter] = useState<RestaurantBookingStatus | "ALL">(
+  const [upcomingStatusFilter, setUpcomingStatusFilter] = useState<BookingStatus | "ALL">(
     isBookingStatus(initialStatus) ? initialStatus : "ALL"
   );
-  const [overrides, setOverrides] = useState<Record<number, RestaurantBookingStatus>>({});
+  const [overrides, setOverrides] = useState<Record<number, BookingStatus>>({});
 
   const allBookings = useMemo(() => {
     if (!data) return [];
-    const merged = new Map<number, RestaurantDashboardBooking>();
-    [...data.recent_bookings, ...data.today_bookings, ...data.upcoming_bookings].forEach((b) => {
-      merged.set(b.id, { ...b, status: overrides[b.id] ?? b.status });
-    });
-    return Array.from(merged.values()).sort((a, b) => `${a.date}T${a.time}`.localeCompare(`${b.date}T${b.time}`));
+    return data.all_bookings
+      .map((b) => ({ ...b, status: overrides[b.id] ?? b.status }))
+      .sort((a, b) => `${a.date}T${a.time}`.localeCompare(`${b.date}T${b.time}`));
   }, [data, overrides]);
 
   const liveTodayBookings = (data?.today_bookings ?? []).map((b) => ({ ...b, status: overrides[b.id] ?? b.status }));
   const liveUpcomingBookings = (data?.upcoming_bookings ?? []).map((b) => ({ ...b, status: overrides[b.id] ?? b.status }));
 
-  const handleAct = async (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => {
+  const handleAct = async (booking: RestaurantDashboardBooking, next: BookingStatus) => {
     setOverrides((o) => ({ ...o, [booking.id]: next }));
     try {
       await updateStatus({ booking_id: booking.id, status: next });
-      push(`Booking ${booking.booking_number} ${STATUS_ACTION_LABEL[next]}`, next === "REJECTED" || next === "CANCELLED" ? "error" : "success");
+      push(`Booking ${booking.booking_number} updated to ${BOOKING_STATUS_LABEL[next]}`, next === "REJECTED" || next === "CANCELLED" ? "error" : "success");
       refetch();
     } catch (err) {
       setOverrides((o) => {

@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { StatusPill } from "./RestaurantStatusPill";
 import { formatDate } from "../../../pages/RestaurantAdmin/utils";
-import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
+import type { BookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 
 export const BookingDetailModal: React.FC<{
   booking: RestaurantDashboardBooking | null;
   onClose: () => void;
-  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
+  onAct: (booking: RestaurantDashboardBooking, next: BookingStatus) => void;
 }> = ({ booking, onClose, onAct }) => {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -18,7 +18,7 @@ export const BookingDetailModal: React.FC<{
 
   if (!booking) return null;
 
-  const act = (next: RestaurantBookingStatus) => {
+  const act = (next: BookingStatus) => {
     onAct(booking, next);
     onClose();
   };
@@ -101,12 +101,15 @@ export const BookingDetailModal: React.FC<{
               <button onClick={() => act("COMPLETED")} className="btn-primary flex-1 bg-primary-600 hover:bg-primary-700">
                 Mark as completed
               </button>
-              <button onClick={() => act("CANCELLED")} className="flex-1 rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-600 transition-colors hover:bg-gray-50 cursor-pointer">
-                Cancel booking
+              <button onClick={() => act("NO_SHOW")} className="flex-1 rounded-lg border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-50 cursor-pointer">
+                Mark as no-show
+              </button>
+              <button onClick={() => act("REJECTED")} className="flex-1 rounded-lg border border-red-200 px-4 py-2 text-sm font-semibold text-error transition-colors hover:bg-red-50 cursor-pointer">
+                Reject booking
               </button>
             </div>
           )}
-          {(booking.status === "COMPLETED" || booking.status === "CANCELLED" || booking.status === "REJECTED") && (
+          {(booking.status === "COMPLETED" || booking.status === "CANCELLED" || booking.status === "REJECTED" || booking.status === "NO_SHOW") && (
             <p className="rounded-lg bg-secondary-100 px-4 py-3 text-center text-xs text-gray-500">
               This booking is closed — no further action needed.
             </p>

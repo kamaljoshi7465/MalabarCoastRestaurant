@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { BOOKING_STATUS_LABEL, STATUS_ORDER, StatusPill } from "./StatusPill";
+import { PLATFORM_STATUS_LABEL, PLATFORM_STATUS_ORDER, StatusPill } from "./StatusPill";
 import type { BookingStatus, PlatformBooking } from "../../../pages/Superadmin/types";
 import { formatDate } from "../../../pages/Superadmin/utils";
 
@@ -77,7 +77,7 @@ export const LiveBookingsExplorer: React.FC<{
           >
             All
           </button>
-          {STATUS_ORDER.map((s) => (
+          {PLATFORM_STATUS_ORDER.map((s) => (
             <button
               key={s}
               onClick={() => onStatusFilterChange(s)}
@@ -87,7 +87,7 @@ export const LiveBookingsExplorer: React.FC<{
                   : "bg-secondary-200 text-primary-600 hover:bg-secondary-300"
               }`}
             >
-              {BOOKING_STATUS_LABEL[s]}
+              {PLATFORM_STATUS_LABEL[s]}
             </button>
           ))}
         </div>

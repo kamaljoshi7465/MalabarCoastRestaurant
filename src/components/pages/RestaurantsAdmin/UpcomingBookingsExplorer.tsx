@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from "react";
 import { BOOKING_STATUS_LABEL, STATUS_ORDER } from "./RestaurantStatusPill";
 import { BookingCard } from "./BookingCard";
-import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
+import type { BookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 
 export const UpcomingBookingsExplorer: React.FC<{
   bookings: RestaurantDashboardBooking[];
   totalUpcoming: number;
-  statusFilter: RestaurantBookingStatus | "ALL";
-  onStatusFilterChange: (s: RestaurantBookingStatus | "ALL") => void;
-  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
+  statusFilter: BookingStatus | "ALL";
+  onStatusFilterChange: (s: BookingStatus | "ALL") => void;
+  onAct: (booking: RestaurantDashboardBooking, next: BookingStatus) => void;
 }> = ({ bookings, totalUpcoming, statusFilter, onStatusFilterChange, onAct }) => {
   const [query, setQuery] = useState("");
 

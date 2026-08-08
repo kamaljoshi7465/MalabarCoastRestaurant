@@ -1,6 +1,14 @@
 export type { BookingStatus } from "../../types/booking";
 import type { BookingStatus } from "../../types/booking";
 
+export interface UserProfile {
+  id: number;
+  name: string;
+  email: string;
+  phone: string | null;
+  created_at: string;
+}
+
 export interface Summary {
   total_restaurants: number;
   total_bookings: number;
@@ -13,10 +21,7 @@ export interface Summary {
   cancelled_bookings: number;
 }
 
-export type BookingStatusCount = Record<
-  "PENDING" | "ACCEPTED" | "REJECTED" | "COMPLETED" | "CANCELLED" | "NO_SHOW" | "CONFIRMED",
-  number
->;
+export type BookingStatusCount = Record<BookingStatus, number>;
 
 /* GET /superadmin/dashboard — data.restaurants[]: one row per outlet on the platform. */
 export interface PlatformRestaurant {
@@ -27,6 +32,7 @@ export interface PlatformRestaurant {
   outlet_name: string;
   total_bookings: number;
   pending_bookings: number;
+  bookings: PlatformBooking[];
 }
 
 /* Booking-list items share one rich shape across upcoming/today/recent lists
@@ -61,6 +67,7 @@ export interface ChartData {
 }
 
 export interface DashboardData {
+  user_profile: UserProfile;
   summary: Summary;
   booking_status_count: BookingStatusCount;
   restaurants: PlatformRestaurant[];
@@ -80,6 +87,6 @@ export interface AdminProfile {
   name: string;
   email: string;
   role: string;
-  phone: string;
+  phone: string | null;
   joined: string;
 }

@@ -107,7 +107,9 @@ export const BookingDetailModal: React.FC<{
           )}
           {(booking.status === "COMPLETED" ||
             booking.status === "CANCELLED" ||
-            booking.status === "REJECTED") && (
+            booking.status === "REJECTED" ||
+            booking.status === "CONFIRMED" ||
+            booking.status === "NO_SHOW") && (
             <p className="rounded-lg bg-secondary-100 px-4 py-3 text-center text-xs text-gray-500">
               This booking is closed — no further action needed.
             </p>

@@ -1,15 +1,15 @@
 import React, { useMemo, useState } from "react";
 import { BOOKING_STATUS_LABEL, STATUS_ORDER, StatusPill } from "./RestaurantStatusPill";
 import { BookingDetailModal } from "./BookingDetailModal";
-import type { RestaurantBookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
+import type { BookingStatus, RestaurantDashboardBooking } from "../../../pages/RestaurantAdmin/types";
 import { formatDate } from "../../../pages/RestaurantAdmin/utils";
 
 export const AllBookingsTable: React.FC<{
   bookings: RestaurantDashboardBooking[];
-  onAct: (booking: RestaurantDashboardBooking, next: RestaurantBookingStatus) => void;
+  onAct: (booking: RestaurantDashboardBooking, next: BookingStatus) => void;
 }> = ({ bookings, onAct }) => {
   const [query, setQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState<RestaurantBookingStatus | "ALL">("ALL");
+  const [statusFilter, setStatusFilter] = useState<BookingStatus | "ALL">("ALL");
   const [selectedBooking, setSelectedBooking] = useState<RestaurantDashboardBooking | null>(null);
 
   const filtered = useMemo(() => {

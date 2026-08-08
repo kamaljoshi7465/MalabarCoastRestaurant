@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
-import { ADMIN_PROFILE } from "./data";
-import { formatNumber, formatDate } from "./utils";
+import { formatNumber, formatDate, toAdminProfile } from "./utils";
 import { StatusPill } from "../../components/pages/SuperAdmin/StatusPill";
 import { useToasts } from "../../components/admin/Toast";
 import { useSuperAdminDashboard } from "../../hooks/useSuperAdminDashboard";
@@ -192,7 +191,7 @@ const SuperAdminDashboard: React.FC = () => {
     );
   }
 
-  const { summary, restaurants, recent_bookings, chart_data } = data;
+  const { summary, restaurants, recent_bookings, chart_data, user_profile } = data;
 
   return (
     <SuperAdminLayout
@@ -200,7 +199,7 @@ const SuperAdminDashboard: React.FC = () => {
       title="Dashboard Overview"
       subtitle="Platform-wide snapshot"
       summary={summary}
-      admin={ADMIN_PROFILE}
+      admin={toAdminProfile(user_profile)}
       onBellReview={handleBellReview}
       onLogout={() => {
         push("Logged out", "info");

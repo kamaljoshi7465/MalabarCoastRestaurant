@@ -1,11 +1,5 @@
-export type RestaurantBookingStatus =
-  | "PENDING"
-  | "ACCEPTED"
-  | "COMPLETED"
-  | "CANCELLED"
-  | "REJECTED";
-  // | "NO_SHOW"
-  // | "CONFIRMED";
+export type { BookingStatus } from "../../types/booking";
+import type { BookingStatus } from "../../types/booking";
 
 export interface RestaurantInfo {
   id: number;
@@ -30,7 +24,7 @@ export interface RestaurantSummary {
   rejected_bookings: number;
 }
 
-export type BookingStatusCount = Record<RestaurantBookingStatus, number>;
+export type BookingStatusCount = Record<BookingStatus, number>;
 
 export interface WeeklyBookingPoint {
   date: string;
@@ -70,7 +64,7 @@ export interface SlotStatusUpdateRequest {
 /* POST /admin/bookings/status — accept/reject (or otherwise update) a booking. */
 export interface BookingStatusUpdateRequest {
   booking_id: number;
-  status: RestaurantBookingStatus;
+  status: BookingStatus;
   reason?: string;
 }
 
@@ -90,7 +84,7 @@ export interface RestaurantDashboardBooking {
   email: string;
   phone: string;
   special_requests: string | null;
-  status: RestaurantBookingStatus;
+  status: BookingStatus;
   cancel_reason: string | null;
   rejection_reason: string | null;
   created_at: string;
@@ -101,6 +95,7 @@ export interface RestaurantDashboardOverview {
   summary: RestaurantSummary;
   today: TodayInfo;
   booking_status_count: BookingStatusCount;
+  all_bookings: RestaurantDashboardBooking[];
   upcoming_bookings: RestaurantDashboardBooking[];
   today_bookings: RestaurantDashboardBooking[];
   recent_bookings: RestaurantDashboardBooking[];
