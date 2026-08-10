@@ -39,6 +39,7 @@ export interface CreateBookingRequest {
 /* POST /booking/send-otp — no auth */
 export interface SendOtpRequest {
   phone: string;
+  email: string;
 }
 
 export interface SendOtpResponseData {
@@ -48,6 +49,7 @@ export interface SendOtpResponseData {
 /* POST /booking/verify-otp — no auth */
 export interface VerifyOtpRequest {
   phone: string;
+  email: string;
   otp: string;
 }
 
