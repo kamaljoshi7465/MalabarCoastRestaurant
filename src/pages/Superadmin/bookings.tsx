@@ -27,7 +27,10 @@ const SuperAdminBookings: React.FC = () => {
   const [overrides, setOverrides] = useState<Record<number, BookingStatus>>({});
 
   const bookings = useMemo(
-    () => (data ? data.restaurants.flatMap((r) => r.bookings) : []),
+    () =>
+      data
+        ? data.restaurants.flatMap((r) => r.bookings).sort((a, b) => b.id - a.id)
+        : [],
     [data]
   );
 

@@ -32,7 +32,7 @@ const RestaurantBookings: React.FC = () => {
     if (!data) return [];
     return data.all_bookings
       .map((b) => ({ ...b, status: overrides[b.id] ?? b.status }))
-      .sort((a, b) => `${a.date}T${a.time}`.localeCompare(`${b.date}T${b.time}`));
+      .sort((a, b) => b.id - a.id);
   }, [data, overrides]);
 
   const liveTodayBookings = (data?.today_bookings ?? []).map((b) => ({ ...b, status: overrides[b.id] ?? b.status }));

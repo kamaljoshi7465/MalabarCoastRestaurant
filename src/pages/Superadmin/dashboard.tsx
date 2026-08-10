@@ -98,7 +98,10 @@ const RestaurantPerformancePreview: React.FC<{
 const LiveBookingsPreview: React.FC<{ bookings: PlatformBooking[] }> = ({
   bookings,
 }) => {
-  const latest5 = useMemo(() => bookings.slice(0, BOOKINGS_PREVIEW_LIMIT), [bookings]);
+  const latest5 = useMemo(
+    () => [...bookings].sort((a, b) => b.id - a.id).slice(0, BOOKINGS_PREVIEW_LIMIT),
+    [bookings]
+  );
 
   return (
     <div className="card overflow-hidden bg-white">
