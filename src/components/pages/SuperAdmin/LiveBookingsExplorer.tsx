@@ -125,7 +125,7 @@ export const LiveBookingsExplorer: React.FC<{
                   <td className="px-4 py-4 font-medium text-gray-800">
                     {b.name}
                   </td>
-                  <td className="px-4 py-4 text-gray-600">{b.restaurant}</td>
+                  <td className="px-4 py-4 text-gray-600">{`${b.restaurant} · ${b.outlet_name}`}</td>
                   <td className="whitespace-nowrap px-4 py-4 text-gray-600">
                     {formatDate(b.date)} · {b.time}
                   </td>
