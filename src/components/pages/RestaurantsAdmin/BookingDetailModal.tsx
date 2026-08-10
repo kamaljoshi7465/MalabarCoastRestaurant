@@ -101,15 +101,12 @@ export const BookingDetailModal: React.FC<{
               <button onClick={() => act("COMPLETED")} className="btn-primary flex-1 bg-primary-600 hover:bg-primary-700">
                 Mark as completed
               </button>
-              <button onClick={() => act("NO_SHOW")} className="flex-1 rounded-lg border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-50 cursor-pointer">
-                Mark as no-show
-              </button>
               <button onClick={() => act("REJECTED")} className="flex-1 rounded-lg border border-red-200 px-4 py-2 text-sm font-semibold text-error transition-colors hover:bg-red-50 cursor-pointer">
                 Reject booking
               </button>
             </div>
           )}
-          {(booking.status === "COMPLETED" || booking.status === "CANCELLED" || booking.status === "REJECTED" || booking.status === "NO_SHOW") && (
+          {(booking.status === "COMPLETED" || booking.status === "CANCELLED" || booking.status === "REJECTED") && (
             <p className="rounded-lg bg-secondary-100 px-4 py-3 text-center text-xs text-gray-500">
               This booking is closed — no further action needed.
             </p>

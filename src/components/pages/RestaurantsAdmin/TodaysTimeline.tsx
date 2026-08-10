@@ -63,12 +63,6 @@ export const TodaysTimeline: React.FC<{
                           Complete
                         </button>
                         <button
-                          onClick={() => onAct(b, "NO_SHOW")}
-                          className="rounded-full border border-orange-200 px-3 py-1.5 text-xs font-semibold text-orange-600 transition-colors hover:bg-orange-50 cursor-pointer"
-                        >
-                          No-show
-                        </button>
-                        <button
                           onClick={() => onAct(b, "REJECTED")}
                           className="rounded-full border border-red-200 px-3 py-1.5 text-xs font-semibold text-error transition-colors hover:bg-red-50 cursor-pointer"
                         >

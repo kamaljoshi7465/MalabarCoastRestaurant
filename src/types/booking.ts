@@ -4,8 +4,6 @@ export type BookingStatus =
   | "COMPLETED"
   | "CANCELLED"
   | "REJECTED"
-  // | "CONFIRMED"
-  | "NO_SHOW";
 
 export interface Booking {
   booking_id: number;

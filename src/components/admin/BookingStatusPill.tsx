@@ -7,8 +7,6 @@ export const BOOKING_STATUS_LABEL: Record<BookingStatus, string> = {
   COMPLETED: "Completed",
   CANCELLED: "Cancelled",
   REJECTED: "Rejected",
-  // CONFIRMED: "Confirmed",
-  NO_SHOW: "No-show",
 };
 
 export const BOOKING_STATUS_STYLES: Record<BookingStatus, string> = {
@@ -17,8 +15,6 @@ export const BOOKING_STATUS_STYLES: Record<BookingStatus, string> = {
   COMPLETED: "bg-primary-100 text-primary-700 ring-1 ring-inset ring-primary-300",
   CANCELLED: "bg-gray-100 text-gray-600 ring-1 ring-inset ring-gray-300",
   REJECTED: "bg-red-50 text-error ring-1 ring-inset ring-red-200",
-  // CONFIRMED: "bg-emerald-50 text-emerald-600 ring-1 ring-inset ring-emerald-200",
-  NO_SHOW: "bg-orange-50 text-orange-600 ring-1 ring-inset ring-orange-200",
 };
 
 export const STATUS_ORDER: BookingStatus[] = [
@@ -27,8 +23,6 @@ export const STATUS_ORDER: BookingStatus[] = [
   "COMPLETED",
   "CANCELLED",
   "REJECTED",
-  // "CONFIRMED",
-  "NO_SHOW",
 ];
 
 export const StatusPill: React.FC<{ status: BookingStatus }> = ({ status }) => (

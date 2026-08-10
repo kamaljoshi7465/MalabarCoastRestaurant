@@ -17,7 +17,7 @@ const isBookingStatus = (v: string | null): v is BookingStatus =>
 
 const RestaurantBookings: React.FC = () => {
   const navigate = useNavigate();
-  const { data, loading, error, unauthorized, refetch } = useRestaurantDashboard();
+  const { data, error, unauthorized, refetch } = useRestaurantDashboard();
   const { mutate: updateStatus } = useUpdateBookingStatus();
 
   const { toasts, push } = useToasts();
@@ -69,7 +69,7 @@ const RestaurantBookings: React.FC = () => {
     );
   }
 
-  if (loading || !data) {
+  if (!data) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-secondary-100">
         <Loader2 className="size-6 animate-spin text-primary-600" />

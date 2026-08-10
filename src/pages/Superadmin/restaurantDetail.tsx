@@ -48,7 +48,6 @@ const SuperAdminRestaurantDetail: React.FC = () => {
       COMPLETED: `Booking ${booking.booking_number} marked completed`,
       CANCELLED: `Booking ${booking.booking_number} cancelled`,
       REJECTED: `Booking ${booking.booking_number} rejected`,
-      NO_SHOW: `Booking ${booking.booking_number} marked no-show`,
     };
     const tone = next === "REJECTED" || next === "CANCELLED" ? "error" : "success";
     push(messages[next], tone);
