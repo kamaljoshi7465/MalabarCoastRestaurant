@@ -11,7 +11,11 @@ const GalleryHeader = () => (
       <div className="container-custom text-center">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary-400">{GALLERY_HEADER_DATA.eyebrow}</p>
         <h1 className="mb-6 text-5xl leading-tight font-serif font-bold text-white drop-shadow-lg md:text-7xl">{GALLERY_HEADER_DATA.title} <span className="italic text-gold-400">{GALLERY_HEADER_DATA.titleAccent}</span></h1>
-        <p className="mx-auto max-w-xl text-base leading-relaxed text-white/80 drop-shadow md:text-lg">{GALLERY_HEADER_DATA.description}</p>
+        <div className="mx-auto flex min-h-[110px] max-w-xl items-start justify-center">
+          <p className="w-full text-base leading-relaxed text-white/80 drop-shadow md:text-lg">
+            {GALLERY_HEADER_DATA.description}
+          </p>
+        </div>
       </div>
     </div>
   </section>

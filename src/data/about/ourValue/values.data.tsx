@@ -87,7 +87,7 @@ export const VALUES: Value[] = [
     id: 1,
     title: "Authenticity",
     description:
-      "We honor traditional Indian recipes while embracing modern culinary innovation",
+      "We honor traditional South Indian recipes while embracing modern culinary innovation",
     icon: <PomegranateIcon />,
   },
   {

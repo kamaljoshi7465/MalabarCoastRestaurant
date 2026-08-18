@@ -79,7 +79,7 @@ const OutletCard = ({ outlet }: { outlet: Outlet }) => {
 
         <div className="mt-auto space-y-2">
           {menus.food ? (
-            <a href={menus.food} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-primary-600/90 hover:bg-primary-600 border-primary-500/30 hover:border-primary-400">
+            <a href={menus.food} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-[#123420] hover:bg-[#e8cfa0] hover:text-[#123420] rounded-full">
               <span className="group-hover/btn:scale-110 transition-transform"><FoodIcon /></span>
               <span className="flex-1 text-left">Food Menu</span>
               <DownloadIcon />
@@ -93,7 +93,7 @@ const OutletCard = ({ outlet }: { outlet: Outlet }) => {
           )}
 
           {menus.mocktail ? (
-            <a href={menus.mocktail} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-gold-600/90 hover:bg-gold-600 border-gold-500/30 hover:border-gold-400">
+            <a href={menus.mocktail} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-[#123420] hover:bg-[#e8cfa0] hover:text-[#123420] rounded-full">
               <span className="group-hover/btn:scale-110 transition-transform"><DrinkIcon /></span>
               <span className="flex-1 text-left">Mocktail Menu</span>
               <DownloadIcon />
@@ -107,9 +107,9 @@ const OutletCard = ({ outlet }: { outlet: Outlet }) => {
           )}
 
           {menus.kittyParty && (
-            <a href={menus.kittyParty} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-pink-700/90 hover:bg-pink-700 border-pink-600/30 hover:border-pink-500">
+            <a href={menus.kittyParty} target="_blank" rel="noopener noreferrer" className="group/btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium border transition-all bg-[#123420] hover:bg-[#e8cfa0] hover:text-[#123420] rounded-full">
               <span className="group-hover/btn:scale-110 transition-transform"><KittyPartyIcon /></span>
-              <span className="flex-1 text-left">Kitty Party Menu</span>
+              <span className="flex-1 text-left">Special Party Menu</span>
               <DownloadIcon />
             </a>
           )}

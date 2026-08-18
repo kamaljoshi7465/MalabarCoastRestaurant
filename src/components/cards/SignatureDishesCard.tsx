@@ -1,5 +1,8 @@
 import type { FC } from "react";
-import { TAG_STYLES, type Dish } from "../../data/home/signatureDishes/signatureDishes.data";
+import {
+  TAG_STYLES,
+  type Dish,
+} from "../../data/home/signatureDishes/signatureDishes.data";
 import TagButton from "../buttons/TagButton";
 
 interface DishCardProps {
@@ -8,31 +11,59 @@ interface DishCardProps {
 }
 
 const DishCard: FC<DishCardProps> = ({ dish, delayMs }) => (
-  <div className="card group overflow-hidden" style={{ animationDelay: `${delayMs}ms` }}>
+  <div
+    className="card group overflow-hidden"
+    style={{ animationDelay: `${delayMs}ms` }}
+  >
     <div className="relative h-72 overflow-hidden">
       <img
         src={dish.image}
         alt={dish.name}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
+
       <div className="absolute left-3 top-3">
-        <TagButton text="Signature" className="bg-gold-500 text-white" />
+        <TagButton
+          text="Signature"
+          className="bg-gold-500 text-white"
+        />
       </div>
     </div>
 
     <div className="p-4">
-      <h3 className="mb-2 font-serif text-lg font-bold text-gray-900 transition-colors group-hover:text-primary-600">
+      {/* Fixed title height for equal alignment */}
+      <h3 className="mb-2 h-14 flex items-start font-serif text-lg font-bold leading-tight text-gray-900 transition-colors group-hover:text-primary-600">
         {dish.name}
       </h3>
-      <p className="mb-3 text-xs text-gray-600 line-clamp-3">{dish.description}</p>
-      <div className="flex flex-wrap gap-1.5">
-        <div className="flex flex-wrap gap-2">
-          <div className="flex flex-wrap gap-1.5">
-            {dish.tag.map((t) => (
-              <TagButton key={t} text={t} className={`${TAG_STYLES[t]} capitalize`} />
-            ))}
-          </div>
-        </div>
+
+      <p className="mb-3 text-xs text-gray-600 line-clamp-3">
+        {dish.description}
+      </p>
+
+      {/* Tags */}
+      <div className="grid grid-cols-3 items-center gap-2">
+        {dish.tag.slice(0, 4).map((t) => (
+          <TagButton
+            key={t}
+            text={t}
+            className={`
+              ${TAG_STYLES[t]}
+              w-full
+              min-w-0
+              h-7
+              px-1
+              rounded-full
+              text-[10px]
+              font-medium
+              flex
+              items-center
+              justify-center
+              text-center
+              whitespace-nowrap
+              overflow-hidden
+            `}
+          />
+        ))}
       </div>
     </div>
   </div>

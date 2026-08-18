@@ -15,9 +15,9 @@ export interface Stat {
 
 export const features: Feature[] = [
   {
-    title: "Authentic Flavors",
+    title: "Authentic Coastal Flavours",
     description:
-      "Traditional Indian recipes reimagined with modern techniques and premium ingredients",
+      "A celebration of Kerala, Malabar and South Indian coastal cuisine, crafted with traditional spices and authentic recipes.",
     iconGradient: "from-orange-500 to-red-600",
     icon: (
       <svg
@@ -35,9 +35,9 @@ export const features: Feature[] = [
     ),
   },
   {
-    title: "Hero Chefs of Malabar Coast",
+    title: "Signature South Indian Cuisine",
     description:
-      "Award-winning culinary team with decades of combined experience in Indian cuisine",
+      "From Chicken Ghee Roast to Prawn Pollichatu, every dish brings the distinctive flavours of India’s southern coast to your table.",
     iconGradient: "from-amber-500 to-orange-600",
     icon: (
       <svg
@@ -55,9 +55,9 @@ export const features: Feature[] = [
     ),
   },
   {
-    title: `${STATS.outlets.value} Unique Restaurants`,
+    title: `${STATS.outlets.value} Vibrant Locations`,
     description:
-      "Each location offers its own distinctive ambiance, vibe, and specially curated menu",
+      "Experience The Malabar Coast across Gurugram, Noida and Indore, each offering its own dining atmosphere and experience.",
     iconGradient: "from-pink-500 to-fuchsia-600",
     icon: (
       <svg
@@ -80,9 +80,9 @@ export const features: Feature[] = [
     ),
   },
   {
-    title: "Award-Winning",
+    title: "Seafood & Coastal Specialities",
     description:
-      "Recognized for excellence in food quality, service, and dining experience",
+      "Fresh seafood and bold coastal preparations inspired by Kerala, Mangalore and the wider southern coastline.",
     iconGradient: "from-yellow-500 to-amber-600",
     icon: (
       <svg
@@ -103,9 +103,9 @@ export const features: Feature[] = [
     ),
   },
   {
-    title: "Private Events",
+    title: "Perfect for Every Celebration",
     description:
-      "Customized catering and event spaces for your special celebrations",
+      "From intimate family meals to large gatherings, enjoy authentic food, warm hospitality and memorable dining experiences.",
     iconGradient: "from-rose-500 to-pink-600",
     icon: (
       <svg
@@ -123,9 +123,9 @@ export const features: Feature[] = [
     ),
   },
   {
-    title: "Guest Satisfaction",
+    title: "Loved by Our Guests",
     description:
-      "Consistently rated 4.5+ stars with thousands of happy diners across all restaurants",
+      "A growing community of diners celebrates our authentic flavours, welcoming ambience and memorable South Indian dining experience.",
     iconGradient: "from-red-500 to-rose-600",
     icon: (
       <svg
