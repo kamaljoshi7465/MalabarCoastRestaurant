@@ -1,7 +1,7 @@
 import { OUTLETS, HEADQUARTERS } from "../home/restaurant/RestaurantsSection.data";
-
+import chefAndKitchen from "../../assets/images/Chef-And-Kitchen-Image/chef-and-kitchen.webp";
 export const CAREERS_HERO = {
-  image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1920&q=80",
+  image: chefAndKitchen,
   title: "Join Our Team",
   subtitle: "Be part of India's fastest-growing restaurant chain",
 };

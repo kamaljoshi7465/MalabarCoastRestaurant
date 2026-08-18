@@ -16,19 +16,28 @@ export const LEGACY_DATA: LegacyData = {
   title: "The Malabar Coast Legacy",
 
   paragraphs: [
-    `Welcome to The Malabar Coast, where authentic South Indian flavors meet warm hospitality.`,
+    `Welcome to The Malabar Coast, where the rich culinary heritage of Malabar meets the 
+warmth of South Indian hospitality.`,
 
-    `Inspired by the rich culinary traditions of Kerala and South India, we serve a carefully crafted menu featuring dosas, idlis, appams, Kerala parottas, biryanis, curries, seafood specialties, refreshing beverages, and traditional desserts.`,
+    `Inspired by the flavours and culinary traditions of Malabar and South India, our cuisine 
+celebrates time-honoured recipes, authentic spices, and the diverse flavours of the 
+region. From soft, delicate appams and dosas to flaky Malabar parottas, aromatic 
+biryanis, traditional curries, fresh seafood and indulgent desserts, every dish is crafted 
+to bring the true essence of the Malabar Coast to your table. `,
 
-    `Our commitment is to provide:`,
+    `At The Malabar Coast, we believe in:`,
 
-    `— Fresh, high-quality ingredients`,
-    `— Authentic recipes`,
-    `— Hygienic food preparation`,
-    `— Friendly customer service`,
-    `— A memorable dining experienc`,
+    `● Authentic Malabar Flavours rooted in traditional recipes `,
+    `● Fresh, Quality Ingredients carefully selected for every dish`, 
+    `● Traditional Cooking with time-honoured techniques`, 
+    `● Warm & Genuine Hospitality that makes every guest feel at home`, 
+    `● A Memorable Dining Experience inspired by the spirit of the Malabar Coast`,
 
-    `Whether you're joining us for breakfast, lunch, dinner, or a family celebration, we look forward to serving you with the true taste of the Malabar Coast.`
+    `Whether you're joining us for a leisurely breakfast, a family lunch, an intimate dinner, or a 
+      special celebration, we invite you to slow down, savour every flavour, and experience the 
+         true taste and soul of the Malabar Coast.`,
+
+         `The Malabar Coast : Spices, Sea & Soul`
   ],
 
   image: aboutOurStory,

@@ -1,10 +1,35 @@
-import PollichathuPaneer from "../../../assets/images/Signature/PollichathuPaneer.webp" 
-import TenderCoconutPayasam from "../../../assets/images/Signature/TenderCoconutPayasam.webp" 
-import PrawnButterPepperGarlic from "../../../assets/images/Signature/PrawnButterPepperGarlic.webp" 
-import PomfretMasalaFry from "../../../assets/images/Signature/PomfretMasalaFry.webp" 
-import SeaCrabButterPepperGarlic from "../../../assets/images/Signature/SeaCrabButterPepperGarlic.webp" 
+import chickenGheeRoast from "../../../assets/images/Signature/Chicken-Ghee-Roast.webp";
+import keralaChickenCurry from "../../../assets/images/Signature/Kerala-Chicken-Curry.jpg.webp";
+import pomfretTawaFry from "../../../assets/images/Signature/Pomfret Tawa Fry.webp";
+import pomfretPolichathu from "../../../assets/images/Signature/Pomfret-Polichathu.webp";
+import TMCprawnMoilee from "../../../assets/images/Signature/TMC-Prawn-Moilee.webp";
+import TMCvegetableKurma from "../../../assets/images/Signature/TMC Vegetable Kurma1.webp";
+import vegetableMangoCurry from "../../../assets/images/Signature/Vegetable-Mango-Curry.JPG.webp";
+import paneerPolichathu from "../../../assets/images/Signature/Paneer-Polichathu.webp";
+import TMCtenderCoconutPayasam from "../../../assets/images/Signature/TMC-Tender-Coconut-Payasam.webp";
 
-export type TagVariant = "Signature" | "Veg" | "Dessert" | "Seafood";
+export type TagVariant =
+  | "Signature"
+  | "Veg"
+  | "Dessert"
+  | "Seafood"
+  | "Coastal"
+  | "Kerala"
+  | "Authentic"
+  | "Curry"
+  | "ComfortFood"
+  | "Mangalorean"
+  | "Ghee Roasted"
+  | "Spicy"
+  | "Traditional"
+  | "Coconut"
+  | "Mild"
+  | "Vegetarian"
+  | "Creamy"
+  | "Mango"
+  | "Tangy"
+  | "Paneer"
+  | "Sweet";
 
 export interface Dish {
   id: string;
@@ -19,47 +44,97 @@ export const TAG_STYLES: Record<TagVariant, string> = {
   Veg: "bg-green-500 text-white",
   Dessert: "bg-pink-500 text-white",
   Seafood: "bg-blue-500 text-white",
+
+  Coastal: "bg-teal-500 text-white",
+  Kerala: "bg-emerald-600 text-white",
+  Authentic: "bg-orange-500 text-white",
+  Curry: "bg-amber-500 text-white",
+  ComfortFood: "bg-yellow-500 text-white",
+  Mangalorean: "bg-red-500 text-white",
+  "Ghee Roasted": "bg-orange-600 text-white",
+  Spicy: "bg-red-600 text-white",
+  Traditional: "bg-indigo-500 text-white",
+  Coconut: "bg-cyan-600 text-white",
+  Mild: "bg-sky-500 text-white",
+  Vegetarian: "bg-green-600 text-white",
+  Creamy: "bg-violet-500 text-white",
+  Mango: "bg-yellow-600 text-white",
+  Tangy: "bg-lime-600 text-white",
+  Paneer: "bg-rose-500 text-white",
+  Sweet: "bg-pink-600 text-white",
 };
 
 export const dishes: Dish[] = [
   {
-    id: "pollichathu-paneer",
-    name: "Pollichathu Paneer",
+    id: "Malabar-Pomfret-Tawa-Fry",
+    name: "Malabar Pomfret Tawa Fry",
     description:
-      "Soft paneer marinated in authentic Kerala spices, wrapped in banana leaf and slow-cooked to lock in rich smoky flavours.",
-    image: PollichathuPaneer,
-    tag: ["Signature", "Veg"],
+      "Fresh pomfret marinated with aromatic coastal spices and pan-seared on the tawa to perfection, delivering a crisp exterior and tender, flavourful fish.",
+    image: pomfretTawaFry,
+    tag: ["Seafood", "Signature", "Coastal"],
   },
   {
-    id: "tender-coconut-payasam",
-    name: "Tender Coconut Payasam",
+    id: "Kerala-Chicken-Curry",
+    name: "Kerala Chicken Curry",
     description:
-      "A traditional Kerala dessert made with tender coconut, creamy milk and subtle sweetness.",
-    image: TenderCoconutPayasam,
-    tag: ["Signature", "Dessert"],
+      "Tender chicken simmered in a rich blend of Kerala spices, coconut and aromatic curry leaves for an authentic, comforting coastal flavour.",
+    image: keralaChickenCurry,
+    tag: ["Kerala", "Authentic", "Curry", "ComfortFood"],
   },
   {
-    id: "prawn-butter-pepper-garlic",
-    name: "Prawn Butter Pepper Garlic",
+    id: "Mangalorean-Chicken-Ghee-Roast",
+    name: "Mangalorean Chicken Ghee Roast",
     description:
-      "Succulent prawns tossed in aromatic butter, roasted garlic and freshly cracked black pepper.",
-    image: PrawnButterPepperGarlic,
-    tag: ["Signature", "Seafood"],
+      "Succulent chicken slow-cooked with roasted spices and generous ghee, creating a rich, bold and irresistibly aromatic South Indian classic.",
+    image: chickenGheeRoast,
+    tag: ["Mangalorean", "Ghee Roasted", "Spicy", "Signature"],
   },
   {
-    id: "pomfret-masala-fry",
-    name: "Pomfret Masala Fry",
+    id: "Pomfret-Polichatu",
+    name: "Pomfret Polichatu",
     description:
-      "Whole pomfret marinated with Malabar spices and perfectly pan-fried for a crispy, flavourful finish.",
-    image: PomfretMasalaFry,
-    tag: ["Signature", "Seafood"],
+      "Whole pomfret coated in a fragrant Kerala masala, wrapped and cooked to lock in its delicate flavours and coastal aromas.",
+    image: pomfretPolichathu,
+    tag: ["Kerala", "Seafood", "Coastal", "Traditional"],
   },
   {
-    id: "sea-crab-butter-pepper-garlic",
-    name: "Sea Crab Butter Pepper Garlic",
+    id: "Prawn-Moilee",
+    name: "Prawn Moilee",
     description:
-      "Fresh sea crab cooked in a rich butter, garlic and crushed black pepper sauce for a bold coastal flavour.",
-    image: SeaCrabButterPepperGarlic,
-    tag: ["Signature", "Seafood"],
+      "Juicy prawns gently simmered in a delicate coconut milk gravy infused with turmeric, green chilli and aromatic Kerala spices.",
+    image: TMCprawnMoilee,
+    tag: ["Kerala", "Seafood", "Coconut", "Mild"],
+  },
+  {
+    id: "Vegetable-Kurma",
+    name: "Vegetable Kurma",
+    description:
+      "Seasonal vegetables cooked in a creamy, aromatic coconut-based gravy enriched with traditional South Indian spices.",
+    image: TMCvegetableKurma,
+    tag: ["Vegetarian", "Kerala", "Coconut", "Creamy"],
+  },
+  {
+    id: "Vegetable-Mango-Curry",
+    name: "Vegetable Mango Curry",
+    description:
+      "Fresh vegetables and tangy raw mango come together in a delicately spiced Kerala-style curry, balancing sweet, sour and savoury flavours.",
+    image: vegetableMangoCurry,
+    tag: ["Vegetarian", "Kerala", "Mango", "Tangy"],
+  },
+  {
+    id: "Paneer-Polichatu",
+    name: "Paneer Polichatu",
+    description:
+      "Soft paneer wrapped in a fragrant Kerala-style masala and cooked to perfection, bringing together rich spices and authentic coastal flavours.",
+    image: paneerPolichathu,
+    tag: ["Vegetarian", "Paneer", "Kerala", "Signature"],
+  },
+  {
+    id: "Coconut-Payasam",
+    name: "Coconut Payasam",
+    description:
+      "A luscious Kerala dessert made with coconut and traditional ingredients, delicately sweetened and finished with comforting South Indian flavours.",
+    image: TMCtenderCoconutPayasam,
+    tag: ["Dessert", "Kerala", "Traditional", "Sweet"],
   },
 ];

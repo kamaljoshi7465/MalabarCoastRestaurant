@@ -97,8 +97,8 @@ export const OUTLETS: Outlet[] = [
     phone: "08506936320",
     email: "themalabarcostmkt2@gmail.com",
     hours: {
-      weekday: "09:30 AM – 11:00 PM",
-      weekend: "09:30 AM – 11:00 PM"
+      weekday: "09:00 AM – 11:30 PM",
+      weekend: "09:00 AM – 11:30 PM"
     },
     gallery: [NoidaImage],
     menu: "https://www.zomato.com/ncr/the-malabar-coast-by-appumm-house-sector-62-noida/book",
@@ -131,8 +131,8 @@ export const OUTLETS: Outlet[] = [
     phone: "08817413636",
     email: "yakshahospitality@gmail.com",
     hours: {
-      weekday: "09:30 AM – 11:00 PM",
-      weekend: "09:30 AM – 11:00 PM"
+      weekday: "12:00 PM – 11:00 PM",
+      weekend: "12:00 PM – 11:00 PM"
     },
     gallery: [IndoreImage],
     menu: "https://www.zomato.com/indore/the-malabar-coast-2-by-pass-road-north/book",
