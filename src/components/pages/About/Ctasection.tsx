@@ -10,7 +10,9 @@ import { OUTLETS } from "../../../data/home/restaurant/RestaurantsSection.data";
 const CtaSection = () => {
   return (
     <section className="relative overflow-hidden">
-      <div className="relative bg-gradient-to-r from-[#0b321c] via-[#244f1b] to-[#80600b] px-4 pt-48 md:px-8 md:py-24">
+      <div
+        className="relative flex min-h-[460px] md:min-h-[500px] items-center bg-gradient-to-r from-[#0b321c] via-[#244f1b] to-[#80600b] px-4 py-12 md:min-h-[400px] md:px-8 md:py-16"
+      >
         <div className="absolute inset-0 opacity-[0.08]">
           <div
             className="absolute inset-0"
@@ -22,8 +24,8 @@ const CtaSection = () => {
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl text-center">
-          <div className="mb-2 flex items-center justify-center">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center justify-center text-center">
+          <div className="mb-4 flex items-center justify-center">
             <div className="h-px w-[135px] bg-[#c9a227]/70 md:w-[160px]" />
 
             <div className="mx-3 flex items-center justify-center text-[#d5a92c]">
@@ -37,36 +39,41 @@ const CtaSection = () => {
             {CTA_CONTENT.title}
           </h2>
 
-          <p className="mb-5 text-base leading-6 text-gray-200 md:text-lg">
-            {CTA_CONTENT.description}{" "}
+          <p className="mb-6 max-w-4xl text-base leading-6 text-gray-200 md:text-lg">
+            {CTA_CONTENT.description}
           </p>
 
-          <div className="flex items-center justify-center">
+          <div className="flex w-full items-center justify-center">
             <div className="mr-5 hidden h-px w-20 bg-[#c9a227]/70 sm:block md:w-24" />
 
-            <div className="flex items-center gap-5 text-sm text-[#d5a92c] md:gap-6 md:text-base">
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-[#d5a92c] md:gap-6 md:text-base">
               <span className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
               </span>
+
               {OUTLETS.map((outlet, index) => (
                 <span key={outlet.city}>
                   {outlet.city}
+
                   {index < OUTLETS.length - 1 && (
-                    <span className="text-[#c9a227]"> | </span>
+                    <span className="ml-4 text-[#c9a227] md:ml-6">|</span>
                   )}
                 </span>
               ))}
             </div>
+
             <div className="ml-5 hidden h-px w-20 bg-[#c9a227]/70 sm:block md:w-24" />
           </div>
         </div>
       </div>
 
-      <div className="relative border-t border-[#9c7916] bg-[#0b2d19] px-4 py-7">
-        <div className="flex items-center justify-center gap-4">
+      <div
+        className="relativeflexmin-h-[105px]items-centerjustify-centerborder-tborder-[#9c7916]bg-[#0b2d19]px-4py-7md:min-h-[110px]"
+      >
+        <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
           <Link
             to="/restaurants"
-            className="inline-flex h-11 min-w-[185px] items-center justify-center gap-2 rounded-full bg-[#e5b13f] px-7 text-sm font-bold text-[#15351f] transition-colors duration-300 hover:bg-[#efbd52]"
+            className="inline-flexh-11min-w-[185px]items-centerjustify-centergap-2rounded-fullbg-[#e5b13f]px-7text-smfont-boldtext-[#15351f]transition-allduration-300hover:bg-[#efbd52]hover:shadow-lg"
           >
             <span>Find an Outlet</span>
             {CTA_ICONS.arrowRight}
@@ -74,7 +81,7 @@ const CtaSection = () => {
 
           <Link
             to="/reservations"
-            className="inline-flex h-11 min-w-[185px] items-center justify-center gap-2 rounded-full border border-[#e5b13f] px-7 text-sm font-bold text-[#e5b13f] transition-colors duration-300 hover:bg-[#e5b13f] hover:text-[#15351f]"
+            className="inline-flexh-11min-w-[185px]items-centerjustify-centergap-2rounded-fullborderborder-[#e5b13f]px-7text-smfont-boldtext-[#e5b13f]transition-allduration-300hover:bg-[#e5b13f]hover:text-[#15351f]hover:shadow-lg"
           >
             <span>Book a Table</span>
             {CTA_ICONS.calendar}

@@ -46,7 +46,7 @@ const EventsTestimonials = () => {
             <div key={i} className="flex-shrink-0 w-[400px] bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className="text-5xl text-primary-500 opacity-20 font-serif mb-4">"</div>
               <div className="flex gap-1 mb-4">{Array(5).fill(0).map((_, j) => <StarIcon key={j} />)}</div>
-              <p className="text-gray-700 italic mb-6 min-h-[120px]">{t.quote}</p>
+              <p className="text-gray-700 italic mb-6 min-h-[18vh]">{t.quote}</p>
               <div className="border-t pt-4">
                 <h4 className="font-bold text-gray-900 text-lg">{t.name}</h4>
                 <p className="text-sm text-primary-600 font-medium">{t.designation}</p>

@@ -94,7 +94,7 @@ export const OUTLETS: Outlet[] = [
     image: NoidaImage,
     location: "Candor Techspace, Sector-62 Noida",
     // address: "Block B, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309",
-    address: "Candor Techspace, Sector-62 Noida",
+    address: "Candor Techspace, Binge Central, Sector 62, Noida, Uttar Pradesh 201309",
     city: "Noida",
     phone: "08506936320",
     email: "themalabarcoastmkt2@gmail.com",

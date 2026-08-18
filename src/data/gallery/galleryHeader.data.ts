@@ -45,6 +45,7 @@ import img44 from "../../assets/images/Gellery/image-44.webp";
 import img45 from "../../assets/images/Gellery/image-45.webp";
 import img46 from "../../assets/images/Gellery/image-46.webp";
 import img47 from "../../assets/images/Gellery/image-47.webp";
+import bgImage from "../../assets/images/Gellery/bg-gellery.webp";
 
 export const GALLERY_HEADER_DATA = {
   eyebrow: "A Visual Journey",
@@ -52,7 +53,7 @@ export const GALLERY_HEADER_DATA = {
   titleAccent: "Gallery",
   description:
     "Step into our restaurants, dishes, and the moments that make Malabar Coast, Malabar Coast.",
-  image: img04,
+  image: bgImage,
 };
 
 export const GALLERY_FILTERS = ["all", "summer", "food", "drinks", "ambiance"];

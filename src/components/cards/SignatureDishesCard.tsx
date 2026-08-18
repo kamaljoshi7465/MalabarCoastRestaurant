@@ -41,7 +41,7 @@ const DishCard: FC<DishCardProps> = ({ dish, delayMs }) => (
       </p>
 
       {/* Tags */}
-      <div className="grid grid-cols-3 items-center gap-2">
+      <div className="grid grid-cols-4 items-center gap-2">
         {dish.tag.slice(0, 4).map((t) => (
           <TagButton
             key={t}
