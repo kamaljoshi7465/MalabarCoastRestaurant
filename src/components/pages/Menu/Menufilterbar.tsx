@@ -1,4 +1,4 @@
-import { OUTLETS, RESTAURANT_CITY_FILTERS } from "../../../data/home/restaurant/RestaurantsSection.data";
+import { RESTAURANT_CITY_FILTERS } from "../../../data/home/restaurant/RestaurantsSection.data";
 
 interface Props {
   activeRegion: string;
@@ -6,8 +6,8 @@ interface Props {
 }
 
 const Menufilterbar = ({ activeRegion, onRegionChange }: Props) => {
-  const countFor = (value: string) =>
-    value === "All" ? OUTLETS.length : OUTLETS.filter((o) => o.city === value).length;
+  // const countFor = (value: string) =>
+  //   value === "All" ? OUTLETS.length : OUTLETS.filter((o) => o.city === value).length;
 
   return (
     <section className="sticky top-20 z-30 bg-black/80 backdrop-blur-md border-y border-white/10">
