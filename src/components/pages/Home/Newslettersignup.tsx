@@ -34,7 +34,7 @@ const NewsletterSignup: React.FC = () => {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
-            Stay Updated with Malabar Coast
+            Stay Connected with The Malabar Coast
           </h2>
           <p className="text-lg text-white/90 mb-8">
             Subscribe to receive exclusive offers, new menu updates, and special event invitations

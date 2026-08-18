@@ -10,10 +10,10 @@ const FooterBrand = () => (
       </div>
     </Link>
     <p className="text-sm text-gray-400 mb-4 max-w-[360px] leading-7">
-      Malabar Coast is a modern Indian restaurant that offers a unique dining experience, blending
-      authentic Indian flavors with contemporary cuisine. The restaurant uses fresh, seasonal
-      ingredients and traditional cooking techniques to create dishes that are both delicious
-      and visually stunning.
+      Welcome to The Malabar Coast, one of the best South Indian restaurants in Indore,
+       serving authentic Kerala cuisine and coastal delicacies inspired by the rich flavours of India’s 
+       southern shores. From Kerala and Mangalore to Chettinad, Tamil Nadu and Goa, our menu 
+       celebrates bold spices, traditional recipes and soulful comfort food.  
     </p>
     <div className="flex space-x-3">
       {SOCIAL_LINKS.map(({ label, href, icon }) => (

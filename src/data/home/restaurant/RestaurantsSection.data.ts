@@ -7,6 +7,7 @@ import NoidaMenu from "../../../assets/Menus/Malabar-Coast-Noida-Menu.pdf"
 import IndoreMenu from "../../../assets/Menus/Malabar-Coast-Indore-Menu.pdf"
 import MocktailMenu from "../../../assets/Menus/Malabar-Coast-Mocktail-Menu.pdf"
 import KittyPartyMenu from "../../../assets/Menus/Malabar-Coast-Kitty-Party-Menu.pdf"
+import { STATS } from "../../common/stats.data"
 
 export interface Outlet {
   id: string;
@@ -55,11 +56,12 @@ export const HEADQUARTERS = {
 export const OUTLETS: Outlet[] = [
   {
     id: "0001",
-    name: "M3M Atrium 57",
+    name: "The Malabar Coast",
     slug: "m3m-atrium-57",
     image: GurugramImage,
-    location: "M3M Atrium Sector 57, Gurugram",
-    address: "Ground Floor, M3M Atrium, Shop Number 6,7,8, near THE HDFC SCHOOL, Sector 57, Gurugram, Haryana 122011",
+    location: "M3M Atrium 57, Sector 57, Gurugram",
+    // address: "Ground Floor, M3M Atrium, Shop Number 6,7,8, near THE HDFC SCHOOL, Sector 57, Gurugram, Haryana 122011",
+    address: "M3M Atrium 57, Sector 57, Gurugram",
     city: "Gurugram",
     phone: "09971100955",
     email: "themalabarcoastt@gmail.com",
@@ -88,14 +90,15 @@ export const OUTLETS: Outlet[] = [
   },
   {
     id: "0002",
-    name: "The Appumm house",
+    name: "The Malabar Coast By The Appumm house",
     slug: "the-appumm-house",
     image: NoidaImage,
-    location: "COWRKS Noida 62, Tower 5, Candor Techspace",
-    address: "Block B, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309",
+    location: "Candor Techspace, Sector-62 Noida",
+    // address: "Block B, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309",
+    address: "Candor Techspace, Sector-62 Noida",
     city: "Noida",
     phone: "08506936320",
-    email: "themalabarcostmkt2@gmail.com",
+    email: "themalabarcoastmkt2@gmail.com",
     hours: {
       weekday: "09:00 AM – 11:30 PM",
       weekend: "09:00 AM – 11:30 PM"
@@ -122,11 +125,12 @@ export const OUTLETS: Outlet[] = [
   },
   {
     id: "0003",
-    name: "Phoenix Citadel Mall",
+    name: "The Malabar Coast",
     slug: "phoenix-citadel-mall",
     image: IndoreImage,
-    location: "Phoenix Citadel Mall",
-    address: "1st floor, Phoenix Citadel, mall, Indore, Madhya Pradesh 452016",
+    location: "Phoenix Pride Of India, 1st floor, Indore",
+    // address: "1st floor, Phoenix Citadel, mall, Indore, Madhya Pradesh 452016",
+    address: "Phoenix Pride Of India, 1st floor, Indore",
     city: "Indore",
     phone: "08817413636",
     email: "yakshahospitality@gmail.com",
@@ -165,7 +169,7 @@ export const RESTAURANT_CITY_FILTERS = [
 
 export const RESTAURANTS_HEADER_DATA = {
   title: "Our Restaurants",
-  description: "Discover 14 unique dining experiences across Delhi NCR. Each outlet has its own character, vibe, and specially curated menu.",
+  description: `Discover ${STATS.outlets.value} unique dining experiences across Delhi NCR. Each outlet has its own character, vibe, and specially curated menu.`,
   mapUrl: "https://www.google.com/maps/search/?api=1&query=Malabar+Coast+Restaurant",
 };
 

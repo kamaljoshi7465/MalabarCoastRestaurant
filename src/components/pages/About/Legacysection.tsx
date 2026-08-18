@@ -38,8 +38,8 @@ const LegacySection = () => {
               alt={LEGACY_DATA.imageAlt}
               className="rounded-xl shadow-2xl"
             />
-            <div className="absolute -bottom-6 -left-6 rounded-lg bg-gradient-to-r from-primary-600 to-gold-600 p-6 text-white shadow-xl">
-              <div className="text-4xl font-serif font-bold">
+            <div className="absolute -bottom-0 left-0 right-0 z-20 w-full rounded-lg  p-5 text-white shadow-xl">
+              <div className="text-4xl font-serif font-bold ">
                 {LEGACY_DATA.experience.value}
               </div>
 

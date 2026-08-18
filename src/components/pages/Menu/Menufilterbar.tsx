@@ -25,7 +25,8 @@ const Menufilterbar = ({ activeRegion, onRegionChange }: Props) => {
                     : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
                 }`}
               >
-                {value} <span className="opacity-60">· {countFor(value)}</span>
+                {value} 
+                {/* <span className="opacity-60">· {countFor(value)}</span> */}
               </button>
             );
           })}

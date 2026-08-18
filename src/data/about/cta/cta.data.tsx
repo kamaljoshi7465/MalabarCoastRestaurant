@@ -61,10 +61,10 @@ const CalendarIcon = () => (
 );
 
 export const CTA_CONTENT: CTAData = {
-  title: "Be Part of Our Story",
+  title: "Savor the Coast. Celebrate the Exprience.",
   description:
-    "Join us for an unforgettable dining experience at any of our",
-  highlightedText: "13 unique restaurants",
+    "Experience the true taste of coastal South India at all our restaurants.",
+  highlightedText: `${STATS.outlets.value} unique restaurants`,
 };
 
 export const CTA_STATS: Stat[] = [
