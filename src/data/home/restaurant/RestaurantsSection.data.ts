@@ -7,7 +7,6 @@ import NoidaMenu from "../../../assets/Menus/Malabar-Coast-Noida-Menu.pdf"
 import IndoreMenu from "../../../assets/Menus/Malabar-Coast-Indore-Menu.pdf"
 import MocktailMenu from "../../../assets/Menus/Malabar-Coast-Mocktail-Menu.pdf"
 import KittyPartyMenu from "../../../assets/Menus/Malabar-Coast-Kitty-Party-Menu.pdf"
-import { STATS } from "../../common/stats.data"
 
 export interface Outlet {
   id: string;
@@ -169,7 +168,7 @@ export const RESTAURANT_CITY_FILTERS = [
 
 export const RESTAURANTS_HEADER_DATA = {
   title: "Our Restaurants",
-  description: `Discover ${STATS.outlets.value} unique dining experiences across Delhi NCR. Each outlet has its own character, vibe, and specially curated menu.`,
+  description: `Discover ${OUTLETS.length} unique dining experiences across Delhi NCR. Each outlet has its own character, vibe, and specially curated menu.`,
   mapUrl: "https://www.google.com/maps/search/?api=1&query=Malabar+Coast+Restaurant",
 };
 
