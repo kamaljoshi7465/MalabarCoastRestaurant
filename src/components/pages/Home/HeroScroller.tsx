@@ -83,7 +83,7 @@ export default function HeroScroller() {
 
       <div className="relative z-10 flex h-full items-center">
         <div className="container-custom">
-          <div className="max-w-3xl">
+          <div className="max-w-5xl">
             <h1 className="mb-6 text-5xl font-serif font-bold text-white md:text-7xl">
               {displayContent.title}
             </h1>

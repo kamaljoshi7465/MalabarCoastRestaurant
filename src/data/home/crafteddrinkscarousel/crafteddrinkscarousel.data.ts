@@ -1,6 +1,10 @@
-import KokumShikanjiImage from "../../../assets/images/Drinks-Mocktail/Kokum-Shikanji.webp"
-import TenderCoconutBlastImage from "../../../assets/images/Drinks-Mocktail/Tender-Coconut-Blast.webp"
-import KulukkiSarbatImage from "../../../assets/images/Drinks-Mocktail/Kulukki-Sarbat.webp"
+import AampannaImage from "../../../assets/images/Drinks-Mocktail/Aampanna.webp"
+import ButterMilk from "../../../assets/images/Drinks-Mocktail/Butter-Milk.webp"
+import MasalaCoke from "../../../assets/images/Drinks-Mocktail/Masala-Coke.webp"
+import Panakkam from "../../../assets/images/Drinks-Mocktail/Panakkam.webp"
+import TenderCoconutMilkShake from "../../../assets/images/Drinks-Mocktail/Tender-Coconut-Milk-Shake.webp"
+import TMCKokumSharbatShikanji from "../../../assets/images/Drinks-Mocktail/TMC-Kokum-Sharbat-Shikanji.webp"
+import VerginMojito from "../../../assets/images/Drinks-Mocktail/Vergin-Mojito.webp"
 
 export interface Drink {
   name: string;
@@ -12,44 +16,51 @@ export interface Drink {
 
 export const DRINKS: Drink[] = [
   {
-    name: "Kokum Shikanji",
-    description: "A revitalizing blend of kokum, hand-crafted spices, lemon and a hint of mint. This traditional coastal cooler uplifts your senses with a tangy, sweet and sour refreshment.",
-    image: KokumShikanjiImage,
+    name: "Aampanna",
+    description: "",
+    image: AampannaImage,
     category: "Mocktail",
     tags: ["Signature", "Refreshing"]
   },
   {
-    name: "Tender Coconut Blast",
-    description: "A luscious fusion of tender coconut water and cream with a touch of natural sweetness. Smooth, hydrating and tropical – a perfect escape in every sip.",
-    image: TenderCoconutBlastImage,
+    name: "Butter Milk",
+    description: "",
+    image: ButterMilk,
     category: "Mocktail",
     tags: ["Signature", "Tropical"]
   },
   {
-    name: "Kulukki Sarbat",
-    description: "A traditional Kerala favourite made with lime, mint, basil seeds (sabja) and a hint of natural sweetness, hand-shaken to perfection. Zesty, cooling and incredibly refreshing.",
-    image: KulukkiSarbatImage,
+    name: "Masala Coke",
+    description: "",
+    image: MasalaCoke,
     category: "Mocktail",
     tags: ["Signature", "Energizing"]
   },
   {
-    name: "Kokum Shikanji",
-    description: "A revitalizing blend of kokum, hand-crafted spices, lemon and a hint of mint. This traditional coastal cooler uplifts your senses with a tangy, sweet and sour refreshment.",
-    image: KokumShikanjiImage,
+    name: "Panakkam",
+    description: "",
+    image: Panakkam,
     category: "Mocktail",
     tags: ["Signature", "Refreshing"]
   },
   {
-    name: "Tender Coconut Blast",
-    description: "A luscious fusion of tender coconut water and cream with a touch of natural sweetness. Smooth, hydrating and tropical – a perfect escape in every sip.",
-    image: TenderCoconutBlastImage,
+    name: "Tender Coconut Milk Shake",
+    description: "",
+    image: TenderCoconutMilkShake,
     category: "Mocktail",
     tags: ["Signature", "Tropical"]
   },
   {
-    name: "Kulukki Sarbat",
-    description: "A traditional Kerala favourite made with lime, mint, basil seeds (sabja) and a hint of natural sweetness, hand-shaken to perfection. Zesty, cooling and incredibly refreshing.",
-    image: KulukkiSarbatImage,
+    name: "TMC Kokum Sharbat_Shikanji",
+    description: "",
+    image: TMCKokumSharbatShikanji,
+    category: "Mocktail",
+    tags: ["Signature", "Energizing"]
+  },
+  {
+    name: "Vergin Mojito",
+    description: "",
+    image: VerginMojito,
     category: "Mocktail",
     tags: ["Signature", "Energizing"]
   },
