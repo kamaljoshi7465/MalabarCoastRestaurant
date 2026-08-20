@@ -52,9 +52,9 @@ export const GALLERY_HEADER_DATA = {
   title: "The",
   titleAccent: "Gallery",
   description:
-    "Step into our restaurants, dishes, and the moments that make Malabar Coast, Malabar Coast.",
+    "Step into The Malabar Coast — where authentic flavours, warm hospitality, and unforgettable moments come together.",
   image: bgImage,
-};
+}
 
 export const GALLERY_FILTERS = ["all", "summer", "food", "drinks", "ambiance"];
 

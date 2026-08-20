@@ -71,7 +71,7 @@ export const dishes: Dish[] = [
     description:
       "Fresh pomfret marinated with aromatic coastal spices and pan-seared on the tawa to perfection, delivering a crisp exterior and tender, flavourful fish.",
     image: pomfretTawaFry,
-    tag: ["Seafood", "Signature", "Coastal"],
+    tag: ["Seafood", "Coastal"],
   },
   {
     id: "Kerala-Chicken-Curry",
@@ -79,7 +79,7 @@ export const dishes: Dish[] = [
     description:
       "Tender chicken simmered in a rich blend of Kerala spices, coconut and aromatic curry leaves for an authentic, comforting coastal flavour.",
     image: keralaChickenCurry,
-    tag: ["Kerala", "Authentic", "Curry", "ComfortFood"],
+    tag: ["Authentic", "Curry", "ComfortFood"],
   },
   {
     id: "Mangalorean-Chicken-Ghee-Roast",
@@ -87,7 +87,7 @@ export const dishes: Dish[] = [
     description:
       "Succulent chicken slow-cooked with roasted spices and generous ghee, creating a rich, bold and irresistibly aromatic South Indian classic.",
     image: chickenGheeRoast,
-    tag: ["Mangalorean", "Ghee Roasted", "Spicy", "Signature"],
+    tag: ["Mangalorean", "Ghee Roasted", "Spicy"],
   },
   {
     id: "Pomfret-Polichatu",
@@ -95,7 +95,7 @@ export const dishes: Dish[] = [
     description:
       "Whole pomfret coated in a fragrant Kerala masala, wrapped and cooked to lock in its delicate flavours and coastal aromas.",
     image: pomfretPolichathu,
-    tag: ["Kerala", "Seafood", "Coastal", "Traditional"],
+    tag: ["Seafood", "Coastal", "Traditional"],
   },
   {
     id: "Prawn-Moilee",
@@ -103,7 +103,7 @@ export const dishes: Dish[] = [
     description:
       "Juicy prawns gently simmered in a delicate coconut milk gravy infused with turmeric, green chilli and aromatic Kerala spices.",
     image: TMCprawnMoilee,
-    tag: ["Kerala", "Seafood", "Coconut", "Mild"],
+    tag: ["Seafood", "Coconut", "Mild"],
   },
   {
     id: "Vegetable-Kurma",
@@ -111,7 +111,7 @@ export const dishes: Dish[] = [
     description:
       "Seasonal vegetables cooked in a creamy, aromatic coconut-based gravy enriched with traditional South Indian spices.",
     image: TMCvegetableKurma,
-    tag: ["Vegetarian", "Kerala", "Coconut", "Creamy"],
+    tag: ["Vegetarian", "Coconut", "Creamy"],
   },
   {
     id: "Vegetable-Mango-Curry",
@@ -119,7 +119,7 @@ export const dishes: Dish[] = [
     description:
       "Fresh vegetables and tangy raw mango come together in a delicately spiced Kerala-style curry, balancing sweet, sour and savoury flavours.",
     image: vegetableMangoCurry,
-    tag: ["Vegetarian", "Kerala", "Mango", "Tangy"],
+    tag: ["Vegetarian", "Mango", "Tangy"],
   },
   {
     id: "Paneer-Polichatu",
@@ -127,7 +127,7 @@ export const dishes: Dish[] = [
     description:
       "Soft paneer wrapped in a fragrant Kerala-style masala and cooked to perfection, bringing together rich spices and authentic coastal flavours.",
     image: paneerPolichathu,
-    tag: ["Vegetarian", "Paneer", "Kerala", "Signature"],
+    tag: ["Vegetarian", "Paneer"],
   },
   {
     id: "Coconut-Payasam",
@@ -135,6 +135,6 @@ export const dishes: Dish[] = [
     description:
       "A luscious Kerala dessert made with coconut and traditional ingredients, delicately sweetened and finished with comforting South Indian flavours.",
     image: TMCtenderCoconutPayasam,
-    tag: ["Dessert", "Kerala", "Traditional", "Sweet"],
+    tag: ["Dessert", "Traditional", "Sweet"],
   },
 ];

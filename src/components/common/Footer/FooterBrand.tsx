@@ -6,7 +6,7 @@ const FooterBrand = () => (
     <Link className="flex items-center space-x-3 mb-3" to="/">
       <img src="/favicon.svg" alt="Malabar Coast" className="relative w-8 h-8 flex-shrink-0 rounded-full bg-white shadow-md" />
       <div>
-        <h3 className="text-xl font-display font-bold text-white">Malabar Coast</h3>
+        <h3 className="text-xl font-display font-bold text-white">The Malabar Coast</h3>
       </div>
     </Link>
     <p className="text-sm text-gray-400 mb-4 max-w-[360px] leading-7">

@@ -68,12 +68,12 @@ const CtaSection = () => {
       </div>
 
       <div
-        className="relativeflexmin-h-[105px]items-centerjustify-centerborder-tborder-[#9c7916]bg-[#0b2d19]px-4py-7md:min-h-[110px]"
+        className="relative flex min-h-[105px] items-center justify-center border-t border-[#9c7916] bg-[#0b2d19] px-4 py-7 md:min-h-[110px]"
       >
         <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
           <Link
             to="/restaurants"
-            className="inline-flexh-11min-w-[185px]items-centerjustify-centergap-2rounded-fullbg-[#e5b13f]px-7text-smfont-boldtext-[#15351f]transition-allduration-300hover:bg-[#efbd52]hover:shadow-lg"
+            className="inline-flex h-11 min-w-[185px] items-center justify-center gap-2 rounded-full bg-[#e5b13f] px-7 text-sm font-bold text-[#15351f] transition-all duration-300 hover:bg-[#efbd52] hover:shadow-lg"
           >
             <span>Find an Outlet</span>
             {CTA_ICONS.arrowRight}
@@ -81,7 +81,7 @@ const CtaSection = () => {
 
           <Link
             to="/reservations"
-            className="inline-flexh-11min-w-[185px]items-centerjustify-centergap-2rounded-fullborderborder-[#e5b13f]px-7text-smfont-boldtext-[#e5b13f]transition-allduration-300hover:bg-[#e5b13f]hover:text-[#15351f]hover:shadow-lg"
+            className="inline-flex h-11 min-w-[185px] items-center justify-center gap-2 rounded-full border border-[#e5b13f] px-7 text-sm font-bold text-[#e5b13f] transition-all duration-300 hover:bg-[#e5b13f] hover:text-[#15351f] hover:shadow-lg"
           >
             <span>Book a Table</span>
             {CTA_ICONS.calendar}
