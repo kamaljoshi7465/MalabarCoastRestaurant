@@ -6,6 +6,7 @@ import { toAdminProfile } from "./utils";
 import { PLATFORM_STATUS_ORDER } from "../../components/pages/SuperAdmin/StatusPill";
 import { useToasts } from "../../components/admin/Toast";
 import { useSuperAdminDashboard } from "../../hooks/useSuperAdminDashboard";
+import { useUpdateBookingStatus } from "../../hooks/useUpdateBookingStatus";
 import { SuperAdminLayout } from "../../layouts/SuperAdminLayout";
 import { LiveBookingsExplorer } from "../../components/pages/SuperAdmin/LiveBookingsExplorer";
 import { BookingDetailModal } from "../../components/pages/SuperAdmin/BookingDetailModal";
@@ -16,6 +17,7 @@ const isPlatformBookingStatus = (v: string | null): v is BookingStatus =>
 const SuperAdminBookings: React.FC = () => {
   const { data, loading, error, unauthorized, refetch } = useSuperAdminDashboard();
   const { toasts, push } = useToasts();
+  const { mutate: updateBookingStatus } = useUpdateBookingStatus();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const initialStatus = searchParams.get("status");
@@ -34,20 +36,42 @@ const SuperAdminBookings: React.FC = () => {
     [data]
   );
 
-  const handleAct = (booking: PlatformBooking, next: BookingStatus) => {
-    setOverrides((o) => ({ ...o, [booking.id]: next }));
-    setSelectedBooking(null);
-    const messages: Record<BookingStatus, string> = {
-      PENDING: `Booking ${booking.booking_number} set to pending`,
-      ACCEPTED: `Booking ${booking.booking_number} approved`,
-      COMPLETED: `Booking ${booking.booking_number} marked completed`,
-      CANCELLED: `Booking ${booking.booking_number} cancelled`,
-      REJECTED: `Booking ${booking.booking_number} rejected`,
-    };
-    const tone = next === "REJECTED" || next === "CANCELLED" ? "error" : "success";
-    push(messages[next], tone);
-  };
+  const handleAct = async (
+    booking: PlatformBooking,
+    next: BookingStatus
+  ) => {
+    try {
+      await updateBookingStatus({
+        booking_id: booking.id,
+        status: next,
+      });
 
+      setOverrides((o) => ({
+        ...o,
+        [booking.id]: next,
+      }));
+
+      setSelectedBooking(null);
+
+      const messages: Record<BookingStatus, string> = {
+        PENDING: `Booking ${booking.booking_number} set to pending`,
+        ACCEPTED: `Booking ${booking.booking_number} approved`,
+        COMPLETED: `Booking ${booking.booking_number} marked completed`,
+        CANCELLED: `Booking ${booking.booking_number} cancelled`,
+        REJECTED: `Booking ${booking.booking_number} rejected`,
+      };
+
+      const tone =
+        next === "REJECTED" || next === "CANCELLED"
+          ? "error"
+          : "success";
+
+      push(messages[next], tone);
+    } catch (error) {
+      console.error("Failed to update booking status:", error);
+      push("Failed to update booking status", "error");
+    }
+  };
   const handleBellReview = () => {
     setStatusFilter("PENDING");
   };
