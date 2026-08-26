@@ -1,7 +1,7 @@
 import CraftedDrinksCarousel from "../../components/pages/Home/Crafteddrinkscarousel";
 import FoodStories from "../../components/pages/Home/FoodStories";
 import HeroScroller from "../../components/pages/Home/HeroScroller";
-import NewsletterSignup from "../../components/pages/Home/Newslettersignup";
+// import NewsletterSignup from "../../components/pages/Home/Newslettersignup";
 import RestaurantsSection from "../../components/pages/Home/RestaurantsSection/RestaurantsSection";
 import SignatureDishes from "../../components/pages/Home/SignatureDishes";
 import Testimonials from "../../components/pages/Home/Testimonials";
@@ -16,7 +16,7 @@ const Home = () => (
     <FoodStories />
     <WhyChoose />
     <Testimonials />
-    <NewsletterSignup />
+    {/* <NewsletterSignup /> */}
   </>
 );
 

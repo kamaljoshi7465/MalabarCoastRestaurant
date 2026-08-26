@@ -8,6 +8,6 @@ export const useUpdateBookingStatus = () =>
     apiRequest<RestaurantDashboardBooking>(ENDPOINTS.bookingStatus, {
       method: "POST",
       body: payload,
-      auth: "admin",
+      auth: "super-admin",
     })
   );
