@@ -14,4 +14,5 @@ export const ENDPOINTS = {
   superAdminDashboard: "/superadmin/dashboard",
   bookingSlotStatus: "/admin/booking-slots/status",
   bookingStatus: "/admin/bookings/status",
+  contactSendEmail: "/contact/send-email",
 } as const;
