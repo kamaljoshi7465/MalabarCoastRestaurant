@@ -97,12 +97,12 @@ export const BookingDetailModal: React.FC<{
               >
                 Mark as completed
               </button>
-              <button
+              {/* <button
                 onClick={() => onAct(booking, "CANCELLED")}
                 className="flex-1 rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-600 transition-colors hover:bg-gray-50"
               >
                 Cancel booking
-              </button>
+              </button> */}
             </div>
           )}
           {(booking.status === "COMPLETED" ||
